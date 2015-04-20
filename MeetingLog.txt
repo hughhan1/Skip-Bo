@@ -3,8 +3,11 @@ INTERMEDIATE PROJECT MEETINGS
 Sat 4/18 : 4 PM to 6:15 PM
 All members present.
 
-Created UML diagram for assignment based on our understanding thus far.
-Talked about assignment overall.
-Started a UI sketch.
-Created an implementation plan which will likely change.
-Scheduled next meeting to finish UI sketch, and class overview, as well as refine the implementation plan (Monday, 4/20 after class)
+- Created UML diagram for assignment based on our understanding thus far.
+- Talked about assignment overall.
+- Started a UI sketch.
+- Created an implementation plan which will likely change.
+- Scheduled next meeting to finish UI sketch, and class overview, as well as refine the implementation plan (Monday, 4/20 after class)
+
+Mon 4/20 : 4 PM to 6:15 PM
+All members present.
