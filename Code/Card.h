@@ -17,8 +17,11 @@ private:
  	int num;
   
 public:
+	Card();
 	Card(int num);
+	void setNum(int num);
 	int getNum() const;
+	Card& operator=(const Card& cpy);
 };
 
 #endif

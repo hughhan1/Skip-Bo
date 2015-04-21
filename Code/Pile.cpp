@@ -18,3 +18,22 @@ bool Pile::isEmpty() const {
 int Pile::getSize() const{
 	return this->size;
 }
+
+void Pile::addCard(Card& c){
+  pile.push_back(c);
+}
+
+Card  Pile::drawCard(){
+  Card c;
+  
+  if(pile.size() == 0){
+    c.setNum(-1);
+    return c;
+  }
+  else{
+    c = *(pile.end());
+    pile.pop_back();
+    return c;
+  }
+  
+}

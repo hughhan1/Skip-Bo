@@ -17,14 +17,14 @@
 
 class Pile {
 protected:
-	std::deque<Card> pile;
-	int size;
+  std::deque<Card> pile;
+  int size;
 
 public:
 	bool isEmpty() const;
 	int getSize() const;
-	virtual bool addCard(Card& c) = 0;
-	virtual Card removeCard() = 0;
+	virtual void  addCard(Card& c); 
+	virtual Card drawCard();
 };
 
 #endif
