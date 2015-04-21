@@ -14,11 +14,12 @@
 class Hand 
 {
  protected:
-  Card[5] hand;
+    Card * hand[5];
 
  public:
-  Hand();
-  bool isEmpty();
-  bool add(Card & c);
-  Card remove(int index);
+    Hand();
+    bool isEmpty();
+    bool add(Card & c);
+    Card * remove(int index);
+    Card * getCard(int i);
 };
