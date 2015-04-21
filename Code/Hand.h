@@ -17,7 +17,8 @@ class Hand
   Card[5] hand;
 
  public:
+  Hand();
   bool isEmpty();
-  bool add();
+  bool add(Card & c);
   Card remove(int index);
 };
