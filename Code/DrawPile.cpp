@@ -17,13 +17,13 @@ DrawPile::DrawPile(){
   int idx = 0;
   for(int i = 0; i < 12; i++){
     for(int j = 0; j < 4; j++){
-      card[i * 4+ j] = i + 1;
+      card[i * 4+ j].setNum(i + 1);
       idx++;
     }
   }
 
   while(idx < 162){
-    card[idx++] = 0;
+    card[idx++].setNum(0);
   }
 
   for(int i = 0; i < 162; i++){
