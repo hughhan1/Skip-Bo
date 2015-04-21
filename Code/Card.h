@@ -8,6 +8,7 @@ class Card
   int num; // value of the card
 
  public:
+  Card(int = -1);
   int getNum() const { return num; } ;
 }
 
