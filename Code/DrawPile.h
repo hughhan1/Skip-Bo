@@ -9,6 +9,6 @@ class DrawPile : public Pile
 {
   
 
-}
+};
 
 #endif
