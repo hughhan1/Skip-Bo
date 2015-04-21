@@ -19,8 +19,9 @@ int Pile::getSize() const{
 	return this->size;
 }
 
-void Pile::addCard(Card& c){
+bool Pile::addCard(Card& c){
   pile.push_back(c);
+  return true;
 }
 
 Card  Pile::drawCard(){
@@ -31,7 +32,7 @@ Card  Pile::drawCard(){
     return c;
   }
   else{
-    c = *(pile.end());
+    c = pile.back();
     pile.pop_back();
     return c;
   }

@@ -17,7 +17,7 @@
 
 class Pile {
 protected:
-  std::deque<Card> pile(162);
+  std::deque<Card> pile;
   int size;
 
 public:

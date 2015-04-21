@@ -23,7 +23,7 @@ protected:
 public:
 	bool isEmpty() const;
 	int getSize() const;
-	virtual void  addCard(Card& c); 
+	virtual bool  addCard(Card& c); 
 	virtual Card drawCard();
 };
 
