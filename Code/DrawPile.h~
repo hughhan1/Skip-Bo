@@ -20,7 +20,6 @@ public:
 	bool addCard(Card& c);
 	Card removeCard();
 	void shuffle();
-	void generateDeck();
 };
 
 #endif

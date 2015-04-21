@@ -21,8 +21,8 @@ protected:
 	int size;
 
 public:
-	bool isEmpty() const;
-	int getSize() const;
+	bool isEmpty();
+	int getSize();
 	virtual bool addCard(Card& c) = 0;
 	virtual Card removeCard() = 0;
 };

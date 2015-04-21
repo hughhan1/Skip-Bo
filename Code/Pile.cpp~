@@ -11,10 +11,10 @@
 
 #include "Pile.h"
 
-bool Pile::isEmpty() const {
+bool Pile::isEmpty() {
 	return this->size == 0;
 }
 
-int Pile::getSize() const{
+int Pile::getSize() {
 	return this->size;
 }
