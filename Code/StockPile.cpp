@@ -21,7 +21,7 @@ Card StockPile::removeCard() {
 	return c;
 }
 
-bool StockPile::addCard(Card c) {
+bool StockPile::addCard(Card& c) {
 	this->pile.push_back(c);
 	return true;
 }

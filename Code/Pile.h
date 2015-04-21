@@ -23,7 +23,7 @@ protected:
 public:
 	bool isEmpty();
 	int getSize();
-	virtual bool addCard() = 0;
+	virtual bool addCard(Card& c) = 0;
 	virtual Card removeCard() = 0;
 };
 
