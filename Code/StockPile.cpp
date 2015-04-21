@@ -11,10 +11,6 @@
 
 #include "StockPile.h"
 
-Card StockPile::top() {
-	return this->pile.back();
-}
-
 Card StockPile::removeCard() {
 	Card c = this->top();
 	this->pile.pop_back();
@@ -24,4 +20,8 @@ Card StockPile::removeCard() {
 bool StockPile::addCard(Card& c) {
 	this->pile.push_back(c);
 	return true;
+}
+
+Card StockPile::top() {
+	return this->pile.back();
 }
