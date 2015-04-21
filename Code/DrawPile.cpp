@@ -17,7 +17,7 @@ DrawPile::DrawPile(){
   int idx = 0;
   for(int i = 0; i < 12; i++){
     for(int j = 0; j < 4; j++){
-      card[i * 4+ j] = i;
+      card[i * 4+ j] = i + 1;
       idx++;
     }
   }
