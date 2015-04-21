@@ -10,6 +10,6 @@ class Card
  public:
   Card(int = -1);
   int getNum() const { return num; } ;
-}
+};
 
 #endif
