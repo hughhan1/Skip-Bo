@@ -14,3 +14,8 @@ All members present.
 
 - Finished Part A
 - Planned to meet tonight at 8PM to begin coding.
+
+Mon 4/20 : 8 PM to 9:15 PM
+Marc, Hugh, and SeungHwan present.
+
+- Begin implementing skeletons for all .h files and most .cpp files.
