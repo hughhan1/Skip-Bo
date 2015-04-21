@@ -23,5 +23,5 @@ Card BuildPile::removeCard() {
 }
 
 void BuildPile::shuffle() {
-	// TO DO
+	std::random_shuffle(this->pile.begin(), this->pile.end());
 }

@@ -13,6 +13,7 @@
 #define _DRAWPILE_H
 
 #include "Pile.h"
+#include <algorithm>
 
 class DrawPile : public Pile {
 public:

@@ -13,6 +13,7 @@
 #define _BUILDPILE_H
 
 #include "Pile.h"
+#include <algorithm>
 
 class BuildPile : public Pile {
 public:
