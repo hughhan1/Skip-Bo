@@ -16,15 +16,15 @@
 #include <deque>
 
 class Pile {
-protected:
+ protected:
   std::deque<Card> pile;
   int size;
-
-public:
-	bool isEmpty() const;
-	int getSize() const;
-	virtual bool  addCard(Card& c); 
-	virtual Card drawCard();
+  
+ public:
+  bool isEmpty() const;
+  int getSize() const;
+  virtual bool  addCard(Card& c); 
+  virtual Card drawCard();
 };
 
 #endif
