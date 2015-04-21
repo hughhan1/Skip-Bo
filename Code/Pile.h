@@ -16,7 +16,7 @@
 #include <deque>
 
 class Pile {
-private:
+protected:
 	std::deque<Card> pile;
 	int size;
 
