@@ -1,0 +1,12 @@
+class Game {
+	printView(Player p) {
+		// Prints all of the public cards
+		// Prints Player p’s private cards
+	}
+}
+
+class Player {
+	printView() {
+		Game.printView(this);
+	}
+}
