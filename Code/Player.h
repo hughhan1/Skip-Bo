@@ -9,21 +9,25 @@
  * SkipBo: Player.h
  */
 
-#ifndef _Player_h
-#define _Player_h
+#ifndef _PLAYER_H
+#define _PLAYER_H
+
 #include "DiscardPile.h"
 #include "StockPile.h"
 #include "Hand.h"
-#include <String>
-class Player{
+#include <string>
+
+class Player {
 protected:
     std::string name;
-    Hand phand;
+    Hand hand;
     DiscardPile discardPiles[4];
     StockPile stockPile;
     bool isTurn;
+
 public:
-    Player(std::string nm);
+    Player(std::string name);
     void printView();
 };
+
 #endif
