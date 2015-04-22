@@ -19,3 +19,19 @@ Mon 4/20 : 8 PM to 9:15 PM
 Marc, Hugh, and SeungHwan present.
 
 - Begin implementing skeletons for all .h files and most .cpp files.
+
+Wed 4/22 : 4 PM to 5 PM
+All members present.
+
+- Further discussed design of the program.
+- Agreed to create a GameController class.
+- What to do next:
+	- Operator overloading
+	- Test creating DrawPile to see if all cards are generated.
+	- Test shuffle() function and print cards after shuffled.
+	- Test all Pile functions.
+	- Test all Hand functions
+	- CheckMoves.h and CheckMoves.cpp
+	- GameController.h and GameController.cpp
+Comments like this:
+	// Marc: This function does this.

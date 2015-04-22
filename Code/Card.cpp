@@ -20,3 +20,16 @@ Card& Card::operator=(const Card& cpy){
   this->num = cpy.num;
   return *this;
 }
+
+bool operator==(const Card& rhs) {
+	return 
+}
+bool operator!=(const Card& rhs) {
+
+}
+bool operator<(const Card& rhs) {
+
+}
+bool operator>(const Card& rhs) {
+
+}

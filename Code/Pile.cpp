@@ -19,12 +19,12 @@ int Pile::getSize() const{
 	return this->size;
 }
 
-bool Pile::addCard(Card& c){
+bool Pile::addCard(Card& c) {
   pile.push_back(c);
   return true;
 }
 
-Card  Pile::drawCard(){
+Card  Pile::drawCard() {
   Card c;
   
   if(pile.size() == 0){

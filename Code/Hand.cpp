@@ -40,7 +40,7 @@ bool Hand::add(Card& c) {
     return false;
 }
 
-Card* Hand::remove(int index) {
+Card Hand::remove(int index) {
     if(index<=0||index>5){
         std::cout << "Invalid index." << std::endl;
     }
@@ -49,6 +49,6 @@ Card* Hand::remove(int index) {
     return tmp;
 }
 
-Card* Hand::getCard(int i) {
+Card Hand::getCard(int i) {
     return hand[i];
 }

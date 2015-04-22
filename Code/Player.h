@@ -27,7 +27,9 @@ protected:
 
 public:
     Player(std::string name);
-    void printView();
+    std::string name();
+    Hand hand();
+    DiscardPile[] discardPiles();
 };
 
 #endif

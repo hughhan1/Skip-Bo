@@ -13,15 +13,20 @@
 #define _Card_H
 
 class Card {
- private:
-  int num;
+private:
+ 	int num;
   
- public:
-  Card();
-  Card(int num);
-  void setNum(int num);
-  int getNum() const;
-  Card& operator=(const Card& cpy);
+public:
+ 	Card();
+ 	Card(int num);
+ 	void setNum(int num);
+	int getNum() const;
+
+  	Card& operator=(const Card& cpy);
+  	bool operator==(const Card& rhs);
+  	bool operator!=(const Card& rhs);
+  	bool operator<(const Card& rhs);
+  	bool operator>(const Card& rhs);
 };
 
 #endif
