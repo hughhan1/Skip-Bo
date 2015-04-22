@@ -16,10 +16,10 @@ Player::Player(std::string name) {
     this->name = name;
     this->hand = new Hand();
     for (int a = 0; a < 4; a++) {
-        discardPiles[a] = new DiscardPile();
+        this->discardPiles[a] = new DiscardPile();
     }
-    stockPile = new StockPile();
-    isTurn = false;
+    this->stockPile = new StockPile();
+    this->isTurn = false;
 }
 void Player::printView() {
     std::string playernames;
@@ -45,7 +45,7 @@ void Player::printView() {
             //print ath card in hand (with proper spacing)
         }
         else{
-            std::cout<<"-  ";
+            std::cout <<"-  ";
         }
     }
     std::cout << "\t";
