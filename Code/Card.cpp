@@ -16,9 +16,7 @@ int Card::getNum() const{
   return num;
 }
 
-
 Card& Card::operator=(const Card& cpy){
   this->num = cpy.num;
   return *this;
 }
-

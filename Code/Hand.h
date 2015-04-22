@@ -11,12 +11,11 @@
 
 #include "Card.h"
 
-class Hand 
-{
- protected:
-    Card * hand[5];
+class Hand {
+protected:
+	Card* hand[5];
 
- public:
+public:
     Hand();
     bool isEmpty();
     bool add(Card & c);
