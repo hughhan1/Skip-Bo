@@ -38,15 +38,14 @@ bool Hand::add(Card& c) {
         return true;
     }
     return false;
-    
 }
 
 Card* Hand::remove(int index) {
     if(index<=0||index>5){
         std::cout << "Invalid index." << std::endl;
     }
-    Card* tmp = hand[index];
-    hand[index] = nullptr;
+    Card* tmp = hand[index-1];
+    hand[index-1] = nullptr;
     return tmp;
 }
 
