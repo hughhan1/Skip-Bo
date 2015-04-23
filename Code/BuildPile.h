@@ -17,8 +17,8 @@
 
 class BuildPile : public Pile {
 public:
-	bool addCard(Card& c);
-	Card removeCard();
+	bool add(Card& c);
+	Card remove();
 	void shuffle();
 };
 

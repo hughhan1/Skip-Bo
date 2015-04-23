@@ -11,12 +11,12 @@
 
 #include "BuildPile.h"
 
-bool BuildPile::addCard(Card& c) {
+bool BuildPile::add(Card& c) {
 	pile.push_back(c);
 	return true;
 }
 
-Card BuildPile::removeCard() {
+Card BuildPile::remove() {
 	Card c = pile.at(0);
 	pile.pop_back();
 	return c;

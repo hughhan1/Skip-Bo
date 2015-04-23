@@ -16,8 +16,8 @@
 
 class StockPile : public Pile {
 public:
-	Card removeCard();
-	bool addCard(Card& c);
+	Card remove();
+	bool add(Card& c);
 	Card top();
 };
 

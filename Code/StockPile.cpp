@@ -11,13 +11,13 @@
 
 #include "StockPile.h"
 
-Card StockPile::removeCard() {
+Card StockPile::remove() {
 	Card c = this->top();
 	this->pile.pop_back();
 	return c;
 }
 
-bool StockPile::addCard(Card& c) {
+bool StockPile::add(Card& c) {
 	this->pile.push_back(c);
 	return true;
 }

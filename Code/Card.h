@@ -14,13 +14,13 @@
 
 class Card {
 private:
- 	int num;
+ 	int val;
   
 public:
  	Card();
- 	Card(int num);
- 	void setNum(int num);
-	int getNum() const;
+ 	Card(int val);
+ 	void setVal(int val);
+	int getVal() const;
 
   	Card& operator=(const Card& cpy);
   	bool operator==(const Card& rhs);
