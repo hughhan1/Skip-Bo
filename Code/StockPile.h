@@ -17,8 +17,9 @@
 class StockPile : public Pile {
 public:
 	StockPile::StockPile();
-	Card remove();
+	
 	bool add(Card& c);
+	Card remove();
 	Card top();
 };
 

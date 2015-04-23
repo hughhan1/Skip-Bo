@@ -15,15 +15,15 @@ DiscardPile::DiscardPile() {
 	this->size = 0;
 }
 
-Card DiscardPile::removeCard() {
+bool DiscardPile::add(Card& c) {
+	this->pile.push_back(c);
+	return true;
+}
+
+Card DiscardPile::remove() {
 	Card c = this->top();
 	this->pile.pop_back();
 	return c;
-}
-
-bool DiscardPile::addCard(Card& c) {
-	this->pile.push_back(c);
-	return true;
 }
 
 Card DiscardPile::top() {

@@ -18,11 +18,12 @@
 class DrawPile : public Pile {
 
 public:
+	
 	DrawPile();
-	bool addCard(Card& c);
-	Card removeCard();
+
+	bool add(Card& c);
+	Card remove();
 	void shuffle();
-	void generateDeck();
 };
 
 #endif

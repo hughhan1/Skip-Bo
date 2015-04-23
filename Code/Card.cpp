@@ -1,38 +1,38 @@
 #include "Card.h"
 
 Card::Card() {
-  this->num = -1;
+    this->val = -1;
 }
 
 Card::Card(int val) {
-  this->val = val;
+    this->val = val;
 }
 
 void Card::setVal(int val) {
-  this->val = val;
+    this->val = val;
 }
 
 int Card::getVal() const {
-  return val;
+    return val;
 }
 
-Card& Card::operator=(const Card& cpy) {
+const Card& Card::operator=(const Card& cpy) {
   this->val = cpy.val;
   return *this;
 }
 
-bool operator==(const Card& rhs) {
+bool Card::operator==(const Card& rhs) const {
 	return this->getVal() == rhs.getVal();
 }
 
-bool operator!=(const Card& rhs) {
+bool Card::operator!=(const Card& rhs) const {
 	return this->getVal() != rhs.getVal();
 }
 
-bool operator<(const Card& rhs) {
+bool Card::operator<(const Card& rhs) const {
 	return this->getVal() < rhs.getVal();
 }
 
-bool operator>(const Card& rhs) {
+bool Card::operator>(const Card& rhs) const {
 	return this->getVal() > rhs.getVal();
 }

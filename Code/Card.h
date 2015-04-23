@@ -22,11 +22,11 @@ public:
  	void setVal(int val);
 	int getVal() const;
 
-  	Card& operator=(const Card& cpy);
-  	bool operator==(const Card& rhs);
-  	bool operator!=(const Card& rhs);
-  	bool operator<(const Card& rhs);
-  	bool operator>(const Card& rhs);
+  	const Card& operator=(const Card& cpy);
+  	bool operator==(const Card& rhs) const;
+  	bool operator!=(const Card& rhs) const;
+  	bool operator<(const Card& rhs) const;
+  	bool operator>(const Card& rhs) const;
 };
 
 #endif

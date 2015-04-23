@@ -18,6 +18,7 @@
 class BuildPile : public Pile {
 public:
 	BuildPile();
+	
 	bool add(Card& c);
 	Card remove();
 	Card top();

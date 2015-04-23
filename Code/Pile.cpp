@@ -19,19 +19,22 @@ int Pile::getSize() const {
 	return this->size;
 }
 
+/* These are virtual methods; I don't think they should be defined here, right?
+    - Hugh
 bool Pile::add(Card& c) {
-    pile.push_back(c);
+    this->pile.push_back(c);
     return true;
 }
 
 Card Pile::remove() {
     Card c;
-    if (pile.size() == 0) {
-        c.setNum(-1);
+    if (this->isEmpty()) {
+        c.setVal(-1);
         return c;
     } else {
-        c = pile.back();
-        pile.pop_back();
+        c = this->pile.back();
+        this->pile.pop_back();
         return c;
     }
 }
+*/

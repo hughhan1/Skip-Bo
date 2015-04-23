@@ -12,33 +12,35 @@
 #include "DrawPile.h"
 
 DrawPile::DrawPile() {
+
     Card card[162];
 
     int idx = 0;
-    for(int i = 0; i < 12; i++){
-        for(int j = 0; j < 4; j++){
-            card[i * 4+ j].setNum(i + 1);
+    for (int i = 0; i < 12; i++) {
+        for (int j = 0; j < 4; j++) {
+            card[i * 4 + j].setVal(i + 1);
             idx++;
         }
     }
 
-    while(idx < 162){
-        card[idx++].setNum(0);
+    while (idx < 162){
+        card[idx++].setVal(0);
     }
 
-    for(int i = 0; i < 162; i++){
-        pile.push_back(card[i]);
+    for (int i = 0; i < 162; i++) {
+        this->pile.push_back(card[i]);
     }
+
 }
 
-bool DrawPile::addCard(Card& c) {
+bool DrawPile::add(Card& c) {
 	pile.push_back(c);
 	return true;
 }
 
-Card DrawPile::removeCard() {
-	Card c = pile.at(0);
-	pile.pop_back();
+Card DrawPile::remove() {
+	Card c = this->pile.back();
+	this->pile.pop_back();
 	return c;
 }
 

@@ -12,7 +12,6 @@
 #ifndef _CHECKMOVES_H
 #define	_CHECKMOVES_H
 
-#include "Pile.h"
 #include "BuildPile.h"
 #include "DrawPile.h"
 #include "StockPile.h"

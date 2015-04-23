@@ -2,27 +2,27 @@
 #include "Game.h"
 
 Game::Game(Player[] players) {
-
+    // TO DO
 }
 
 Game::Game(FILE* file) {
-
+    // TO DO
 }
 
 void Game::startGame() {
-
+    // TO DO
 }
 
 void Game::loadGame() {
-
+    // TO DO
 }
 
 void Game::saveGame() {
-
+    // TO DO
 }
 
 void Game::endGame() {
-
+    // TO DO
 }
 
 void Game::printView(int i) {

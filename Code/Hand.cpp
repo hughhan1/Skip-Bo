@@ -41,7 +41,7 @@ bool Hand::add(Card& c) {
 }
 
 Card Hand::remove(int index) {
-    if(index<=0||index>5){
+    if(index <= 0 || index > 5){
         std::cout << "Invalid index." << std::endl;
     }
     Card* tmp = hand[index-1];
