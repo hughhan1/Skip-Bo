@@ -22,10 +22,14 @@ Player::Player(std::string name) {
     this->isTurn = false;
 }
 
-std::string Player::name() {
+std::string Player::getName() {
     return this->name;
 }
 
-Hand Player::hand() {
+Hand Player::getHand() {
     return this->hand;
+}
+
+DiscardPile* Player::getDiscardPiles() {
+	return this->discardPiles;
 }

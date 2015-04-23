@@ -12,12 +12,13 @@
 #include "CheckMoves.h"
 
 bool CheckMoves::canDraw(Player& player) {
-	return !player.hand().isEmpty()
+	return !player.getHand().isEmpty();
 }
 
 bool CheckMoves::canRemove(Pile& pile) {
-	if (BuildPile b = dynamic_cast<BuildPile>(pile)
-			|| DrawPile d = dynamic_cast<DrawPile>(pile)) {
+	if (BuildPile* b = dynamic_cast<BuildPile*>(&pile)) {
+		return false;
+	} else if (DrawPile* d = dynamic_cast<DrawPile*>(&pile)) {
 		return false;
 	} else {
 		return true;
@@ -29,10 +30,15 @@ bool CheckMoves::canRemove(Hand& hand) {
 }
 
 bool CheckMoves::canBuild(Card& card, Pile& pile) {
-	if (BuildPile b = dynamic_cast<BuildPile>(pile)) {
+	if (BuildPile* b = dynamic_cast<BuildPile*>(&pile)) {
 		return card.getVal() == 0
-				|| card.getVal() == pile.top().getVal() + 1;
+				|| card.getVal() == b->top().getVal() + 1;
 	} else {
 		return false;
 	}
+}
+
+// TEST
+int main() {
+	Player* p = new Player();
 }

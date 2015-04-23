@@ -9,6 +9,9 @@
  * SkipBo: Hand.h
  */
 
+#ifndef _CARD_H
+#define _CARD_H 
+
 #include "Card.h"
 
 class Hand {
@@ -22,3 +25,5 @@ public:
     Card remove(int index);
     Card getCard(int i);
 };
+
+#endif

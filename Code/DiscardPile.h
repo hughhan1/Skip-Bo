@@ -16,6 +16,7 @@
 
 class DiscardPile : public Pile {
 
+	DiscardPile();
 	bool addCard(Card &);
 	Card removeCard();
 	Card top();

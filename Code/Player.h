@@ -26,10 +26,10 @@ protected:
     bool isTurn;
 
 public:
-    Player(std::string name);
-    std::string name();
-    Hand hand();
-    DiscardPile[] discardPiles();
+    Player(std::string name = "no name");
+    std::string getName();
+    Hand getHand();
+    DiscardPile* getDiscardPiles();
 };
 
 #endif

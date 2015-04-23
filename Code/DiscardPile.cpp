@@ -11,6 +11,10 @@
 
 #include "DiscardPile.h"
 
+DiscardPile::DiscardPile() {
+	this->size = 0;
+}
+
 Card DiscardPile::removeCard() {
 	Card c = this->top();
 	this->pile.pop_back();

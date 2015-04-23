@@ -11,24 +11,24 @@
 
 #include "DrawPile.h"
 
-DrawPile::DrawPile(){
-  Card card[162];
+DrawPile::DrawPile() {
+    Card card[162];
 
-  int idx = 0;
-  for(int i = 0; i < 12; i++){
-    for(int j = 0; j < 4; j++){
-      card[i * 4+ j].setNum(i + 1);
-      idx++;
+    int idx = 0;
+    for(int i = 0; i < 12; i++){
+        for(int j = 0; j < 4; j++){
+            card[i * 4+ j].setNum(i + 1);
+            idx++;
+        }
     }
-  }
 
-  while(idx < 162){
-    card[idx++].setNum(0);
-  }
+    while(idx < 162){
+        card[idx++].setNum(0);
+    }
 
-  for(int i = 0; i < 162; i++){
-    pile.push_back(card[i]);
-  }
+    for(int i = 0; i < 162; i++){
+        pile.push_back(card[i]);
+    }
 }
 
 bool DrawPile::addCard(Card& c) {

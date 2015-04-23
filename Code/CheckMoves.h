@@ -13,7 +13,12 @@
 #define	_CHECKMOVES_H
 
 #include "Pile.h"
+#include "BuildPile.h"
+#include "DrawPile.h"
+#include "StockPile.h"
+#include "DiscardPile.h"
 #include "Hand.h"
+#include "Player.h"
 
 class CheckMoves {
 	

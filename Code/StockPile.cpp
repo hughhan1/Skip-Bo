@@ -11,6 +11,10 @@
 
 #include "StockPile.h"
 
+StockPile::StockPile() {
+	this->size = 0;
+}
+
 Card StockPile::remove() {
 	Card c = this->top();
 	this->pile.pop_back();

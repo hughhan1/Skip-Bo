@@ -16,15 +16,13 @@
 #include <algorithm>
 
 class DrawPile : public Pile {
- private:
- protected:
 
- public:
-  DrawPile();
-  bool addCard(Card& c);
-  Card removeCard();
-  void shuffle();
-  void generateDeck();
+public:
+	DrawPile();
+	bool addCard(Card& c);
+	Card removeCard();
+	void shuffle();
+	void generateDeck();
 };
 
 #endif
