@@ -339,7 +339,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+addCard(Card c)",
+											"text": "+add(Card c)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -367,7 +367,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+removeCard()",
+											"text": "+remove()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -1114,6 +1114,64 @@
 									"model": {
 										"$ref": "AAAAAAFMzjXbO8iqeuQ="
 									},
+									"subViews": [
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFM4/eYp6eiTDY=",
+											"_parent": {
+												"$ref": "AAAAAAFMzjXbPcizLcA="
+											},
+											"model": {
+												"$ref": "AAAAAAFM4/eYi6ef6Tk="
+											},
+											"visible": true,
+											"enabled": true,
+											"lineColor": "#000000",
+											"fillColor": "#ffffff",
+											"fontColor": "#000000",
+											"font": "Arial;13;0",
+											"showShadow": true,
+											"containerChangeable": false,
+											"containerExtending": false,
+											"left": 389,
+											"top": 525,
+											"width": 168,
+											"height": 13,
+											"autoResize": false,
+											"underline": false,
+											"text": "+name()",
+											"horizontalAlignment": 0,
+											"verticalAlignment": 5
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFM4/fh6ajJzUQ=",
+											"_parent": {
+												"$ref": "AAAAAAFMzjXbPcizLcA="
+											},
+											"model": {
+												"$ref": "AAAAAAFM4/fh26jGdlY="
+											},
+											"visible": true,
+											"enabled": true,
+											"lineColor": "#000000",
+											"fillColor": "#ffffff",
+											"fontColor": "#000000",
+											"font": "Arial;13;0",
+											"showShadow": true,
+											"containerChangeable": false,
+											"containerExtending": false,
+											"left": 389,
+											"top": 540,
+											"width": 168,
+											"height": 13,
+											"autoResize": false,
+											"underline": false,
+											"text": "+hand()",
+											"horizontalAlignment": 0,
+											"verticalAlignment": 5
+										}
+									],
 									"visible": true,
 									"enabled": true,
 									"lineColor": "#000000",
@@ -1126,7 +1184,7 @@
 									"left": 384,
 									"top": 520,
 									"width": 178,
-									"height": 10,
+									"height": 38,
 									"autoResize": false
 								},
 								{
@@ -1166,7 +1224,7 @@
 							"left": 384,
 							"top": 412,
 							"width": 178,
-							"height": 131,
+							"height": 146,
 							"autoResize": false,
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
@@ -2887,7 +2945,7 @@
 								"$ref": "AAAAAAFMzkxZMsoP0xw="
 							},
 							"lineStyle": 0,
-							"points": "396:620;413:620;413:542",
+							"points": "396:620;413:620;413:557",
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
 							"showProperty": true,
@@ -2995,7 +3053,7 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 442,
+									"left": 441,
 									"top": 645,
 									"width": 0,
 									"height": 13,
@@ -3027,7 +3085,7 @@
 								"$ref": "AAAAAAFMzkxnaso1TaI="
 							},
 							"lineStyle": 0,
-							"points": "468:651;427:651;427:542",
+							"points": "468:651;427:651;427:557",
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
 							"showProperty": true,
@@ -9676,7 +9734,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFMzjQ0AchbLeQ="
 							},
-							"name": "addCard",
+							"name": "add",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -9691,7 +9749,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": "",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -9708,7 +9765,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFMzjQ0AchbLeQ="
 							},
-							"name": "removeCard",
+							"name": "remove",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -10068,6 +10125,36 @@
 							"isDerived": false,
 							"aggregation": "none",
 							"isID": false
+						}
+					],
+					"operations": [
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFM4/eYi6ef6Tk=",
+							"_parent": {
+								"$ref": "AAAAAAFMzjXbO8iqeuQ="
+							},
+							"name": "name",
+							"visibility": "public",
+							"isStatic": false,
+							"isLeaf": false,
+							"concurrency": "sequential",
+							"isQuery": false,
+							"isAbstract": false
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFM4/fh26jGdlY=",
+							"_parent": {
+								"$ref": "AAAAAAFMzjXbO8iqeuQ="
+							},
+							"name": "hand",
+							"visibility": "public",
+							"isStatic": false,
+							"isLeaf": false,
+							"concurrency": "sequential",
+							"isQuery": false,
+							"isAbstract": false
 						}
 					],
 					"isAbstract": false,
