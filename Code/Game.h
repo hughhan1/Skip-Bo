@@ -31,6 +31,6 @@ class Game {
   void saveGame();
   void endGame();
   
-  void printView();
+  void printView(int);
   
 };

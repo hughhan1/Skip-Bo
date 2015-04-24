@@ -16,11 +16,11 @@
 
 class StockPile : public Pile {
 public:
-	StockPile::StockPile();
+	StockPile();
 	
-	bool add(Card& c);
-	Card remove();
-	Card top();
+	bool add(Card* c);
+	Card * remove();
+	Card * top();
 };
 
 #endif

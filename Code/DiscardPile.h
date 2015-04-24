@@ -20,9 +20,9 @@ public:
 	
 	DiscardPile();
 
-	bool add(Card &);
-	Card remove();
-	Card top();
+	bool add(Card *);
+	Card * remove();
+	Card * top();
 
 };
 

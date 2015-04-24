@@ -12,7 +12,7 @@
 #include "Hand.h"
 #include <iostream>
 
-Hand::Hand() {
+Hand::Hand() { 
     for (int a = 0; a < 5; a++) {
         hand[a] = nullptr;
     }

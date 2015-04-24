@@ -15,17 +15,17 @@ StockPile::StockPile() {
 	this->size = 0;
 }
 
-bool StockPile::add(Card& c) {
+bool StockPile::add(Card * c) {
 	this->pile.push_back(c);
 	return true;
 }
 
-Card StockPile::remove() {
-	Card c = this->top();
+Card * StockPile::remove() {
+	Card * c = this->top();
 	this->pile.pop_back();
 	return c;
 }
 
-Card StockPile::top() {
+Card * StockPile::top() {
 	return this->pile.back();
 }

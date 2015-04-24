@@ -12,6 +12,7 @@
 #ifndef _DRAWPILE_H
 #define _DRAWPILE_H
 
+#include "Card.h"
 #include "Pile.h"
 #include <algorithm>
 
@@ -21,8 +22,8 @@ public:
 	
 	DrawPile();
 
-	bool add(Card& c);
-	Card remove();
+	bool add(Card * c);
+	Card * remove();
 	void shuffle();
 };
 

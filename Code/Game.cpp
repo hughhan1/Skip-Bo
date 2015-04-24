@@ -8,7 +8,9 @@
  * SkipBo: Game.cpp
  */
 
+#include <iostream>
 #include "Game.h"
+
 
 Game::Game(Player*[] players) {
     // TO DO

@@ -15,18 +15,18 @@ BuildPile::BuildPile() {
 	this->size = 0;
 }
 
-bool BuildPile::add(Card& c) {
+bool BuildPile::add(Card * c) {
 	this->pile.push_back(c);
 	return true;
 }
 
-Card BuildPile::remove() {
-	Card c = pile.at(0);
+Card * BuildPile::remove() {
+	Card * c = pile.at(0);
 	this->pile.pop_back();
 	return c;
 }
 
-Card BuildPile::top() {
+Card * BuildPile::top() {
 	return this->pile.back();
 }
 
