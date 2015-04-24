@@ -35,3 +35,9 @@ All members present.
 	- GameController.h and GameController.cpp
 Comments like this:
 	// Marc: This function does this.
+
+Fri 4/24: IN CLASS
+Marc, Matt, and SeungHwan present.
+
+- Changing piles to use Card* instead of Card
+- Working on fixing a lot of compiler errors
