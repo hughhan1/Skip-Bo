@@ -23,8 +23,8 @@ protected:
 public:
 	bool isEmpty() const;
 	int getSize() const;
-	virtual bool add(Card& c); 
-	virtual Card remove();
+	virtual bool add(Card& c) = 0; 
+	virtual Card remove() = 0;
 };
 
 #endif

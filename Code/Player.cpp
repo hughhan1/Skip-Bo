@@ -33,3 +33,7 @@ Hand Player::getHand() {
 DiscardPile* Player::getDiscardPiles() {
 	return this->discardPiles;
 }
+
+bool Player::setTurn() {
+    this->isTurn = !this->isTurn;
+}

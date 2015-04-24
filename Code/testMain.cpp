@@ -1,14 +1,10 @@
 #include <iostream>
-#include "Card.h"
-#include "Pile.h"
 #include "DrawPile.h"
 
 using namespace std; // just for convenience while testing. 
 
-
-int main(void)
-{
-  DrawPile pile;
+int main() {
+  DrawPile* deck = new DrawPile();
   
   return 0;
 }

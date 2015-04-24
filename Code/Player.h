@@ -30,6 +30,7 @@ public:
     std::string getName();
     Hand getHand();
     DiscardPile* getDiscardPiles();
+    bool setTurn();
 };
 
 #endif

@@ -47,3 +47,9 @@ Card DrawPile::remove() {
 void DrawPile::shuffle() {
 	std::random_shuffle(this->pile.begin(), this->pile.end());
 }
+
+int main() {
+
+    DrawPile* d = new DrawPile();
+
+}
