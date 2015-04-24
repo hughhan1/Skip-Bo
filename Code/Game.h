@@ -16,21 +16,21 @@
 #include "BuildPile.h"
 
 class Game {
-private:
-	Player players[];
-	DrawPile drawPile;
-	BuildPile buildPiles[4];
-	int turn;
-
-public:
-	Game(Player[] players);
-	Game(FILE* file);
-
-	void startGame();
-	void loadGame();
-	void saveGame();
-	void endGame();
-
-	void printView();
-
+ private:
+  Player* players[]; // needs to be a pointer for dynamic binding
+  DrawPile drawPile;
+  BuildPile buildPiles[4];
+  int turn;
+  
+ public:
+  Game(Player[] players);
+  Game(FILE* file);
+  
+  void startGame();
+  void loadGame();
+  void saveGame();
+  void endGame();
+  
+  void printView();
+  
 };
