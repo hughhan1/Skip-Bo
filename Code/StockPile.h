@@ -9,8 +9,8 @@
  * SkipBo: StockPile.h
  */
 
-#ifndef _DRAWPILE_H
-#define _DRAWPILE_H
+#ifndef _STOCKPILE_H
+#define _STOCKPILE_H
 
 #include "Pile.h"
 

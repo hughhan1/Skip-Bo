@@ -20,9 +20,9 @@
 class Player {
 protected:
     std::string name;
-    Hand hand;
-    DiscardPile discardPiles[4];
-    StockPile stockPile;
+    Hand* hand;
+    DiscardPile* discardPiles[4];
+    StockPile* stockPile;
     bool isTurn;
 
 public:

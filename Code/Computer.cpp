@@ -10,7 +10,7 @@
 
 #include "Computer.h"
 
-Computer::Computer() {
+Computer::Computer(std::string name) {
 	this->name = name;
     this->hand = new Hand();
     for (int a = 0; a < 4; a++) {

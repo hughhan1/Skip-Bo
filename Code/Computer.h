@@ -18,7 +18,7 @@ private:
 	bool hasMove;
 
 public:
-	Computer();
+	Computer(std::string = "no name");
 	void makeMove();
 };
 

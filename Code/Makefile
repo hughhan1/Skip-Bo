@@ -9,12 +9,12 @@ test: sampTest
 	@./sampTest
 
 #libTest: Card.cpp Pile.cpp DrawPile.cpp BuildPile.cpp DiscardPile.cpp StockPile.cpp Hand.cpp\
-#	 Player.cpp Human.cpp Computer.cpp Game.cpp testMain.cpp
+#	 Player.cpp Human.cpp Computer.cpp Game.cpp TestMain
 #	@$(CC) $(CXXFLAGS) Card.cpp Pile.cpp DrawPile.cpp BuildPile.cpp DiscardPile.cpp\
-#	 StockPile.cpp Hand.cpp Player.cpp Human.cpp Computer.cpp Game.cpp testMain.cpp -o libTest
+#	 StockPile.cpp Hand.cpp Player.cpp Human.cpp Computer.cpp Game.cpp TestMain.cpp -o libTest
 
-sampTest: Card.cpp Pile.cpp DrawPile.cpp DiscardPile.cpp BuildPile.cpp StockPile.cpp testMain.cpp 
-	@$(CC) $(CXXFLAGS) Card.cpp Pile.cpp DrawPile.cpp DiscardPile.cpp BuildPile.cpp StockPile.cpp testMain.cpp -o sampTest
+sampTest: Card.cpp Pile.cpp DrawPile.cpp DiscardPile.cpp BuildPile.cpp StockPile.cpp TestMain.cpp 
+	@$(CC) $(CXXFLAGS) Card.cpp Pile.cpp DrawPile.cpp DiscardPile.cpp BuildPile.cpp StockPile.cpp TestMain.cpp -o sampTest
 
 
 
@@ -39,8 +39,8 @@ Pile.o: Pile.cpp Card.h Pile.h
 BuildPile.o: BuildPile.cpp Card.h Pile.h BuildPile.h
 	@$(CC) $(CXXFLAGS) -c BuildPile.cpp
 
-testMain.o: testMain.cpp Card.h Pile.h DrawPile.h BuildPile.h
-	@$(CC) $(CXXFLAGS) -c testMain.cpp
+TestMain.o: TestMain.cpp Card.h Pile.h DrawPile.h BuildPile.h
+	@$(CC) $(CXXFLAGS) -c TestMain.cpp
 
 
 clean:
