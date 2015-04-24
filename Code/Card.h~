@@ -19,7 +19,7 @@ private:
 public:
  	Card();
  	Card(int val);
-	
+ 	void setVal(int val);
 	int getVal() const;
 
   	const Card& operator=(const Card& cpy);

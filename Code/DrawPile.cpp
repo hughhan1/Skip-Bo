@@ -17,7 +17,7 @@ DrawPile::DrawPile() {
 
     int idx = 0;
     for (int i = 0; i < 12; i++) {
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 12; j++) {
             card[idx++] = new Card(i + 1);
         }
     }
@@ -30,6 +30,7 @@ DrawPile::DrawPile() {
         this->pile.push_back(card[i]);
     }
 
+    
 }
 
 bool DrawPile::add(Card * c) {

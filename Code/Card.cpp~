@@ -8,6 +8,10 @@ Card::Card(int val) {
     this->val = val;
 }
 
+void Card::setVal(int val) {
+    this->val = val;
+}
+
 int Card::getVal() const {
     return val;
 }

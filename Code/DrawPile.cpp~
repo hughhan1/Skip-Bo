@@ -30,6 +30,7 @@ DrawPile::DrawPile() {
         this->pile.push_back(card[i]);
     }
 
+    
 }
 
 bool DrawPile::add(Card * c) {
@@ -47,8 +48,3 @@ void DrawPile::shuffle() {
 	std::random_shuffle(this->pile.begin(), this->pile.end());
 }
 
-int main() {
-
-    DrawPile* d = new DrawPile();
-
-}
