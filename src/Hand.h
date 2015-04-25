@@ -22,8 +22,8 @@ public:
     Hand();
     bool isEmpty();
     bool add(Card & c);
-    Card * remove(int index);
-    Card * getCard(int i);
+    Card* remove(int index);
+    Card* getCard(int i);
 };
 
 #endif

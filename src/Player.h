@@ -29,7 +29,8 @@ public:
     Player(std::string name = "no name");
     std::string getName();
     Hand getHand();
-    DiscardPile* getDiscardPiles();
+    DiscardPile getDiscardPiles();
+    StockPile getStockPile();
     bool setTurn();
 };
 

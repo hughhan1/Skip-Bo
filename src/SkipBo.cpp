@@ -1,5 +1,4 @@
 /**
- * SegFaults
  * Marc Feldman
  * Hugh Han
  * SeungHwan Lee
@@ -9,6 +8,13 @@
  * SkipBo: SkipBo.cpp
  */
 
-int main(void) {
+#include "GameController.h"
+
+int main() {
+
+	GameController skipBo = new GameController();
+	skipBo.runGame();
+
 	return 0;
+	
 }

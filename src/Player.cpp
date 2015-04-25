@@ -27,11 +27,15 @@ std::string Player::getName() {
 }
 
 Hand Player::getHand() {
-    return this->hand;
+    return *(this->hand);
 }
 
 DiscardPile* Player::getDiscardPiles() {
-	return this->discardPiles;
+	return *(this->discardPiles);
+}
+
+StockPile Player::getStockPile() {
+    return *(this->stockPile);
 }
 
 bool Player::setTurn() {

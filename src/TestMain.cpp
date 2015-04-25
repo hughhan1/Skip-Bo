@@ -16,8 +16,8 @@ int main() {
         cout << card->getVal() << endl;
     }
 
-    Player* player = new Human("Human 1");
-    Player* player = new Computer("Computer 1");
+    Player* player1 = new Human("Human 1");
+    Player* player2 = new Computer("Computer 1");
 
     cout << "Test End" << endl;
     return 0;
