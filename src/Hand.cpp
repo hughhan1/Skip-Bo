@@ -14,23 +14,24 @@
 
 Hand::Hand() { 
     for (int a = 0; a < 5; a++) {
-        hand[a] = nullptr;
+        hand[a] = -1;
     }
 }
 
 bool Hand::isEmpty() {
     for (int a = 0; a < 5; a++) {
-        if (hand[a] != nullptr) {
+        if (hand[a] != -1) {
             return false;
         }
     }
     return true;
 }
+
 /*
 bool Hand::add(Card& c) {
     int index = 0;
     Card* scan = hand[index];
-    while (scan != nullptr && index < 5) {
+    while (scan != -1 && index < 5) {
         index++;
     }
     if(index < 5) {
@@ -41,11 +42,11 @@ bool Hand::add(Card& c) {
 }
 
 Card Hand::remove(int index) {
-    if(index <= 0 || index > 5){
+    if (index <= 0 || index > 5) {
         std::cout << "Invalid index." << std::endl;
     }
     Card* tmp = hand[index-1];
-    hand[index-1] = nullptr;
+    hand[index-1] = -1;
     return tmp;
 }
 
