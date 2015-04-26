@@ -28,29 +28,29 @@ bool Hand::isEmpty() {
 }
 
 
-bool Hand::add(Card& c) {
+bool Hand::add(Card * c) {
     int index = 0;
     Card* scan = hand[index];
     while (scan != nullptr && index < 5) {
         index++;
     }
     if(index < 5) {
-        hand[index] = &c;
+        hand[index] = c;
         return true;
     }
     return false;
 }
 
-Card Hand::remove(int index) {
+Card * Hand::remove(int index) {
     if (index <= 0 || index > 5) {
         std::cout << "Invalid index." << std::endl;
     }
     Card* tmp = hand[index-1];
-    hand[index-1] = -1;
+    hand[index-1] = nullptr;
     return tmp;
 }
 
-Card Hand::getCard(int i) {
+Card * Hand::getCard(int i) {
     return hand[i];
 }
 
