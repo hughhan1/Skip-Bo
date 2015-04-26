@@ -19,7 +19,7 @@ private:
 
 public:
 	Computer(std::string = "no name");
-	void makeMove();
+	void move();
 };
 
 #endif

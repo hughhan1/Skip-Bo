@@ -23,8 +23,10 @@ Game::Game(FILE* file) {
     // TO DO
 }
 
-void Game::makeMove(int i) {
-    Player player = *(this->players[i]);
+void Game::makeMove() {
+  for(int i = 0; i < (int)players.size(); i++){
+    players[i]->move();
+  }
 }
 
 void Game::addPlayer(Player* player){
@@ -98,18 +100,18 @@ void Game::printView(int i) {
     std::cout<<"Build Piles\t";
     List build piles' top cards (with proper spacing)
 */
-
-  /*    Player player = *(this->players[i]);
+  
+  Player * player = players[i];
 
     std::cout << std::endl;
-    std::cout << player.name() << std::endl;
+    std::cout << player->getName() << std::endl;
     std::cout << "Hand\t\t\tDiscard Piles\t\tStockpile" << std::endl;
     std::cout << "[1] [2] [3] [4] [5]\t[6] [7] [8] [9]\t\t[0]" << std::endl;
 
-    for (int a = 0; a < 5; a++) {
+    for (int i = 0; i < 5; i++) {
         std::cout << " ";
-        if (player.hand().getCard(a).getNum() != -1) {
-            std::cout << player.hand().getCard(a);
+        if (player->getHand()->getCard(i) != nullptr) {
+	  std::cout << player->getHand()->getCard(i)->getVal();
         }
         else {
             std::cout << "-  ";
@@ -117,18 +119,18 @@ void Game::printView(int i) {
     }
 
     std::cout << "\t";
-
-    for (int a = 0; a < 4; a++){
+    /*
+    for (int i = 0; i < 4; a++){
         std::cout << " ";
-        if (discardPiles[a].top().getNum() != -1){
-            std::cout << discardPiles[a].top.getNum();
+        if (discardPiles[i]->top().getVal() != -1){
+            std::cout << discardPiles[i]->top.getval();
         } else {
             std::cout << "-  ";
         }
     }
 
-    std::cout << "\t " << stockPile.top().getNum() << "  ";
+    std::cout << "\t " << stockPile.top()->getVal() << "  ";
     std::cout << player.getStockPile().getSize();
     std::cout << std::endl;
-  */
+    */
 }

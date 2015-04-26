@@ -12,8 +12,8 @@
 
 void GameController::runGame() {
 	welcome();
-	this->game = new Game();
-	this->game->setPlayers();  
+	skipBo = new Game();
+	skipBo -> setPlayers();  
 }
 
 void GameController::welcome() {

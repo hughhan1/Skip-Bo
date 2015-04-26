@@ -34,7 +34,7 @@ public:
     void setPlayers();
     void dealCards();
 
-    void makeMove(int i);
+    void makeMove();
 
     void startGame();
     void loadGame();

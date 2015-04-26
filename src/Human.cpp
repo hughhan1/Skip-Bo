@@ -19,3 +19,7 @@ Human::Human(std::string name) {
     this->stockPile = new StockPile();
     this->isTurn = false;
 }
+
+void Human::move(){
+  
+}

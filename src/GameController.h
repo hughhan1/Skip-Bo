@@ -20,7 +20,6 @@ private:
 	Game* skipBo;
 
 public:
-	GameController();
 
 	/** Runs the game. */
 	void runGame();

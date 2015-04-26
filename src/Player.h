@@ -32,6 +32,7 @@ public:
     DiscardPile * getDiscardPiles();
     StockPile getStockPile();
     bool setTurn();
+    virtual void move() = 0;
 };
 
 #endif

@@ -16,6 +16,7 @@
 class Human : public Player {
 public:
 	Human(std::string name = "no name");
+	void move();
 };
 
 #endif

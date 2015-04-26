@@ -4,6 +4,7 @@ CC = g++
 CXXFLAGS = -std=c++11 -pedantic -Wall -Wextra -O -g
 
 bin: SkipBo
+	@./SkipBo
 
 test: sampTest
 	@./sampTest
@@ -12,6 +13,11 @@ test: sampTest
 #	 Player.cpp Human.cpp Computer.cpp Game.cpp TestMain
 #	@$(CC) $(CXXFLAGS) Card.cpp Pile.cpp DrawPile.cpp BuildPile.cpp DiscardPile.cpp\
 #	 StockPile.cpp Hand.cpp Player.cpp Human.cpp Computer.cpp Game.cpp TestMain.cpp -o libTest
+
+SkipBo:	Card.cpp Pile.cpp DrawPile.cpp DiscardPile.cpp BuildPile.cpp StockPile.cpp Game.cpp GameController.cpp\
+	 Player.cpp Human.cpp Computer.cpp Hand.cpp SkipBo.cpp
+	@$(CC) $(CXXFLAGS) Card.cpp Pile.cpp DrawPile.cpp DiscardPile.cpp BuildPile.cpp StockPile.cpp Game.cpp GameController.cpp\
+         Player.cpp Human.cpp Computer.cpp Hand.cpp SkipBo.cpp -o SkipBo
 
 sampTest: Card.cpp Pile.cpp DrawPile.cpp DiscardPile.cpp BuildPile.cpp StockPile.cpp Game.cpp Player.cpp Human.cpp Computer.cpp\
 	 Hand.cpp TestMain.cpp 
@@ -47,4 +53,4 @@ TestMain.o: TestMain.cpp Card.h Pile.h DrawPile.h BuildPile.h
 
 
 clean:
-	@rm -f *~ *.o libTest sampTest
+	@rm -rf *~ *.o libTest sampTest skipBo *.dSYM

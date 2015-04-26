@@ -20,6 +20,6 @@ Computer::Computer(std::string name) {
     this->isTurn = false;
 }
 
-void Computer::makeMove() {
+void Computer::move() {
 	// TO DO
 }
