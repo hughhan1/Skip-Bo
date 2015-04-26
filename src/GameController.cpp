@@ -16,15 +16,15 @@ void GameController::runGame() {
 	this->skipBo->setPlayers();  
 }
 
-void Game::loadGame() {
+void GameController::loadGame() {
     // TO DO
 }
 
-void Game::saveGame() {
+void GameController::saveGame() {
     // TO DO
 }
 
-void Game::endGame() {
+void GameController::endGame() {
     // TO DO
 }
 
