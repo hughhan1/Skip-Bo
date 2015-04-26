@@ -12,9 +12,9 @@
 
 int main() {
 
-	GameController skipBo = new GameController();
-	skipBo.runGame();
+  GameController skipBo;
+  skipBo.runGame();
 
-	return 0;
+  return 0;
 	
 }
