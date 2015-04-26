@@ -14,13 +14,13 @@
 
 Hand::Hand() { 
     for (int a = 0; a < 5; a++) {
-        hand[a] = -1;
+        hand[a] = nullptr;
     }
 }
 
 bool Hand::isEmpty() {
     for (int a = 0; a < 5; a++) {
-        if (hand[a] != -1) {
+        if (hand[a] != nullptr) {
             return false;
         }
     }
@@ -31,7 +31,7 @@ bool Hand::isEmpty() {
 bool Hand::add(Card& c) {
     int index = 0;
     Card* scan = hand[index];
-    while (scan != -1 && index < 5) {
+    while (scan != nullptr && index < 5) {
         index++;
     }
     if(index < 5) {
