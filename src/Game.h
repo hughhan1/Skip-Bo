@@ -12,22 +12,28 @@
 #define _GAME_H
 
 #include "Player.h"
+#include "Human.h"
+#include "Computer.h"
 #include "DrawPile.h"
 #include "BuildPile.h"
+#include <vector>
 
 class Game {
 private:
-    Player* players[]; // needs to be a pointer for dynamic binding
+    std::vector<Player*> players; // needs to be a pointer for dynamic binding
     DrawPile* drawPile;
     BuildPile* buildPiles[4];
     int turn;
-  
+
+    void addPlayer(Player * player);
+    
 public:
-    Game(Player[] players);
+    Game();
     Game(FILE* file);
 
     void makeMove(int i);
-  
+ 
+    void setPlayers();
     void startGame();
     void loadGame();
     void saveGame();

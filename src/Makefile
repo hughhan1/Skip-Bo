@@ -13,8 +13,11 @@ test: sampTest
 #	@$(CC) $(CXXFLAGS) Card.cpp Pile.cpp DrawPile.cpp BuildPile.cpp DiscardPile.cpp\
 #	 StockPile.cpp Hand.cpp Player.cpp Human.cpp Computer.cpp Game.cpp TestMain.cpp -o libTest
 
-sampTest: Card.cpp Pile.cpp DrawPile.cpp DiscardPile.cpp BuildPile.cpp StockPile.cpp TestMain.cpp 
-	@$(CC) $(CXXFLAGS) Card.cpp Pile.cpp DrawPile.cpp DiscardPile.cpp BuildPile.cpp StockPile.cpp TestMain.cpp -o sampTest
+sampTest: Card.cpp Pile.cpp DrawPile.cpp DiscardPile.cpp BuildPile.cpp StockPile.cpp Game.cpp Player.cpp Human.cpp Computer.cpp\
+	 Hand.cpp TestMain.cpp 
+	@$(CC) $(CXXFLAGS) Card.cpp Pile.cpp DrawPile.cpp DiscardPile.cpp BuildPile.cpp StockPile.cpp Game.cpp\
+	 Player.cpp Human.cpp Computer.cpp Hand.cpp TestMain.cpp -o sampTest
+
 
 
 

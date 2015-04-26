@@ -26,7 +26,7 @@ bool Hand::isEmpty() {
     }
     return true;
 }
-
+/*
 bool Hand::add(Card& c) {
     int index = 0;
     Card* scan = hand[index];
@@ -52,3 +52,4 @@ Card Hand::remove(int index) {
 Card Hand::getCard(int i) {
     return hand[i];
 }
+*/

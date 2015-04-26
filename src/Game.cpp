@@ -11,8 +11,9 @@
 #include <iostream>
 #include "Game.h"
 
-Game::Game(Player*[] players) {
-    this->players[] = players;
+
+Game::Game() {
+   
     this->drawPile = new DrawPile();
     for (int i = 0; i < 4; i++) {
         this->buildPiles[i] = new BuildPile();
@@ -25,6 +26,32 @@ Game::Game(FILE* file) {
 
 void Game::makeMove(int i) {
     Player player = *(this->players[i]);
+}
+
+void Game::addPlayer(Player * player){
+  players.push_back(player);
+}
+
+void Game::setPlayers(){
+  int numOfPlayers;
+  std::string name;
+  int input;
+
+  std::cout << "Please enter the number of players: ";
+  std::cin >> numOfPlayers;
+
+  for(int i = 0; i < numOfPlayers; i++){
+    std::cout << "Please enter the name of the player " << i + 1 <<": ";
+    std::cin >> name;
+    std::cout << "If this player is a human enter 0. If this player is a computer enter 1" << std::endl;
+    std::cin >> input;
+
+    if(input == 0)
+      addPlayer(new Human(name));
+    else
+      addPlayer(new Computer(name));
+
+  }
 }
 
 void Game::startGame() {
@@ -61,7 +88,7 @@ void Game::printView(int i) {
     List build piles' top cards (with proper spacing)
 */
 
-    Player player = *(this->players[i]);
+  /*    Player player = *(this->players[i]);
 
     std::cout << std::endl;
     std::cout << player.name() << std::endl;
@@ -92,5 +119,5 @@ void Game::printView(int i) {
     std::cout << "\t " << stockPile.top().getNum() << "  ";
     std::cout << player.getStockPile().getSize();
     std::cout << std::endl;
-  
+  */
 }
