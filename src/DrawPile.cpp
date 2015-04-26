@@ -30,6 +30,7 @@ DrawPile::DrawPile() {
         this->pile.push_back(card[i]);
     }
 
+    this->shuffle();
     
 }
 

@@ -12,8 +12,7 @@
 #include "Game.h"
 
 
-Game::Game() {
-   
+Game::Game() { 
     this->drawPile = new DrawPile();
     for (int i = 0; i < 4; i++) {
         this->buildPiles[i] = new BuildPile();
@@ -28,30 +27,42 @@ void Game::makeMove(int i) {
     Player player = *(this->players[i]);
 }
 
-void Game::addPlayer(Player * player){
-  players.push_back(player);
+void Game::addPlayer(Player* player){
+    players.push_back(player);
 }
 
-void Game::setPlayers(){
-  int numOfPlayers;
-  std::string name;
-  int input;
+void Game::setPlayers() {
+    
+    int numOfPlayers;
+    std::string name;
+    int input;
 
-  std::cout << "Please enter the number of players: ";
-  std::cin >> numOfPlayers;
+    std::cout << "Please enter the number of players: ";
+    std::cin >> numOfPlayers;
 
-  for(int i = 0; i < numOfPlayers; i++){
-    std::cout << "Please enter the name of the player " << i + 1 <<": ";
-    std::cin >> name;
-    std::cout << "If this player is a human enter 0. If this player is a computer enter 1" << std::endl;
-    std::cin >> input;
+    for (int i = 0; i < numOfPlayers; i++) {
+        std::cout << "Please enter the name of the player " << i + 1 <<": ";
+        std::cin >> name;
+        std::cout << "If this player is a human enter 0. If this player is a computer enter 1" << std::endl;
+        std::cin >> input;
 
-    if(input == 0)
-      addPlayer(new Human(name));
+    if (input == 0)
+        addPlayer(new Human(name));
     else
-      addPlayer(new Computer(name));
+        addPlayer(new Computer(name));
 
-  }
+    }
+}
+
+void Game::dealCards() {
+
+    int numPlayers = this->players.size();
+
+    for (int i = 0; i < numPlayers; i++) {
+        for (int j = 0; j < 5; j++) {
+            this->players[i]->getHand()->add(this->drawPile->remove());
+        }
+    }
 }
 
 void Game::startGame() {

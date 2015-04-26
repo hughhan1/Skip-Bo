@@ -26,8 +26,8 @@ std::string Player::getName() {
     return this->name;
 }
 
-Hand Player::getHand() {
-    return *(this->hand);
+Hand* Player::getHand() {
+    return this->hand;
 }
 
 DiscardPile* Player::getDiscardPiles() {

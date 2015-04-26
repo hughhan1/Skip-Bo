@@ -25,15 +25,17 @@ private:
     BuildPile* buildPiles[4];
     int turn;
 
-    void addPlayer(Player * player);
+    void addPlayer(Player* player);
     
 public:
     Game();
     Game(FILE* file);
-
-    void makeMove(int i);
  
     void setPlayers();
+    void dealCards();
+
+    void makeMove(int i);
+
     void startGame();
     void loadGame();
     void saveGame();

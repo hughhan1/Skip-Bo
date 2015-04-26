@@ -28,7 +28,7 @@ protected:
 public:
     Player(std::string name = "no name");
     std::string getName();
-    Hand getHand();
+    Hand* getHand();
     DiscardPile * getDiscardPiles();
     StockPile getStockPile();
     bool setTurn();
