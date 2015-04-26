@@ -11,10 +11,9 @@
 #include "GameController.h"
 
 void GameController::runGame() {
-  game = new game();
-  welcome();
-  game->setPlayers();
-  
+	welcome();
+	this->game = new Game();
+	this->game->setPlayers();  
 }
 
 void GameController::welcome() {
