@@ -19,13 +19,14 @@ class GameController {
 private:
 	Game* skipBo;
 
-public:
-
-	/** Runs the game. */
-	void runGame();
-
 	/** Prints a welcome message to the screen. */
 	void welcome();
+
+public:
+	void runGame();
+    void loadGame();
+    void saveGame();
+    void endGame();
 	
 };
 

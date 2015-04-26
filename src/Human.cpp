@@ -20,6 +20,6 @@ Human::Human(std::string name) {
     this->isTurn = false;
 }
 
-void Human::move(){
-  
+void Human::move() {
+
 }

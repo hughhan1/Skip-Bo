@@ -25,7 +25,11 @@ private:
     BuildPile* buildPiles[4];
     int turn;
 
+    /** Adds a Player to the Game. */
     void addPlayer(Player* player);
+
+    /** Allows an individual Player to make a move. */
+    void move(int i);
     
 public:
     Game();
@@ -33,13 +37,7 @@ public:
  
     void setPlayers();
     void dealCards();
-
-    void makeMove();
-
-    void startGame();
-    void loadGame();
-    void saveGame();
-    void endGame();
+    void play();
   
     void printView(int);
   

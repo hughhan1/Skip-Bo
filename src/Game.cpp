@@ -23,10 +23,12 @@ Game::Game(FILE* file) {
     // TO DO
 }
 
-void Game::makeMove() {
-  for(int i = 0; i < (int)players.size(); i++){
-    players[i]->move();
-  }
+void Game::play() {
+	int size = this->players.size();
+	int turn = 0;
+
+	// while the game is not over
+	move(turn % size);
 }
 
 void Game::addPlayer(Player* player){
@@ -43,9 +45,9 @@ void Game::setPlayers() {
     std::cin >> numOfPlayers;
 
     for (int i = 0; i < numOfPlayers; i++) {
-        std::cout << "Please enter the name of the player " << i + 1 <<": ";
+        std::cout << "Please enter the name of Player " << i + 1 << ": ";
         std::cin >> name;
-        std::cout << "If this player is a human enter 0. If this player is a computer enter 1" << std::endl;
+        std::cout << "If this player is a human enter 0. If this player is a computer enter 1." << std::endl;
         std::cin >> input;
 
     if (input == 0)
@@ -67,22 +69,6 @@ void Game::dealCards() {
     }
 }
 
-void Game::startGame() {
-    // TO DO
-}
-
-void Game::loadGame() {
-    // TO DO
-}
-
-void Game::saveGame() {
-    // TO DO
-}
-
-void Game::endGame() {
-    // TO DO
-}
-
 void Game::printView(int i) {
   
  /* 
@@ -101,7 +87,7 @@ void Game::printView(int i) {
     List build piles' top cards (with proper spacing)
 */
   
-  Player * player = players[i];
+ 	Player * player = this->players[i];
 
     std::cout << std::endl;
     std::cout << player->getName() << std::endl;
@@ -111,7 +97,7 @@ void Game::printView(int i) {
     for (int i = 0; i < 5; i++) {
         std::cout << " ";
         if (player->getHand()->getCard(i) != nullptr) {
-	  std::cout << player->getHand()->getCard(i)->getVal();
+			std::cout << player->getHand()->getCard(i)->getVal();
         }
         else {
             std::cout << "-  ";
@@ -133,4 +119,13 @@ void Game::printView(int i) {
     std::cout << player.getStockPile().getSize();
     std::cout << std::endl;
     */
+}
+
+void move(int i) {
+	Player* player = this->players[i];
+	if (Human* h = dynamic_cast<Human*>(player)) {
+		printView(i);
+	} else {
+
+	}
 }

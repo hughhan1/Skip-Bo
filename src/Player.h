@@ -19,18 +19,34 @@
 
 class Player {
 protected:
+
+    /** The Player's name. */
     std::string name;
+
+    /** The Player's Hand. */
     Hand* hand;
+
+    /** The four discard piles belonging to this Player. */
     DiscardPile* discardPiles[4];
+
+    /** The stock pile belonging to this Player. */
     StockPile* stockPile;
+
+    /** A boolean denoting whether it's this Player's turn. */
     bool isTurn;
 
 public:
+    
+    /** Constructor. */
     Player(std::string name = "no name");
+
+    /** Getter methods. */
     std::string getName();
     Hand* getHand();
     DiscardPile * getDiscardPiles();
     StockPile getStockPile();
+
+    /** Setter methods. */
     bool setTurn();
     virtual void move() = 0;
 };
