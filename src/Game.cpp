@@ -109,7 +109,7 @@ stringstream* Game::generateView(int i) {
     lines[4] << "Build Piles:\t-\t-\t-\t-";
 
     for (int a = 0; a < 4; a++) {
-        if (this->getBuildPiles()[a].isEmpty()) {
+        if (this->getBuildPiles()[a]->isEmpty()) {
             lines[5] << "- ";
         } else {
             lines[5] << this->getBuildPiles()[a]->top()->getVal();
@@ -141,12 +141,18 @@ stringstream* Game::generateView(int i) {
         }
     }
 
-    lines[10] << "\t " << player->getStockPiles()->top()->getVal() << "  " << player->getStockPile()->getSize();
+    lines[10] << "\t " << player->getStockPile()->top()->getVal() << "  " << player->getStockPile()->getSize();
 
     return lines;
 }
 
+const DrawPile* Game::getDrawPile() const {
+    return this->drawPile;
+}
 
+const BuildPile** Game::getDrawPiles() const {
+    return this->buildPiles;
+}
 
 void Game::move(int i) {
     Player* player = this->players[i];
