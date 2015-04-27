@@ -19,6 +19,8 @@ int main() {
   cout << "Card Tests passed." << endl;
   HandTest();
   cout << "Hand Tests passed." << endl;
+  DrawPileTest();
+  cout << "Draw Pile Tests passed." << endl;
   humanTest();
   return 0;
 }

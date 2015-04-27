@@ -14,7 +14,6 @@
 
 #include "Card.h"
 #include "Pile.h"
-#include <algorithm>
 
 class DrawPile : public Pile {
 
@@ -24,6 +23,6 @@ public:
 	bool add(Card * c);
 };
 
-void TestDrawPile();
+void DrawPileTest();
 
 #endif
