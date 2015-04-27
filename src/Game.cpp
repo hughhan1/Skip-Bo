@@ -155,11 +155,3 @@ void Game::move(int i) {
 
     }
 }
-is->players[i];
-	if (Human* h = dynamic_cast<Human*>(player)) {
-		printView(i);
-        std::cout << "Enter "
-	} else {
-
-	}
-}
