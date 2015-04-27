@@ -35,7 +35,7 @@ DrawPile::DrawPile() {
 }
 
 bool DrawPile::add(Card * c) {
-	pile.push_back(c);
+	pile.push_front(c);
 	return true;
 }
 
