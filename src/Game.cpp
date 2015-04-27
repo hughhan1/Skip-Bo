@@ -146,6 +146,8 @@ stringstream* Game::generateView(int i) {
     return lines;
 }
 
+
+
 void Game::move(int i) {
     Player* player = this->players[i];
     if (Human* h = dynamic_cast<Human*>(player)) {
