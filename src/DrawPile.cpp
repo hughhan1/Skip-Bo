@@ -10,6 +10,7 @@
  */
 
 #include "DrawPile.h"
+#include <cassert>
 
 DrawPile::DrawPile() {
 
@@ -29,6 +30,8 @@ DrawPile::DrawPile() {
     for (int i = 0; i < 162; i++) {
         this->pile.push_back(card[i]);
     }
+
+    this->size = 162;
 }
 
 bool DrawPile::add(Card * c) {
@@ -37,6 +40,24 @@ bool DrawPile::add(Card * c) {
 	return true;
 }
 
-void TestDrawPile() {
+void DrawPileTest() {
+  DrawPile test;
+  Card* c;
+  assert(test.getSize() == 162);
   
+  for (int i = 0; i < 18; i++) {
+    assert(test.getSize() + i == 162);
+    c = test.remove();
+    assert (c->getVal() == 0);
+  }
+
+  
+  for (int i = 0; i < 12; i++) {
+    for (int j = 0; j < 12; j++) {
+      // assert(test.getSize() + i*j + 18 == 162);
+      c = test.remove();
+      assert(c->getVal() == 12-i);
+    }
+  }
+
 }
