@@ -140,7 +140,7 @@ stringstream* Game::generateView(int i) {
     
     for (int a = 0; a < 4; a++){
         if (player->getDiscardPiles()[a]->isEmpty()) {
-            lines[10] << player->getDiscardPiles()[a]->top()->getval();
+            lines[10] << player->getDiscardPiles()[a]->top()->getVal();
         } else {
             lines[10] << "-  ";
         }
@@ -151,14 +151,12 @@ stringstream* Game::generateView(int i) {
     return lines;
 }
 
-const DrawPile* Game::getDrawPile() const {
-    const DrawPile* d = this->drawPile;
-    return d;
+DrawPile* Game::getDrawPile() const {
+    return this->drawPile;
 }
 
-const BuildPile** Game::getBuildPiles() const {
-    const BuildPile** b = this->buildPiles;
-    return b;
+BuildPile** Game::getBuildPiles() const {
+    return this->buildPiles;
 }
 
 void Game::move(int i) {

@@ -13,7 +13,7 @@
 #include "Player.h"
 
 
-std::string Player::getName() const{
+std::string Player::getName() const {
     return this->name;
 }
 
@@ -29,9 +29,9 @@ const StockPile* Player::getStockPile() const {
     return this->stockPile;
 }
 
-bool Player::addCardToHand(Card * card){
-    for (int i = 0; i < 5; i++){
-        if (this->hand[i] != nullptr){
+bool Player::addCardToHand(Card * card) {
+    for (int i = 0; i < 5; i++) {
+        if (this->hand[i] != nullptr) {
             this->hand[i] = card;
             return true;
         }

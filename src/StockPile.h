@@ -19,8 +19,8 @@ public:
 	StockPile();
 	
 	bool add(Card* c);
-	const Card * remove();
-	const Card * top() const;
+	Card * remove();
+	Card * top() const;
 };
 
 #endif

@@ -20,12 +20,12 @@ bool DiscardPile::add(Card * c) {
 	return true;
 }
 
-const Card * DiscardPile::remove() {
-	const Card * c = this->top();
+Card * DiscardPile::remove() {
+	Card * c = this->top();
 	this->pile.pop_back();
 	return c;
 }
 
-const Card * DiscardPile::top() const {
+Card * DiscardPile::top() const {
 	return this->pile.back();
 }

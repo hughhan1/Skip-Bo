@@ -20,12 +20,12 @@ bool StockPile::add(Card * c) {
 	return true;
 }
 
-const Card * StockPile::remove() {
-	const Card * c = this->top();
+Card * StockPile::remove() {
+	Card * c = this->top();
 	this->pile.pop_back();
 	return c;
 }
 
-const Card * StockPile::top() const {
+Card * StockPile::top() const {
 	return this->pile.back();
 }

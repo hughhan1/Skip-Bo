@@ -20,8 +20,8 @@ public:
 	BuildPile();
 	
 	bool add(Card * c);
-	const Card * remove();
-	const Card * top() const;
+	Card * remove();
+	Card * top() const;
 	void shuffle();
 };
 

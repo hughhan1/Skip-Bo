@@ -38,8 +38,8 @@ private:
     std::stringstream* generateView(int);
 
     /** Getter methods. */
-    const DrawPile* getDrawPile() const;
-    const BuildPile** getBuildPiles() const;
+    DrawPile* getDrawPile() const;
+    BuildPile** getBuildPiles() const;
     
 public:
     Game();
