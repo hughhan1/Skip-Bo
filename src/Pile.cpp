@@ -28,7 +28,7 @@ bool Pile::add(Card* c) {
 
 Card * Pile::remove() {
     if (this->isEmpty()) {
-        return nullptr;
+        throw new EmptyPileException();
     } else {
         Card * c = this->pile.back();
         this->pile.pop_back();
