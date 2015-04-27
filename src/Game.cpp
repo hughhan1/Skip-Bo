@@ -68,8 +68,12 @@ void Game::play() {
     int size = this->players.size();
     int turn = 0;
 
-    // while the game is not over
+    char ch;
+
+    while (true) {
     move(turn % size);
+    turn++;
+    }
 }
 
 void Game::printView(int i) {

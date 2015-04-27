@@ -37,8 +37,3 @@ bool CheckMoves::canBuild(Card& card, Pile& pile) {
 		return false;
 	}
 }
-
-// TEST
-int main() {
-	Player* p = new Player();
-}
