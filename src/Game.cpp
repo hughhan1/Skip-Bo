@@ -172,3 +172,51 @@ void Game::move(int i) {
 
     }
 }
+
+/** Is the move under consideration valid? */
+bool Game::validMove(char moveFrom, char moveTo){
+    if(moveFrom<'0'||moveFrom>'9'){
+        cout<<"That is not a valid pile to move a card from.\n";
+        return false;
+    }
+    else if(moveFrom=='0'){
+        if(moveTo<'a'||moveTo>'d'){
+            cout<"That is not a valid pile to move a card to from your stockpile.\n";
+            return false;
+        }
+        //check if card can be moved (value checking)
+    }
+    else if(moveFrom>'0'&&moveFrom<'6'){
+        if(moveTo<'6'||(moveTo>'9'&&moveTo<'a')||moveTo>'d'){
+            cout<<"That is not a valid pile to move a card to from your hand.\n";
+            return false;
+        }
+        //check if card can be moved (value checking)
+    }
+    else if(moveFrom>'5'&&moveFrom<':'){
+        if(moveTo<'a'||moveTo>'d'){
+            cout<<"That is not a valid pile to move a card to from your discard piles.\n";
+            return false;
+        }
+        //check if card can be moved (value checking)
+    }
+    return true;
+}
+
+/** Makes the move - only is called is the move is valid */
+void Game::moveCard(char moveFrom, char moveTo){
+    if(moveFrom=='0'){
+        //move from top of stockpile to the (moveTo-'a')th build pile
+    }
+    if(moveFrom>'0'&&moveFrom<'6'){
+        if(moveTo>'5'&&moveTo<':'){
+            //move from hand to top of the (moveTo-'6')th discard pile
+        }
+        else{
+            //move from hand to top of the (moveTo-'a')th build pile
+        }
+    }
+    if(moveFrom>'5'){
+        //move from top of discard pile to the (moveTo-'a')th build pile
+    }
+}
