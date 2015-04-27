@@ -18,6 +18,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+/** Public */
+
 Game::Game() { 
     this->drawPile = new DrawPile();
     for (int i = 0; i < 4; i++) {
@@ -29,32 +31,20 @@ Game::Game(FILE* file) {
     // TO DO
 }
 
-void Game::play() {
-    int size = this->players.size();
-    int turn = 0;
-
-    // while the game is not over
-    move(turn % size);
-}
-
-void Game::addPlayer(Player* player){
-    players.push_back(player);
-}
-
 void Game::setPlayers() {
     
-    int numOfPlayers;
+    int numPlayers;
     std::string name;
     int input;
 
-    std::cout << "Please enter the number of players: ";
-    std::cin >> numOfPlayers;
+    cout << "Please enter the number of players: ";
+    cin >> numPlayers;
 
-    for (int i = 0; i < numOfPlayers; i++) {
-        std::cout << "Please enter the name of Player " << i + 1 << ": ";
-        std::cin >> name;
-        std::cout << "If this player is a human enter 0. If this player is a computer enter 1." << std::endl;
-        std::cin >> input;
+    for (int i = 0; i < numPlayers; i++) {
+        cout << "Please enter the name of Player " << i + 1 << ": ";
+        cin >> name;
+        cout << "If this player is a human enter 0. If this player is a computer enter 1." << std::endl;
+        cin >> input;
 
     if (input == 0)
         addPlayer(new Human(name));
@@ -74,6 +64,14 @@ void Game::dealCards() {
     }
 }
 
+void Game::play() {
+    int size = this->players.size();
+    int turn = 0;
+
+    // while the game is not over
+    move(turn % size);
+}
+
 void Game::printView(int i) {
     stringstream* s = generateView(i);
     for (int a = 0; a < 11; a++) {
@@ -81,11 +79,17 @@ void Game::printView(int i) {
     }    
 }
 
+/** Private */
+
+void Game::addPlayer(Player* player){
+    players.push_back(player);
+}
+
 stringstream* Game::generateView(int i) {
     Player * player = this->players[i];
     int numPlayers = this->players.size();
   
-    /** An array of 11 lines that will be printed to the screen. */
+    /* An array of 11 lines that will be generated. */
     stringstream lines[11];
 
     for (int a = 0; a < numPlayers; a++) {
@@ -109,7 +113,8 @@ stringstream* Game::generateView(int i) {
     lines[4] << "Build Piles:\t-\t-\t-\t-";
 
     for (int a = 0; a < 4; a++) {
-        if (this->getBuildPiles()[a]->isEmpty()) {
+        if (this->getBuildPiles()[a]->
+            isEmpty()) {
             lines[5] << "- ";
         } else {
             lines[5] << this->getBuildPiles()[a]->top()->getVal();
@@ -158,7 +163,7 @@ void Game::move(int i) {
     Player* player = this->players[i];
     if (Human* h = dynamic_cast<Human*>(player)) {
         printView(i);
-        std::cout << "Enter "; 
+        cout << "Enter "; 
     } else {
 
     }
