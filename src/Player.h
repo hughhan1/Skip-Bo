@@ -43,7 +43,7 @@ public:
     DiscardPile** getDiscardPiles();
     const StockPile* getStockPile() const;
 
-    bool addCardToHand();
+    bool addCardToHand(Card * card);
     
     /** Setter methods. */
     bool setTurn();

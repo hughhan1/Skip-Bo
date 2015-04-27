@@ -29,7 +29,7 @@ const StockPile* Player::getStockPile() const {
     return this->stockPile;
 }
 
-bool Player::addCardTohand(Card * card){
+bool Player::addCardToHand(Card * card){
   for(int i = 0; i < 5; i++){
     /*if(hand[i] != nullptr){
       hand[i] = card;
