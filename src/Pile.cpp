@@ -28,28 +28,15 @@ bool Pile::add(Card* c) {
 
 Card * Pile::remove() {
 
-    try {
-        Card * c = this->pile.back();
-        this->pile.pop_back();
-        this->size--;
-        return c;
-    } catch (std) {
-        std::cerr << "Uh oh" << std::endl;
-        return nullptr;
-    }
-
-    /*
-
     if (this->isEmpty()) {
-        EmptyPileException e;
-        throw e;
+        throw new EmptyPileException();
     } else {
         Card * c = this->pile.back();
         this->pile.pop_back();
 	   this->size--;
         return c;
     }
-    */
+
 }
 
 void Pile::shuffle() {
