@@ -39,7 +39,7 @@ private:
 
     /** Getter methods. */
     DrawPile* getDrawPile() const;
-    BuildPile** getBuildPiles() const;
+    BuildPile* getBuildPiles(int i) const;
     
 public:
     Game();
