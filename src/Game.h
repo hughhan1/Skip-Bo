@@ -41,6 +41,11 @@ private:
     DrawPile* getDrawPile() const;
     BuildPile* getBuildPiles(int i) const;
     
+    
+    
+    bool validMove(char, char) const;
+    void moveCard(char, char);
+    
 public:
     Game();
     Game(FILE* file);
