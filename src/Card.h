@@ -29,4 +29,6 @@ public:
   	bool operator>(const Card& rhs) const;
 };
 
+void CardTest();
+
 #endif

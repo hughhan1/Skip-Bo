@@ -1,4 +1,15 @@
+/** 
+ * Marc Feldman
+ * Hugh Han 
+ * SeungHwan Lee
+ * Matthew Cowen-Green 
+ *
+ * EN.600.120 Intermediate Programming, Spring 2015
+ * SkipBo: Card.cpp
+ */
+
 #include "Card.h"
+#include <cassert>
 
 Card::Card() {
     this->val = -1;
@@ -31,4 +42,16 @@ bool Card::operator<(const Card& rhs) const {
 
 bool Card::operator>(const Card& rhs) const {
 	return this->getVal() > rhs.getVal();
+}
+
+void CardTest() {
+  Card c1;
+  assert(c1.getVal() == -1);
+  Card c2(1);
+  assert(c2.getVal() == 1);
+  Card c3(1);
+  assert(c2 == c3);
+  assert(c1 < c2);
+  assert(c2 > c1);
+  assert(c1 != c2);
 }
