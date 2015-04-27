@@ -13,6 +13,7 @@ using std::endl;
 
 int main() {
   cout << "Testing" << endl;
+  humanTest();
   CardTest();
   return 0;
 }

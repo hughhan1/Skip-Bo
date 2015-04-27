@@ -38,9 +38,9 @@ void humanTest(){
   assert(player1->getName() == "human1");
 
   Hand * h = player1->getHand();
-  for(int i = 0; i < 5; i++){
-    assert(h[i] == nullptr);
-  }
+  //for(int i = 0; i < 5; i++){
+  //  assert(h[i] == nullptr);
+  //}
   
   
 }
