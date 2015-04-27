@@ -21,10 +21,9 @@ class DrawPile : public Pile {
 public:
 	
 	DrawPile();
-
 	bool add(Card * c);
-	Card * remove();
-	void shuffle();
 };
+
+void TestDrawPile();
 
 #endif

@@ -29,23 +29,14 @@ DrawPile::DrawPile() {
     for (int i = 0; i < 162; i++) {
         this->pile.push_back(card[i]);
     }
-
-    this->shuffle();
-    
 }
 
 bool DrawPile::add(Card * c) {
 	pile.push_front(c);
+	this->size++;
 	return true;
 }
 
-Card * DrawPile::remove() {
-	Card * c = this->pile.back();
-	this->pile.pop_back();
-	return c;
+void TestDrawPile() {
+  
 }
-
-void DrawPile::shuffle() {
-	std::random_shuffle(this->pile.begin(), this->pile.end());
-}
-

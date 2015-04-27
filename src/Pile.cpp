@@ -19,11 +19,12 @@ int Pile::getSize() const {
 	return this->size;
 }
 
-
+/* Pure Virtual
 bool Pile::add(Card* c) {
     this->pile.push_back(c);
     return true;
 }
+*/
 
 Card * Pile::remove() {
     if (this->isEmpty()) {
@@ -31,7 +32,11 @@ Card * Pile::remove() {
     } else {
         Card * c = this->pile.back();
         this->pile.pop_back();
+	this->size--;
         return c;
     }
 }
 
+void Pile::shuffle() {
+  std::random_shuffle(this->pile.begin(), this->pile.end());
+}

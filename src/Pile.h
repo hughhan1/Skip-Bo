@@ -25,6 +25,7 @@ public:
 	int getSize() const;
 	virtual bool add(Card * cPtr) = 0; 
 	Card* remove();
+	void shuffle();
 };
 
 #endif
