@@ -30,12 +30,9 @@ const StockPile* Player::getStockPile() const {
 }
 
 bool Player::addCardToHand(Card * card) {
-    for (int i = 0; i < 5; i++) {
-        if (this->hand[i] != nullptr) {
-            this->hand[i] = card;
-            return true;
-        }
-    }
+  if(hand->add(card))
+    return true;
+  else
     return false;
 }
 

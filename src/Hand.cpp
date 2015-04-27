@@ -54,6 +54,7 @@ Card * Hand::getCard(int i) const {
     return hand[i];
 }
 
+
 void HandTest() {
   Hand test;
   assert(test.isEmpty());
