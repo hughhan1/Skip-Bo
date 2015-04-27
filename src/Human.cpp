@@ -28,19 +28,16 @@ void Human::move() {
 
 
 
-
-
-
 //TEST FUNCTIONS
 
 void humanTest(){
   Player * player1 = new Human("human1");
   assert(player1->getName() == "human1");
 
-  Hand * h = player1->getHand();
-  //for(int i = 0; i < 5; i++){
-  //  assert(h[i] == nullptr);
-  //}
+  const Hand * h = player1->getHand();
+  for(int i = 0; i < 5; i++){
+    //assert(h[i] == nullptr);
+  }
   
   
 }

@@ -64,7 +64,7 @@ void Game::dealCards() {
 
     for (int i = 0; i < numPlayers; i++) {
         for (int j = 0; j < 5; j++) {
-            this->players[i]->getHand()->add(this->drawPile->remove());
+	  //this->players[i]->getHand()->add(this->drawPile->remove());
         }
     }
 }

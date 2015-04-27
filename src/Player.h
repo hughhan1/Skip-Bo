@@ -36,15 +36,12 @@ protected:
     bool isTurn;
 
 public:
-    
-    /** Constructor. */
-    Player(std::string name = "no name");
 
     /** Getter methods. */
     std::string getName() const;
-    Hand* getHand() const;
+    const Hand* getHand() const;
     DiscardPile** getDiscardPiles();
-    StockPile* getStockPile() const;
+    const StockPile* getStockPile() const;
 
     /** Setter methods. */
     bool setTurn();
@@ -52,3 +49,4 @@ public:
 };
 
 #endif
+
