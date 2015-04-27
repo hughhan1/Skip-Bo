@@ -59,7 +59,7 @@ void Game::dealCards() {
 
     for (int i = 0; i < numPlayers; i++) {
         for (int j = 0; j < 5; j++) {
-            this->players[i]->getHand()->add(this->drawPile->remove());
+            this->players[i]->addCardToHand(this->drawPile->remove());
         }
     }
 }
@@ -140,7 +140,7 @@ stringstream* Game::generateView(int i) {
     
     for (int a = 0; a < 4; a++){
         if (player->getDiscardPiles()[a]->isEmpty()) {
-            lines[10] << discardPiles[i]->top->getval();
+            lines[10] << player->getDiscardPiles()[a]->top()->getval();
         } else {
             lines[10] << "-  ";
         }
@@ -152,11 +152,13 @@ stringstream* Game::generateView(int i) {
 }
 
 const DrawPile* Game::getDrawPile() const {
-    return this->drawPile;
+    const DrawPile* d = this->drawPile;
+    return d;
 }
 
-const BuildPile** Game::getDrawPiles() const {
-    return this->buildPiles;
+const BuildPile** Game::getBuildPiles() const {
+    const BuildPile** b = this->buildPiles;
+    return b;
 }
 
 void Game::move(int i) {

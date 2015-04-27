@@ -20,13 +20,13 @@ bool BuildPile::add(Card * c) {
 	return true;
 }
 
-Card * BuildPile::remove() {
-	Card * c = pile.at(0);
+const Card * BuildPile::remove() {
+	const Card * c = top();
 	this->pile.pop_back();
 	return c;
 }
 
-Card * BuildPile::top() {
+const Card * BuildPile::top() const {
 	return this->pile.back();
 }
 

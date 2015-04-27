@@ -21,8 +21,8 @@ public:
 	DiscardPile();
 
 	bool add(Card *);
-	Card * remove();
-	Card * top();
+	const Card * remove();
+	const Card * top() const;
 
 };
 
