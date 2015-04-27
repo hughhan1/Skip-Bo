@@ -26,4 +26,6 @@ public:
     Card* getCard(int i) const;
 };
 
+void HandTest();
+
 #endif
