@@ -14,6 +14,7 @@
 
 #include "Card.h"
 #include <deque>
+#include <algorithm>
 
 class Pile {
 protected:
