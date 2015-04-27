@@ -4,6 +4,7 @@
 #include "Human.h"
 #include "Computer.h"
 #include "Card.h"
+#include "Hand.h"
 
 using std::cout; 
 using std::endl; 
@@ -12,8 +13,12 @@ using std::endl;
 
 
 int main() {
-  cout << "Testing" << endl;
-  humanTest();
+
+  cout << "Testing." << endl;
   CardTest();
+  cout << "Card Tests passed." << endl;
+  HandTest();
+  cout << "Hand Tests passed." << endl;
+  humanTest();
   return 0;
 }

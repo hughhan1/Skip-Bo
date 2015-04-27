@@ -9,8 +9,14 @@
  */
 
 #include <iostream>
+#include <sstream>
 #include "Game.h"
 
+using std::string;
+using std::stringstream;
+using std::cin;
+using std::cout;
+using std::endl;
 
 Game::Game() { 
     this->drawPile = new DrawPile();
@@ -54,7 +60,6 @@ void Game::setPlayers() {
         addPlayer(new Human(name));
     else
         addPlayer(new Computer(name));
-
     }
 }
 
@@ -71,23 +76,46 @@ void Game::dealCards() {
 
 void Game::printView(int i) {
   
- /* 
-    std::string playernames;
-    std::string pileinfos;
-    std::string otherscards;
-    for (int a = 0; a < this->players.length; a++) {
-        Add next player's name to playernames (with appropriate spacing)
-        Add size of next player's stockpile to pileinfos
-        pileinfos+="\tDiscard\t\t";
-        Add next player's visible cards to otherscards (with appropriate spacing)
+    Player * player = this->players[i];
+    int numPlayers = this->players.size();
+  
+    /** An array of 11 lines that will be printed to the screen. */
+    stringstream lines[11];
+
+    for (int a = 0; a < numPlayers; a++) {
+        if (player != this->players[a]) {
+            Player* p = this->players[a];
+            lines[0] << p->getName() << "\t";
+            lines[1] << "(" << p->getStockPile()->getSize() << ")\tDiscard\t";
+            lines[2] << p->getStockPile()->top()->getVal() << "\t";
+            for (int b = 0; b < 4; b++) {
+                if (p->getDiscardPile()[b]->isEmpty()) {
+                    lines[2] << "- ";
+                } else {
+                    lines[2] << p->getDiscardPiles()[b]->top()->getVal();
+                }
+            }
+            lines[2] << "\t";
+        } 
     }
+
+    lines[3] << "";
+    lines[4] << "Build Piles:\t-\t-\t-\t-"
+
+    for (int a = 0; a < 4; a++) {
+        if (this->getBuildPiles()[a].isEmpty()) {
+            lines[5] << "- ";
+        } else {
+            lines[5] << this->getBuildPiles()[a]->top()->getVal();
+        }
+    }
+
+    lines[6] << "";
+
     std::cout<<"\n";
     std::cout<<"\t\t[a]\t[b]\t[c]\t[d]\n";
     std::cout<<"Build Piles\t";
     List build piles' top cards (with proper spacing)
-*/
-  
- 	Player * player = this->players[i];
 
     std::cout << std::endl;
     std::cout << player->getName() << std::endl;
@@ -122,9 +150,10 @@ void Game::printView(int i) {
 }
 
 void Game::move(int i) {
-	Player * player = this->players[i];
+	Player* player = this->players[i];
 	if (Human* h = dynamic_cast<Human*>(player)) {
 		printView(i);
+        std::cout << "Enter "
 	} else {
 
 	}
