@@ -26,10 +26,17 @@ private:
     int turn;
 
     /** Adds a Player to the Game. */
-    void addPlayer(Player* player);
+    void addPlayer(Player*);
 
     /** Allows an individual Player to make a move. */
-    void move(int i);
+    void move(int);
+
+    /** Generates the screen for a Player. */
+    std::stringstream* generateView(int);
+
+    /** Getter methods. */
+    const DrawPile* getDrawPile() const;
+    const BuilPile** getBuildPiles() const;
     
 public:
     Game();

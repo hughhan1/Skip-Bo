@@ -30,11 +30,11 @@ Game::Game(FILE* file) {
 }
 
 void Game::play() {
-	int size = this->players.size();
-	int turn = 0;
+    int size = this->players.size();
+    int turn = 0;
 
-	// while the game is not over
-	move(turn % size);
+    // while the game is not over
+    move(turn % size);
 }
 
 void Game::addPlayer(Player* player){
@@ -69,13 +69,19 @@ void Game::dealCards() {
 
     for (int i = 0; i < numPlayers; i++) {
         for (int j = 0; j < 5; j++) {
-	  //this->players[i]->getHand()->add(this->drawPile->remove());
+            this->players[i]->getHand()->add(this->drawPile->remove());
         }
     }
 }
 
 void Game::printView(int i) {
-  
+    stringstream* s = generateView(i);
+    for (int a = 0; a < 11; a++) {
+        cout << s[a].str() << endl;
+    }    
+}
+
+stringstream* Game::generateView(int i) {
     Player * player = this->players[i];
     int numPlayers = this->players.size();
   
@@ -89,7 +95,7 @@ void Game::printView(int i) {
             lines[1] << "(" << p->getStockPile()->getSize() << ")\tDiscard\t";
             lines[2] << p->getStockPile()->top()->getVal() << "\t";
             for (int b = 0; b < 4; b++) {
-                if (p->getDiscardPile()[b]->isEmpty()) {
+                if (p->getDiscardPiles()[b]->isEmpty()) {
                     lines[2] << "- ";
                 } else {
                     lines[2] << p->getDiscardPiles()[b]->top()->getVal();
@@ -100,7 +106,7 @@ void Game::printView(int i) {
     }
 
     lines[3] << "";
-    lines[4] << "Build Piles:\t-\t-\t-\t-"
+    lines[4] << "Build Piles:\t-\t-\t-\t-";
 
     for (int a = 0; a < 4; a++) {
         if (this->getBuildPiles()[a].isEmpty()) {
@@ -112,49 +118,42 @@ void Game::printView(int i) {
 
     lines[6] << "";
 
-    std::cout<<"\n";
-    std::cout<<"\t\t[a]\t[b]\t[c]\t[d]\n";
-    std::cout<<"Build Piles\t";
-    List build piles' top cards (with proper spacing)
+    lines[7] << player->getName();
 
-    std::cout << std::endl;
-    std::cout << player->getName() << std::endl;
-    std::cout << "Hand\t\t\tDiscard Piles\t\tStockpile" << std::endl;
-    std::cout << "[1] [2] [3] [4] [5]\t[6] [7] [8] [9]\t\t[0]" << std::endl;
+    lines[8] << "Hand\t\tDiscard Piles\t\tStock Pile";
 
-    for (int i = 0; i < 5; i++) {
-        std::cout << " ";
+    lines[9] << "[1] [2] [3] [4] [5]\t[6] [7] [8] [9]\t\t[0]";
+
+    for (int a = 0; a < 5; a++) {
         if (player->getHand()->getCard(i) != nullptr) {
-			std::cout << player->getHand()->getCard(i)->getVal();
+            lines[10] << player->getHand()->getCard(i)->getVal();
         }
         else {
-            std::cout << "-  ";
+            lines[10] << "-  ";
         }
     }
-
-    std::cout << "\t";
-    /*
-    for (int i = 0; i < 4; a++){
-        std::cout << " ";
-        if (discardPiles[i]->top().getVal() != -1){
-            std::cout << discardPiles[i]->top.getval();
+    
+    for (int a = 0; a < 4; a++){
+        if (player->getDiscardPiles()[a]->isEmpty()) {
+            lines[10] << discardPiles[i]->top->getval();
         } else {
-            std::cout << "-  ";
+            lines[10] << "-  ";
         }
     }
 
-    std::cout << "\t " << stockPile.top()->getVal() << "  ";
-    std::cout << player.getStockPile().getSize();
-    std::cout << std::endl;
-    */
+    lines[10] << "\t " << player->getStockPiles()->top()->getVal() << "  " << player->getStockPile()->getSize();
+
+    return lines;
 }
 
-void Game::move(int i) {
-	Player* player = this->players[i];
-	if (Human* h = dynamic_cast<Human*>(player)) {
-		printView(i);
-        std::cout << "Enter "
-	} else {
 
-	}
+
+void Game::move(int i) {
+    Player* player = this->players[i];
+    if (Human* h = dynamic_cast<Human*>(player)) {
+        printView(i);
+        std::cout << "Enter "; 
+    } else {
+
+    }
 }
