@@ -29,6 +29,16 @@ const StockPile* Player::getStockPile() const {
     return this->stockPile;
 }
 
+bool Player::addCardToHand(Card * card){
+  for(int i = 0; i < 5; i++){
+    /*if(hand[i] != nullptr){
+      hand[i] = card;
+      return true;
+      }*/
+  }
+  return false;
+}
+
 bool Player::setTurn() {
     this->isTurn = !this->isTurn;
 }
