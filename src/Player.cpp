@@ -22,11 +22,11 @@ Player::Player(std::string name) {
     this->isTurn = false;
 }
 
-std::string Player::getName() {
+std::string Player::getName() const{
     return this->name;
 }
 
-Hand* Player::getHand() {
+Hand* Player::getHand() const {
     return this->hand;
 }
 
