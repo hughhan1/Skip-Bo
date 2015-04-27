@@ -36,8 +36,15 @@ All members present.
 Comments like this:
 	// Marc: This function does this.
 
-Fri 4/24: IN CLASS
+Fri 4/24 : 3 PM to 4:15 PM
 Marc, Matt, and SeungHwan present.
 
 - Changing piles to use Card* instead of Card
 - Working on fixing a lot of compiler errors
+
+Sunday 4/26 : 8 PM to 10 PM
+All members present.
+
+- Worked on changing getter methods.
+- Worked on printing a player’s view to a screen.
+- Worked on testing Players and Piles.
