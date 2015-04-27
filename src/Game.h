@@ -31,7 +31,10 @@ private:
     /** Allows an individual Player to make a move. */
     void move(int);
 
-    /** Generates the screen for a Player. */
+    /** 
+     * Generates the view of a Player. 
+     * @param int the index of the Player who's view will be generated.
+     */
     std::stringstream* generateView(int);
 
     /** Getter methods. */
@@ -46,6 +49,10 @@ public:
     void dealCards();
     void play();
   
+    /** 
+     * Prints the view of a Player. 
+     * @param int the index of the Player who's view will be printed.
+     */
     void printView(int);
   
 };
