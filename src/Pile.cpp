@@ -20,16 +20,16 @@ int Pile::getSize() const {
 }
 
 
-bool Pile::add(Card& c) {
+bool Pile::add(Card* c) {
     this->pile.push_back(c);
     return true;
 }
 
-Card Pile::remove() {
+Card * Pile::remove() {
     if (this->isEmpty()) {
         return nullptr;
     } else {
-        Card c = this->pile.back();
+        Card * c = this->pile.back();
         this->pile.pop_back();
         return c;
     }
