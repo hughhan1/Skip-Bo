@@ -43,7 +43,7 @@ public:
     /** Getter methods. */
     std::string getName() const;
     Hand* getHand() const;
-    DiscardPile** getDiscardPiles() const;
+    DiscardPile** getDiscardPiles();
     StockPile* getStockPile() const;
 
     /** Setter methods. */
