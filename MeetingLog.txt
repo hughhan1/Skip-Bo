@@ -48,3 +48,11 @@ All members present.
 - Worked on changing getter methods.
 - Worked on printing a player’s view to a screen.
 - Worked on testing Players and Piles.
+
+Monday 4/27 : 3 PM to 4:20 PM
+All members present.
+
+- Created Exception handling for piles
+- Worked on testing piles
+- Worked on interpreting moves
+- Worked on debugging printView
