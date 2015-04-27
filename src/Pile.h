@@ -24,7 +24,7 @@ public:
 	bool isEmpty() const;
 	int getSize() const;
 	virtual bool add(Card * cPtr) = 0; 
-	virtual Card * remove() = 0;
+	Card* remove();
 };
 
 #endif
