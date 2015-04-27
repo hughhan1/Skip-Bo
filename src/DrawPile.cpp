@@ -54,10 +54,20 @@ void DrawPileTest() {
   
   for (int i = 0; i < 12; i++) {
     for (int j = 0; j < 12; j++) {
-      // assert(test.getSize() + i*j + 18 == 162);
       c = test.remove();
       assert(c->getVal() == 12-i);
     }
   }
+
+  c = new Card(11);
+  Card* d = new Card(9);
+  assert(test.add(c));
+  assert(test.getSize() == 1);
+  assert(test.add(d));
+  assert(test.getSize() == 2);
+  assert(test.remove()->getVal() == 11);
+  assert(test.getSize() == 1);
+  assert(test.remove()->getVal() == 9);
+  assert(test.getSize() == 0);
 
 }
