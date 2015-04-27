@@ -1,5 +1,4 @@
 /**
- * SegFaults
  * Marc Feldman
  * Hugh Han
  * SeungHwan Lee
@@ -20,14 +19,12 @@ bool BuildPile::add(Card * c) {
 	return true;
 }
 
-Card * BuildPile::remove() {
-	Card * c = top();
-	this->pile.pop_back();
-	return c;
-}
-
 Card * BuildPile::top() const {
-	return this->pile.back();
+	if (this->isEmpty()) {
+		throw new EmptyPileException();
+	} else {
+		return this->pile.back();
+	}
 }
 
 void BuildPile::shuffle() {

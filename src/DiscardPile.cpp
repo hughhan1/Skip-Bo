@@ -1,5 +1,4 @@
 /**
- * SegFaults
  * Marc Feldman
  * Hugh Han
  * SeungHwan Lee
@@ -20,12 +19,10 @@ bool DiscardPile::add(Card * c) {
 	return true;
 }
 
-Card * DiscardPile::remove() {
-	Card * c = this->top();
-	this->pile.pop_back();
-	return c;
-}
-
 Card * DiscardPile::top() const {
-	return this->pile.back();
+	if (this->isEmpty()) {
+		throw new EmptyPileException();
+	} else {
+		return this->pile.back();
+	}
 }

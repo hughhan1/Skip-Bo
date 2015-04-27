@@ -20,7 +20,6 @@ public:
 	BuildPile();
 	
 	bool add(Card * c);
-	Card * remove();
 	Card * top() const;
 	void shuffle();
 };
