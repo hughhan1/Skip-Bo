@@ -6,9 +6,6 @@
 
 using namespace std; // just for convenience while testing. 
 
-
-
-
 int main() {
     cout << "Testing" << endl;
     Card* card;

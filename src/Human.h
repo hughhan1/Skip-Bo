@@ -19,4 +19,12 @@ public:
 	void move();
 };
 
+
+
+
+
+//TEST FUNCTIONS
+
+void humanTest();
+
 #endif
