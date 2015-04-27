@@ -23,7 +23,7 @@ public:
     bool isEmpty();
     bool add(Card * c);
     Card* remove(int index);
-    Card* getCard(int i);
+    Card* getCard(int i) const;
 };
 
 #endif

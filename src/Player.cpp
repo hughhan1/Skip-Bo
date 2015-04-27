@@ -30,12 +30,12 @@ Hand* Player::getHand() {
     return this->hand;
 }
 
-DiscardPile* Player::getDiscardPiles() {
-	return *(this->discardPiles);
+DiscardPile** Player::getDiscardPiles() {
+	return this->discardPiles;
 }
 
-StockPile Player::getStockPile() {
-    return *(this->stockPile);
+StockPile* Player::getStockPile() const {
+    return this->stockPile;
 }
 
 bool Player::setTurn() {
