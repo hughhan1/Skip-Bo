@@ -49,7 +49,7 @@ Card * Hand::remove(int index) {
     return tmp;
 }
 
-Card * Hand::getCard(int i) {
+Card * Hand::getCard(int i) const {
     return hand[i];
 }
 

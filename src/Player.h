@@ -41,10 +41,10 @@ public:
     Player(std::string name = "no name");
 
     /** Getter methods. */
-    std::string getName();
-    Hand* getHand();
-    DiscardPile * getDiscardPiles();
-    StockPile getStockPile();
+    std::string getName() const;
+    Hand* getHand() const;
+    DiscardPile** getDiscardPiles() const;
+    StockPile* getStockPile() const;
 
     /** Setter methods. */
     bool setTurn();
