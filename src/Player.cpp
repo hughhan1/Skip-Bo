@@ -36,6 +36,13 @@ bool Player::addCardToHand(Card * card) {
     return false;
 }
 
+bool Player::addCardToStockPile(Card * card){
+  if(stockPile->add(card))
+    return true;
+  else
+    return false;
+}
+
 bool Player::setTurn() {
     this->isTurn = !this->isTurn;
 }

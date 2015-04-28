@@ -55,13 +55,35 @@ void Game::setPlayers() {
 
 void Game::dealCards() {
 
-    int numPlayers = this->players.size();
+    int numPlayers = players.size();
+    int num;
+    
+    //Adding shuffle func
+    drawPile->shuffle();
 
+    //prompting stockpile size
+    cout<<"Initial Stock pile size: ";
+    cin>>num;
+    
+    
     for (int i = 0; i < numPlayers; i++) {
         for (int j = 0; j < 5; j++) {
-            this->players[i]->addCardToHand(this->drawPile->remove());
+            players[i]->addCardToHand(drawPile->remove());
         }
+	for(int j = 0; j < 30; j++){
+	  players[i]->addCardToStockPile(drawPile->remove());
+	}
     }
+    
+    
+    //Testing Purpose
+    for(int i = 0; i < numPlayers; i++){
+      for(int j = 0; j < 5; j++){
+	cout<<"Player "<<i<<" "<<endl;
+	cout<<players[i]->getHand()->getCard(j)->getVal() << endl;
+      }
+    }
+    cout<<endl;
 }
 
 void Game::play() {
@@ -174,14 +196,14 @@ void Game::move(int i) {
 }
 
 /** Is the move under consideration valid? */
-bool Game::validMove(char moveFrom, char moveTo){
+bool Game::validMove(char moveFrom, char moveTo) const{
     if(moveFrom<'0'||moveFrom>'9'){
         cout<<"That is not a valid pile to move a card from.\n";
         return false;
     }
     else if(moveFrom=='0'){
         if(moveTo<'a'||moveTo>'d'){
-            cout<"That is not a valid pile to move a card to from your stockpile.\n";
+	  cout<<"That is not a valid pile to move a card to from your stockpile.\n";
             return false;
         }
         //check if card can be moved (value checking)

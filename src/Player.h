@@ -44,6 +44,7 @@ public:
     const StockPile* getStockPile() const;
 
     bool addCardToHand(Card * card);
+    bool addCardToStockPile(Card * card);
     
     /** Setter methods. */
     bool setTurn();

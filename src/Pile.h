@@ -13,7 +13,7 @@
 #define _PILE_H
 
 #include "Card.h"
-#include "EmptyPileException.h"
+//#include "EmptyPileException.h"
 #include <deque>
 #include <algorithm>
 

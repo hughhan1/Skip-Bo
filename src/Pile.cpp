@@ -9,14 +9,15 @@
  * SkipBo: Pile.cpp
  */
 
+#include "EmptyPileException.h"
 #include "Pile.h"
 
 bool Pile::isEmpty() const {
-    return this->size == 0;
+  return pile.size() == 0;
 }
 
 int Pile::getSize() const {
-	return this->size;
+  return pile.size();
 }
 
 /* Pure Virtual
@@ -27,15 +28,24 @@ bool Pile::add(Card* c) {
 */
 
 Card * Pile::remove() {
-
-    if (this->isEmpty()) {
-        throw new EmptyPileException();
+  // Adding try catch here temporarily.
+  try{
+    if (isEmpty()) {
+      //throw EmptyPileException();
+      throw -1;
     } else {
-        Card * c = this->pile.back();
-        this->pile.pop_back();
-	   this->size--;
+        Card * c = pile.back();
+        pile.pop_back();
         return c;
     }
+  }
+  /*catch(EmptyPileException &excpt){
+    excpt.showErrorMessage();
+  }
+  */
+  catch(int excpt){
+    std::cout<<"Pile Empty Error"<<std::endl;
+  }
 
 }
 

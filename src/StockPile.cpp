@@ -21,7 +21,7 @@ bool StockPile::add(Card * c) {
 
 Card * StockPile::top() const {
 	if (this->isEmpty()) {
-		throw new EmptyPileException();
+	  //throw new EmptyPileException();
 	} else {
 		return this->pile.back();
 	}
