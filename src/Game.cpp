@@ -70,7 +70,7 @@ void Game::dealCards() {
         for (int j = 0; j < 5; j++) {
             players[i]->addCardToHand(drawPile->remove());
         }
-	for(int j = 0; j < 30; j++){
+	for(int j = 0; j < num; j++){
 	  players[i]->addCardToStockPile(drawPile->remove());
 	}
     }
