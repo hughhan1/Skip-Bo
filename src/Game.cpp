@@ -99,10 +99,13 @@ void Game::play() {
 }
 
 void Game::printView(int i) {
-    stringstream* s = generateView(i);
-    for (int a = 0; a < 11; a++) {
-        cout << s[a].str() << endl;
-    }    
+  stringstream lines[11];
+  generateView(lines, i);
+  for (int a = 0; a < 11; a++) {
+    cout << lines[a].str() << endl;
+        
+  }
+    
 }
 
 /** Private */
@@ -111,13 +114,11 @@ void Game::addPlayer(Player* player){
     players.push_back(player);
 }
 
-stringstream* Game::generateView(int i) {
+void  Game::generateView(stringstream *lines, int i) {
     Player * player = this->players[i];
     int numPlayers = this->players.size();
   
-    /* An array of 11 lines that will be generated. */
-    stringstream lines[11];
-
+    
     for (int a = 0; a < numPlayers; a++) {
         if (player != this->players[a]) {
             Player* p = this->players[a];
@@ -134,7 +135,7 @@ stringstream* Game::generateView(int i) {
             lines[2] << "\t";
         } 
     }
-
+    
     lines[3] << "";
     lines[4] << "Build Piles:\t-\t-\t-\t-";
 
@@ -157,7 +158,7 @@ stringstream* Game::generateView(int i) {
 
     for (int a = 0; a < 5; a++) {
         if (player->getHand()->getCard(i) != nullptr) {
-            lines[10] << player->getHand()->getCard(i)->getVal();
+	  lines[10] << player->getHand()->getCard(i)->getVal()<<" ";
         }
         else {
             lines[10] << "-  ";
@@ -166,15 +167,14 @@ stringstream* Game::generateView(int i) {
     
     for (int a = 0; a < 4; a++){
         if (player->getDiscardPiles()[a]->isEmpty()) {
-            lines[10] << player->getDiscardPiles()[a]->top()->getVal();
+	  lines[10] << player->getDiscardPiles()[a]->top()->getVal()<<" ";
         } else {
             lines[10] << "-  ";
         }
     }
 
     lines[10] << "\t " << player->getStockPile()->top()->getVal() << "  " << player->getStockPile()->getSize();
-
-    return lines;
+    
 }
 
 DrawPile* Game::getDrawPile() const {

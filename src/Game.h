@@ -17,6 +17,7 @@
 #include "DrawPile.h"
 #include "BuildPile.h"
 #include <vector>
+#include <sstream>
 
 class Game {
 private:
@@ -35,7 +36,7 @@ private:
      * Generates the view of a Player. 
      * @param int the index of the Player who's view will be generated.
      */
-    std::stringstream* generateView(int);
+    void generateView(std::stringstream*, int);
 
     /** Getter methods. */
     DrawPile* getDrawPile() const;
