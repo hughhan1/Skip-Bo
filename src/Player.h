@@ -47,6 +47,8 @@ public:
 
     bool addCardToHand(Card * card);
     bool addCardToStockPile(Card * card);
+    Card * removeCardFromHand(int);
+    Card * removeFromStockPile();
     
     /** Setter methods. */
     bool setTurn();

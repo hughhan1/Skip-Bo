@@ -44,3 +44,11 @@ bool Player::addCardToStockPile(Card * card){
 bool Player::setTurn() {
     this->isTurn = !this->isTurn;
 }
+
+Card * Player::removeCardFromHand(int index){
+    return this->hand->remove(index);
+}
+
+Card * Player::removeFromStockPile(){
+    return this->stockPile->remove();
+}
