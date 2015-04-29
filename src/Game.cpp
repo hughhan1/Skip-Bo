@@ -237,17 +237,17 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 /** Makes the move - only is called is the move is valid */
 void Game::moveCard( char moveFrom, char moveTo) {
     if (moveFrom == '0') {
-        //move from top of stockpile to the (moveTo-'a')th build pile
+        buildPiles[moveTo-'a']->add(players.at(turn)->getStockPile()->remove());
     }
     if (moveFrom > '0' && moveFrom < '6') {
         if (moveTo > '5' &&moveTo < ':') {
-            //move from hand to top of the (moveTo-'6')th discard pile
+            players.at(turn)->getDiscardPiles()[moveTo-'6']->add(players.at(turn)->getHand()->remove(moveFrom-'1'));
         }
         else {
-            //move from hand to top of the (moveTo-'a')th build pile
+            buildPiles[moveTo-'a']->add(players.at(turn)->getHand()->remove(moveFrom-'1'));
         }
     }
     if (moveFrom > '5') {
-        //move from top of discard pile to the (moveTo-'a')th build pile
+        buildPiles[moveTo-'a']->add(players.at(turn)->getDiscardPiles()[moveFrom-'6']->remove());
     }
 }
