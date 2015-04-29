@@ -11,6 +11,7 @@
 #include "GameController.h"
 
 void GameController::runGame() {
+	srand(time(NULL));
 	welcome();
 	skipBo = new Game();
 	skipBo->setPlayers();

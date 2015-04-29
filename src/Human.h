@@ -12,11 +12,13 @@
 #define _HUMAN_H
 
 #include "Player.h"
+#include <iostream>
 
 class Human : public Player {
 public:
 	Human(std::string name = "no name");
-	void move();
+	int moveFrom();
+	int moveTo(int);
 };
 
 

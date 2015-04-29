@@ -14,6 +14,7 @@
 #include "Game.h"
 #include <cstdlib>
 #include <iostream>
+#include <ctime>
 
 class GameController {
 private:

@@ -1,5 +1,4 @@
 /**
- * SegFaults
  * Marc Feldman
  * Hugh Han
  * SeungHwan Lee
@@ -11,7 +10,6 @@
 
 #include <iostream>
 #include "Player.h"
-
 
 std::string Player::getName() const {
     return this->name;

@@ -20,6 +20,14 @@ Computer::Computer(std::string name) {
     this->isTurn = false;
 }
 
-void Computer::move() {
-	// TO DO
+int Computer::moveFrom() {
+	return rand() % NUM_OPTIONS;
+}
+
+int Computer::moveTo(int moveFrom) {
+	int i;
+	do {
+		i = rand() % NUM_OPTIONS;
+	} while (i == moveFrom);
+	return i;
 }

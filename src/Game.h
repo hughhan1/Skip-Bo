@@ -29,28 +29,25 @@ private:
     /** Adds a Player to the Game. */
     void addPlayer(Player*);
 
-    /** Allows an individual Player to make a move. */
-    void move(int);
-
     /** 
      * Generates the view of a Player. 
      * @param int the index of the Player who's view will be generated.
      */
     void generateView(std::stringstream*, int);
-
-    /** Getter methods. */
-    DrawPile* getDrawPile() const;
-    BuildPile* getBuildPiles(int i) const;
     
-    
-    
+    /** Setter methods. */
     bool validMove(char, char) const;
     void moveCard(char, char);
     
 public:
     Game();
     Game(FILE* file);
+
+    /** Getter methods. */
+    DrawPile* getDrawPile() const;
+    BuildPile* getBuildPiles(int i) const;
  
+ 	/** Setter methods. */
     void setPlayers();
     void dealCards();
     void play();

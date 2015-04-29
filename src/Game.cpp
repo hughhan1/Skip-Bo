@@ -87,15 +87,15 @@ void Game::dealCards() {
 }
 
 void Game::play() {
+    /*
     int size = this->players.size();
     int turn = 0;
 
-    char ch;
-
-    while (true) {
-    move(turn % size);
-    turn++;
+    while (game is not over) {
+        move(turn % size);
+        turn++;
     }
+    */
 }
 
 void Game::printView(int i) {
@@ -185,39 +185,29 @@ BuildPile* Game::getBuildPiles(int i) const {
     return this->buildPiles[i];
 }
 
-void Game::move(int i) {
-    Player* player = this->players[i];
-    if (Human* h = dynamic_cast<Human*>(player)) {
-        printView(i);
-        cout << "Enter "; 
-    } else {
-
-    }
-}
-
 /** Is the move under consideration valid? */
-bool Game::validMove(char moveFrom, char moveTo) const{
-    if(moveFrom<'0'||moveFrom>'9'){
-        cout<<"That is not a valid pile to move a card from.\n";
+bool Game::validMove (char moveFrom, char moveTo) const {
+    if (moveFrom < '0' || moveFrom > '9') {
+        cout << "That is not a valid pile to move a card from.\n";
         return false;
     }
-    else if(moveFrom=='0'){
-        if(moveTo<'a'||moveTo>'d'){
-	  cout<<"That is not a valid pile to move a card to from your stockpile.\n";
+    else if (moveFrom == '0') {
+        if (moveTo < 'a' || moveTo > 'd') {
+	  cout << "That is not a valid pile to move a card to from your stockpile.\n";
             return false;
         }
         //check if card can be moved (value checking)
     }
-    else if(moveFrom>'0'&&moveFrom<'6'){
-        if(moveTo<'6'||(moveTo>'9'&&moveTo<'a')||moveTo>'d'){
-            cout<<"That is not a valid pile to move a card to from your hand.\n";
+    else if (moveFrom > '0' && moveFrom < '6') {
+        if (moveTo < '6' || (moveTo > '9' && moveTo < 'a') || moveTo > 'd') {
+            cout << "That is not a valid pile to move a card to from your hand.\n";
             return false;
         }
         //check if card can be moved (value checking)
     }
-    else if(moveFrom>'5'&&moveFrom<':'){
-        if(moveTo<'a'||moveTo>'d'){
-            cout<<"That is not a valid pile to move a card to from your discard piles.\n";
+    else if (moveFrom > '5' && moveFrom < ':') {
+        if (moveTo < 'a' || moveTo > 'd') {
+            cout << "That is not a valid pile to move a card to from your discard piles.\n";
             return false;
         }
         //check if card can be moved (value checking)
@@ -226,19 +216,19 @@ bool Game::validMove(char moveFrom, char moveTo) const{
 }
 
 /** Makes the move - only is called is the move is valid */
-void Game::moveCard(char moveFrom, char moveTo){
-    if(moveFrom=='0'){
+void Game::moveCard( char moveFrom, char moveTo) {
+    if (moveFrom == '0') {
         //move from top of stockpile to the (moveTo-'a')th build pile
     }
-    if(moveFrom>'0'&&moveFrom<'6'){
-        if(moveTo>'5'&&moveTo<':'){
+    if (moveFrom > '0' && moveFrom < '6') {
+        if (moveTo > '5' &&moveTo < ':') {
             //move from hand to top of the (moveTo-'6')th discard pile
         }
-        else{
+        else {
             //move from hand to top of the (moveTo-'a')th build pile
         }
     }
-    if(moveFrom>'5'){
+    if (moveFrom > '5') {
         //move from top of discard pile to the (moveTo-'a')th build pile
     }
 }

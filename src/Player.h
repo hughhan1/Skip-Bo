@@ -1,5 +1,4 @@
 /**
- * SegFaults
  * Marc Feldman
  * Hugh Han
  * SeungHwan Lee
@@ -16,6 +15,9 @@
 #include "StockPile.h"
 #include "Hand.h"
 #include <string>
+
+/** This is the number of cards that a player can select from when making a move. */
+#define NUM_OPTIONS 14
 
 class Player {
 protected:
@@ -48,7 +50,8 @@ public:
     
     /** Setter methods. */
     bool setTurn();
-    virtual void move() = 0;
+    virtual int moveFrom() = 0;
+    virtual int moveTo(int) = 0;
 };
 
 #endif

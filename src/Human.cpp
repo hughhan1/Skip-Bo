@@ -12,6 +12,8 @@
 #include "Human.h"
 #include <cassert>
 
+#using std::cin;
+
 Human::Human(std::string name) {
     this->name = name;
     this->hand = new Hand();
@@ -22,22 +24,24 @@ Human::Human(std::string name) {
     this->isTurn = false;
 }
 
-void Human::move() {
+int Human::moveFrom() {
 
 }
 
-
+int Human::moveTo(int moveFrom) {
+    
+}
 
 //TEST FUNCTIONS
 
 void humanTest(){
-  Player * player1 = new Human("human1");
-  assert(player1->getName() == "human1");
+    Player * player1 = new Human("human1");
+    assert(player1->getName() == "human1");
 
-  // const Hand * h = player1->getHand();
-  for(int i = 0; i < 5; i++){
-    //assert(h[i] == nullptr);
-  }
+    // const Hand * h = player1->getHand();
+    for(int i = 0; i < 5; i++) {
+        //assert(h[i] == nullptr);
+    }
   
   
 }
