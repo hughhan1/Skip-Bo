@@ -12,7 +12,7 @@
 #include "Human.h"
 #include <cassert>
 
-#using std::cin;
+using std::cin;
 
 Human::Human(std::string name) {
     this->name = name;

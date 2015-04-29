@@ -12,6 +12,7 @@
 #define _COMPUTER_H
 
 #include "Player.h"
+#include <cstdlib>
 
 class Computer : public Player {
 private:

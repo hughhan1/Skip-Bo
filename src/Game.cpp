@@ -76,14 +76,14 @@ void Game::dealCards() {
     }
     
     
-    //Testing Purpose
+    /**Testing Purpose
     for(int i = 0; i < numPlayers; i++){
       for(int j = 0; j < 5; j++){
 	cout<<"Player "<<i<<" "<<endl;
 	cout<<players[i]->getHand()->getCard(j)->getVal() << endl;
       }
     }
-    cout<<endl;
+    cout<<endl;**/
 }
 
 void Game::play() {
@@ -156,20 +156,22 @@ void  Game::generateView(stringstream *lines, int i) {
 
     lines[9] << "[1] [2] [3] [4] [5]\t[6] [7] [8] [9]\t\t[0]";
 
-    for (int a = 0; a < 5; a++) {
+    for (int i = 0; i < 5; i++) {
         if (player->getHand()->getCard(i) != nullptr) {
-	  lines[10] << player->getHand()->getCard(i)->getVal()<<" ";
+	  lines[10] << player->getHand()->getCard(i)->getVal()<<"   ";
         }
         else {
             lines[10] << "-  ";
         }
     }
+
+    lines[10] <<"    ";
     
     for (int a = 0; a < 4; a++){
-        if (player->getDiscardPiles()[a]->isEmpty()) {
+        if (!player->getDiscardPiles()[a]->isEmpty()) {
 	  lines[10] << player->getDiscardPiles()[a]->top()->getVal()<<" ";
         } else {
-            lines[10] << "-  ";
+            lines[10] << "-   ";
         }
     }
 
