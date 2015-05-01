@@ -224,7 +224,7 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         if (curr->getHand()->getCard(moveFrom-'1')->getVal() == 0){
             return true;
         }
-        if((this->buildPiles[moveTo-'a']->top()->getVal()==0)&&(curr->getCard(moveFrom-'1')->getVal()-1!=(this->buildPiles[moveTo-'a']->getSize()))){
+        if((this->buildPiles[moveTo-'a']->top()->getVal()==0)&&(curr->getHand()->getCard(moveFrom-'1')->getVal()-1!=(this->buildPiles[moveTo-'a']->getSize()))){
             cout << "You cannot put a "<< curr->getStockPile()->top()->getVal() << " on that build pile.\n";
             return false;
         }
