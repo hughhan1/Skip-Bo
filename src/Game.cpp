@@ -58,23 +58,22 @@ void Game::dealCards() {
     int numPlayers = players.size();
     int num;
     
-    //Adding shuffle func
+    /* Shuffles the deck. */
     drawPile->shuffle();
 
-    //prompting stockpile size
-    cout<<"Initial Stock pile size: ";
-    cin>>num;
-    
-    
+    /* Prompts the user for the stock pile size. */
+    cout << "Initial Stock pile size: ";
+    cin >> num;
+        
+    /* Deals the cards from the draw pile to each player. */
     for (int i = 0; i < numPlayers; i++) {
         for (int j = 0; j < 5; j++) {
             players[i]->addCardToHand(drawPile->remove());
         }
-	for(int j = 0; j < num; j++){
-	  players[i]->addCardToStockPile(drawPile->remove());
-	}
-    }
-    
+        for(int j = 0; j < num; j++){
+            players[i]->addCardToStockPile(drawPile->remove());
+        }
+    }   
     
     /**Testing Purpose
     for(int i = 0; i < numPlayers; i++){
@@ -99,13 +98,11 @@ void Game::play() {
 }
 
 void Game::printView(int i) {
-  stringstream lines[11];
-  generateView(lines, i);
-  for (int a = 0; a < 11; a++) {
-    cout << lines[a].str() << endl;
-        
-  }
-    
+    stringstream lines[11];
+    generateView(lines, i);
+    for (int a = 0; a < 11; a++) {
+        cout << lines[a].str() << endl;        
+    }    
 }
 
 /** Private */
@@ -117,14 +114,20 @@ void Game::addPlayer(Player* player){
 void  Game::generateView(stringstream *lines, int i) {
     Player * player = this->players[i];
     int numPlayers = this->players.size();
-  
+    int value;
     
     for (int a = 0; a < numPlayers; a++) {
         if (player != this->players[a]) {
             Player* p = this->players[a];
-            lines[0] << p->getName() << "\t";
-            lines[1] << "(" << p->getStockPile()->getSize() << ")\tDiscard\t";
-            lines[2] << p->getStockPile()->top()->getVal() << "\t";
+            
+            lines[0] << p->getName() << "\t\t\t";
+            lines[1] << "(" << p->getStockPile()->getSize() << ")\tDiscard\t\t";
+
+            value = p->getStockPile()->top()->getVal();
+            if (value < 10) 
+                lines[2] << " ";
+            lines[2] << " " << p->getStockPile()->top()->getVal() << " \t";
+
             for (int b = 0; b < 4; b++) {
                 if (p->getDiscardPiles()[b]->isEmpty()) {
                     lines[2] << "- ";
@@ -140,8 +143,7 @@ void  Game::generateView(stringstream *lines, int i) {
     lines[4] << "Build Piles:\t-\t-\t-\t-";
 
     for (int a = 0; a < 4; a++) {
-        if (this->getBuildPiles(a)->
-            isEmpty()) {
+        if (this->getBuildPiles(a)->isEmpty()) {
             lines[5] << "- ";
         } else {
             lines[5] << this->getBuildPiles(a)->top()->getVal();
@@ -149,29 +151,30 @@ void  Game::generateView(stringstream *lines, int i) {
     }
 
     lines[6] << "";
-
     lines[7] << player->getName();
-
-    lines[8] << "Hand\t\tDiscard Piles\t\tStock Pile";
-
-    lines[9] << "[1] [2] [3] [4] [5]\t[6] [7] [8] [9]\t\t[0]";
+    lines[8] << "Hand\t\t\tDiscard Piles\t\tStock Pile";
+    lines[9] << "[1] [2] [3] [4] [5] \t[6] [7] [8] [9] \t[0]";
 
     for (int i = 0; i < 5; i++) {
         if (player->getHand()->getCard(i) != nullptr) {
-	  lines[10] << player->getHand()->getCard(i)->getVal()<<"   ";
+            int value = player->getHand()->getCard(i)->getVal();
+
+            if (value < 10) 
+                lines[10] << " ";
+            lines[10] << value << "  ";
         }
         else {
-            lines[10] << "-  ";
+            lines[10] << " - ";
         }
     }
 
-    lines[10] <<"    ";
+    lines[10] << "    ";
     
     for (int a = 0; a < 4; a++){
         if (!player->getDiscardPiles()[a]->isEmpty()) {
 	  lines[10] << player->getDiscardPiles()[a]->top()->getVal()<<" ";
         } else {
-            lines[10] << "-   ";
+            lines[10] << " -  ";
         }
     }
 

@@ -1,5 +1,4 @@
 /**
- * SegFaults
  * Marc Feldman
  * Hugh Han
  * SeungHwan Lee

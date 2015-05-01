@@ -1,5 +1,4 @@
 /**
- * SegFaults
  * Marc Feldman
  * Hugh Han
  * SeungHwan Lee
@@ -16,9 +15,7 @@
 #include "Pile.h"
 
 class DrawPile : public Pile {
-
-public:
-	
+public:	
 	DrawPile();
 	bool add(Card * c);
 };

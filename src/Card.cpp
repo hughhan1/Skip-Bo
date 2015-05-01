@@ -24,8 +24,8 @@ int Card::getVal() const {
 }
 
 const Card& Card::operator=(const Card& cpy) {
-  this->val = cpy.val;
-  return *this;
+    this->val = cpy.val;
+    return *this;
 }
 
 bool Card::operator==(const Card& rhs) const {
@@ -45,13 +45,13 @@ bool Card::operator>(const Card& rhs) const {
 }
 
 void CardTest() {
-  Card c1;
-  assert(c1.getVal() == -1);
-  Card c2(1);
-  assert(c2.getVal() == 1);
-  Card c3(1);
-  assert(c2 == c3);
-  assert(c1 < c2);
-  assert(c2 > c1);
-  assert(c1 != c2);
+    Card c1;
+    assert(c1.getVal() == -1);
+    Card c2(1);
+    assert(c2.getVal() == 1);
+    Card c3(1);
+    assert(c2 == c3);
+    assert(c1 < c2);
+    assert(c2 > c1);
+    assert(c1 != c2);
 }

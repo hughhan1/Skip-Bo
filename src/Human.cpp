@@ -8,11 +8,11 @@
  * SkipBo: Human.cpp
  */
 
-
 #include "Human.h"
 #include <cassert>
 
 using std::cin;
+using std::cout;
 
 Human::Human(std::string name) {
     this->name = name;
@@ -25,7 +25,7 @@ Human::Human(std::string name) {
 }
 
 int Human::moveFrom() {
-
+    
 }
 
 int Human::moveTo(int moveFrom) {

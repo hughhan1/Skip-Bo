@@ -20,13 +20,6 @@ int Pile::getSize() const {
   return pile.size();
 }
 
-/* Pure Virtual
-bool Pile::add(Card* c) {
-    this->pile.push_back(c);
-    return true;
-}
-*/
-
 Card * Pile::remove() {
 
     try {
@@ -40,6 +33,8 @@ Card * Pile::remove() {
     } catch(EmptyPileException &e) {
         e.showErrorMessage();
     }
+
+    return nullptr;
 
 }
 

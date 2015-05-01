@@ -20,9 +20,14 @@ bool DiscardPile::add(Card * c) {
 }
 
 Card * DiscardPile::top() const {
-	if (this->isEmpty()) {
-	  //throw new EmptyPileException();
-	} else {
-		return this->pile.back();
-	}
+	try {
+		if (this->isEmpty()) {
+			throw new EmptyPileException();
+		} else {
+			return this->pile.back();
+		}
+	} catch (EmptyPileException & e) {
+     	e.showErrorMessage();
+    }
+    return nullptr;
 }
