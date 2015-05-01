@@ -6,8 +6,8 @@
 
 class InvalidMoveException : public std::exception {
 public:
-	void what() {
-		std::cout << "Invalid move." << std::endl;
+	const char* what() {
+		return "Invalid move.";
 	}
 };
 

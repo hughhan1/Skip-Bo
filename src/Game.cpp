@@ -199,7 +199,7 @@ void Game::promptMove() {
         }
 
     } catch (InvalidMoveException & e) {
-        e.what();
+        cout << e.what() << endl;
         promptMove();
     }
 
