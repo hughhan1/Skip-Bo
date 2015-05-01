@@ -290,7 +290,7 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 
 /** Makes the move - only is called is the move is valid */
 void Game::moveCard( char moveFrom, char moveTo) {
-3
+
     Player * curr = this->players[turn%players.size()];
 
     if (moveFrom == '0') {
