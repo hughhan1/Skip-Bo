@@ -87,14 +87,15 @@ void Game::dealCards() {
 }
 
 void Game::play() {
-  /*
-    int size = this->players.size();
 
-    while (true) {
-        move(turn % size);
+    int numPlayers = this->players.size();
+
+    while (!gameOver()) {
+        printView(this->turn % numPlayers);
+        promptMove();
         turn++;
     }
-  */
+
 }
 
 void Game::printView(int i) {
@@ -208,7 +209,17 @@ void Game::promptMove() {
 /** Is the move under consideration valid? */
 bool Game::validMove (char moveFrom, char moveTo) const {
 
-    Player * curr = this->players[turn%players.size()];
+    Player * curr = this->players[turn % players.size()];
+    Hand * hand = curr->getHand();
+    StockPile * stock = curr->getStockPile();
+    
+    DiscardPile ** discards = nullptr;
+    BuildPile ** builds = nullptr;
+
+    for (int i = 0; i < 4; i++) {
+        discards[i] = curr->getDiscardPiles()[i];
+        builds[i] = this->buildPiles[i];
+    }
 
     if (moveFrom < '0' || moveFrom > '9') {
         cout << "That is not a valid pile to move a card from." << endl;
@@ -219,24 +230,25 @@ bool Game::validMove (char moveFrom, char moveTo) const {
             cout << "That is not a valid pile to move a card to from your stockpile." << endl;
             return false;
         }
-        if (curr->getStockPile()->top()->getVal() == 0){
+        if (stock->top()->getVal() == 0){
             return true;
         }
-        if((this->buildPiles[moveTo-'a']->top()->getVal()==0)&&(curr->getStockPile()->top()->getVal()-1!=(this->buildPiles[moveTo-'a']->getSize()))){
-            cout << "You cannot put a "<< curr->getStockPile()->top()->getVal() << " on that build pile." << endl;
+        if ((builds[moveTo-'a']->top()->getVal() == 0) 
+                && (stock->top()->getVal()-1!=(builds[moveTo-'a']->getSize()))){
+            cout << "You cannot put a "<< stock->top()->getVal() << " on that build pile." << endl;
             return false;
         }
-        if((curr->getStockPile()->top()->getVal()!=1)&&(this->buildPiles[moveTo-'a']->top()==nullptr)){
-            cout << "You cannot put a "<< curr->getStockPile()->top()->getVal() << " on an empty build pile." << endl;
+        if((curr->getStockPile()->top()->getVal()!=1) && (builds[moveTo-'a']->top()==nullptr)){
+            cout << "You cannot put a "<< stock->top()->getVal() << " on an empty build pile." << endl;
             return false;
         }
-        if (!(curr->getStockPile()->top()->getVal()-1 == this->buildPiles[moveTo-'a']->top()->getVal())) {
-            cout << "You cannot put a "<< curr->getStockPile()->top()->getVal() << " on that build pile." << endl;
+        if (!(stock->top()->getVal()-1 == builds[moveTo-'a']->top()->getVal())) {
+            cout << "You cannot put a "<< stock->top()->getVal() << " on that build pile." << endl;
             return false;
         }
     }
     else if (moveFrom > '0' && moveFrom < '6') {
-        if(curr->getHand()->getCard(moveFrom-'1')==nullptr){
+        if (hand->getCard(moveFrom-'1') == nullptr) {
             cout<< "There is no card at the indicated location." << endl;
             return false;
         }
@@ -244,19 +256,21 @@ bool Game::validMove (char moveFrom, char moveTo) const {
             cout << "That is not a valid pile to move a card to from your hand." << endl;
             return false;
         }
-        if (curr->getHand()->getCard(moveFrom-'1')->getVal() == 0){
+        if (hand->getCard(moveFrom-'1')->getVal() == 0){
             return true;
         }
-        if((this->buildPiles[moveTo-'a']->top()->getVal()==0)&&(curr->getHand()->getCard(moveFrom-'1')->getVal()-1!=(this->buildPiles[moveTo-'a']->getSize()))){
-            cout << "You cannot put a "<< curr->getStockPile()->top()->getVal() << " on that build pile." << endl;
+        if (builds[moveTo-'a']->top()->getVal() == 0
+                && hand->getCard(moveFrom-'1')->getVal()-1 != builds[moveTo-'a']->getSize()) {
+            cout << "You cannot put a "<< stock->top()->getVal() << " on that build pile." << endl;
             return false;
         }
-        if((curr->getHand()->getCard(moveFrom-'1')->getVal()!=1)&&(this->buildPiles[moveTo-'a']->top()==nullptr)){
+        if (hand->getCard(moveFrom-'1')->getVal() != 1 
+                && builds[moveTo-'a']->top() == nullptr) {
             cout << "You cannot put a "<< curr->getHand()->getCard(moveFrom-'1')->getVal() << " on an empty build pile." << endl;
             return false;
         }
-        if (!(curr->getHand()->getCard(moveFrom-'1')->getVal()-1 == this->buildPiles[moveTo-'a']->top()->getVal())){
-            cout<<"You cannot put a "<< curr->getHand()->getCard(moveFrom-'1')->getVal() << " on that build pile." << endl;
+        if (hand->getCard(moveFrom-'1')->getVal()-1 != builds[moveTo-'a']->top()->getVal()) {
+            cout << "You cannot put a "<< hand->getCard(moveFrom-'1')->getVal() << " on that build pile." << endl;
             return false;
         }
     }
@@ -265,23 +279,25 @@ bool Game::validMove (char moveFrom, char moveTo) const {
             cout << "That is not a valid pile to move a card to from your discard piles." << endl;
             return false;
         }
-        if(curr->getDiscardPiles()[moveFrom-'6']->top()==nullptr){
+        if (discards[moveFrom-'6']->top() == nullptr){
             cout << "There is no card at the indicated location." << endl;
             return false;
         }
-        if (curr->getDiscardPiles()[moveFrom-'6']->top()->getVal() == 0){
+        if (discards[moveFrom-'6']->top()->getVal() == 0){
             return true;
         }
-        if((this->buildPiles[moveTo-'a']->top()->getVal()==0)&&(curr->getDiscardPiles()[moveFrom-'6']->top()->getVal()-1!=(this->buildPiles[moveTo-'a']->getSize()))){
-            cout << "You cannot put a "<< curr->getStockPile()->top()->getVal() << " on that build pile.\n" << endl;
+        if (builds[moveTo-'a']->top()->getVal() == 0
+                && discards[moveFrom-'6']->top()->getVal()-1 != this->buildPiles[moveTo-'a']->getSize()) {
+            cout << "You cannot put a "<< stock->top()->getVal() << " on that build pile.\n" << endl;
             return false;
         }
-        if((curr->getDiscardPiles()[moveFrom-'6']->top()->getVal()!=1)&&(this->buildPiles[moveTo-'a']->top()==nullptr)){
-            cout << "You cannot put a " << curr->getDiscardPiles()[moveFrom-'6']->top()->getVal() << " on an empty build pile." << endl;
+        if ((discards[moveFrom-'6']->top()->getVal() != 1) 
+                && (this->buildPiles[moveTo-'a']->top() == nullptr)) {
+            cout << "You cannot put a " << discards[moveFrom-'6']->top()->getVal() << " on an empty build pile." << endl;
             return false;
         }
-        if (curr->getDiscardPiles()[moveFrom-'6']->top()->getVal()-1 == this->buildPiles[moveTo-'a']->top()->getVal()){
-            cout << "You cannot put a " << curr->getDiscardPiles()[moveFrom-'6']->top()->getVal() << " on that build pile." << endl;
+        if (discards[moveFrom-'6']->top()->getVal()-1 == this->buildPiles[moveTo-'a']->top()->getVal()){
+            cout << "You cannot put a " << discards[moveFrom-'6']->top()->getVal() << " on that build pile." << endl;
             return false;
         }
     }
@@ -312,4 +328,12 @@ void Game::moveCard( char moveFrom, char moveTo) {
     if (moveFrom > '5') {
         buildPiles[moveTo-'a']->add(curr->getDiscardPiles()[moveFrom-'6']->remove());
     }
+}
+
+bool Game::gameOver() {
+    for (unsigned long i = 0; i < this->players.size(); i++) {
+        if (this->players[i]->getStockPile()->isEmpty())
+            return true;
+    }
+    return false;
 }

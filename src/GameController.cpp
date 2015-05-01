@@ -16,7 +16,7 @@ void GameController::runGame() {
 	skipBo = new Game();
 	skipBo->setPlayers();
 	skipBo->dealCards();
-	skipBo->printView(0);
+	skipBo->play();
 }
 
 void GameController::loadGame() {

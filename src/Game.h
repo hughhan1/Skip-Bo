@@ -24,7 +24,7 @@
 
 class Game {
 private:
-    std::vector<Player*> players; // needs to be a pointer for dynamic binding
+    std::vector<Player*> players;
     DrawPile* drawPile;
     BuildPile* buildPiles[4];
     int turn;
@@ -41,6 +41,12 @@ private:
     /** Setter methods. */
     bool validMove(char, char) const;
     void moveCard(char, char);
+
+    /**
+     * Returns whether the game is over.
+     * @return whether the game is over
+     */
+    bool gameOver();
     
 public:
     Game();
