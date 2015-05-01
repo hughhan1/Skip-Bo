@@ -25,6 +25,7 @@ Game::Game() {
     for (int i = 0; i < 4; i++) {
         this->buildPiles[i] = new BuildPile();
     }
+    turn = 0;
 }
 
 Game::Game(FILE* file) {
@@ -86,15 +87,14 @@ void Game::dealCards() {
 }
 
 void Game::play() {
-    /*
+  /*
     int size = this->players.size();
-    int turn = 0;
 
-    while (game is not over) {
+    while (true) {
         move(turn % size);
         turn++;
     }
-    */
+  */
 }
 
 void Game::printView(int i) {
