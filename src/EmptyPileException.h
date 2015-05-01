@@ -2,13 +2,13 @@
 #define __EMPTY_PILE_EXCEPTION_H__
 
 #include <iostream>
+#include <exception>
 
-// changed our exception class just to make things simpler
-class EmptyPileException {
- public:
-  void showErrorMessage() {
-    std::cout<< "Pile Empty Error"<<std::endl;
-   };
+class EmptyPileException : public std::exception {
+public:
+	void showErrorMessage() {
+    	std::cout << "Pile Empty Error" <<std::endl;
+   	};
 };
 
 #endif

@@ -28,16 +28,14 @@ const StockPile* Player::getStockPile() const {
 }
 
 bool Player::addCardToHand(Card * card) {
-  if(hand->add(card))
-    return true;
-  else
+    if(hand->add(card))
+        return true;
     return false;
 }
 
 bool Player::addCardToStockPile(Card * card){
-  if(stockPile->add(card))
-    return true;
-  else
+    if(stockPile->add(card))
+        return true;
     return false;
 }
 

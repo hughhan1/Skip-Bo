@@ -28,24 +28,18 @@ bool Pile::add(Card* c) {
 */
 
 Card * Pile::remove() {
-  // Adding try catch here temporarily.
-  try{
-    if (isEmpty()) {
-      //throw EmptyPileException();
-      throw -1;
-    } else {
-        Card * c = pile.back();
-        pile.pop_back();
-        return c;
+
+    try {
+        if (isEmpty()) {
+            throw new EmptyPileException();
+        } else {
+            Card * c = pile.back();
+            pile.pop_back();
+            return c;
+        }
+    } catch(EmptyPileException &e) {
+        e.showErrorMessage();
     }
-  }
-  /*catch(EmptyPileException &excpt){
-    excpt.showErrorMessage();
-  }
-  */
-  catch(int excpt){
-    std::cout<<"Pile Empty Error"<<std::endl;
-  }
 
 }
 

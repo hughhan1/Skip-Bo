@@ -9,18 +9,16 @@
 using std::cout; 
 using std::endl; 
 
-
-
-
 int main() {
 
-  cout << "Testing." << endl;
-  CardTest();
-  cout << "Card Tests passed." << endl;
-  HandTest();
-  cout << "Hand Tests passed." << endl;
-  DrawPileTest();
-  cout << "Draw Pile Tests passed." << endl;
-  humanTest();
-  return 0;
+	cout << "Testing." << endl;
+	CardTest();
+	cout << "Card Tests passed." << endl;
+	HandTest();
+	cout << "Hand Tests passed." << endl;
+	DrawPileTest();
+	cout << "Draw Pile Tests passed." << endl;
+	humanTest();
+
+	return 0;
 }
