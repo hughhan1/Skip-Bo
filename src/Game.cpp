@@ -208,7 +208,7 @@ void Game::promptMove() {
 /** Is the move under consideration valid? */
 bool Game::validMove (char moveFrom, char moveTo) const {
 
-    Player * curr = this->players[turn];
+    Player * curr = this->players[turn%players.size()];
 
     if (moveFrom < '0' || moveFrom > '9') {
         cout << "That is not a valid pile to move a card from." << endl;
@@ -290,8 +290,8 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 
 /** Makes the move - only is called is the move is valid */
 void Game::moveCard( char moveFrom, char moveTo) {
-
-    Player * curr = this->players[turn];
+3
+    Player * curr = this->players[turn%players.size()];
 
     if (moveFrom == '0') {
         buildPiles[moveTo-'a']->add(curr->removeFromStockPile());
