@@ -52,8 +52,8 @@ public:
     
     /** Setter methods. */
     bool setTurn();
-    virtual int moveFrom() = 0;
-    virtual int moveTo(int) = 0;
+    virtual char moveFrom() = 0;
+    virtual char moveTo() = 0;
 };
 
 #endif

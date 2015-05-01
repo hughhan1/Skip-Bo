@@ -10,6 +10,9 @@
 
 #include "Computer.h"
 
+using std::cout;
+using std::endl;
+
 Computer::Computer(std::string name) {
 	this->name = name;
     this->hand = new Hand();
@@ -20,14 +23,25 @@ Computer::Computer(std::string name) {
     this->isTurn = false;
 }
 
-int Computer::moveFrom() {
-	return rand() % NUM_OPTIONS;
+char Computer::moveFrom() {
+	char ch;
+    cout << "Enter a number representing a card you would like to move." << endl;
+	ch = rand() % NUM_OPTIONS;
+	cout << ch << endl;
+	return ch;
 }
 
-int Computer::moveTo(int moveFrom) {
-	int i;
-	do {
-		i = rand() % NUM_OPTIONS;
-	} while (i == moveFrom);
-	return i;
+char Computer::moveTo() {
+	int ch;
+    cout << "Enter a number representing a pile to which you would like to move that card." << endl;
+    ch = rand() % NUM_OPTIONS;
+    switch (ch) {
+    	case 10: ch = 'a';
+    	case 11: ch = 'b';
+    	case 12: ch = 'c';
+    	case 13: ch = 'd';
+    	default: break;
+    }
+    cout << ch << endl;
+    return ch;
 }

@@ -20,8 +20,8 @@ private:
 
 public:
 	Computer(std::string = "no name");
-	int moveFrom();
-	int moveTo(int);
+	char moveFrom();
+	char moveTo();
 };
 
 #endif

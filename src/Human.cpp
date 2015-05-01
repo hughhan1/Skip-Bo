@@ -25,20 +25,18 @@ Human::Human(std::string name) {
     this->isTurn = false;
 }
 
-int Human::moveFrom() {
-    
+char Human::moveFrom() {
+    int ch;
+    cout << "Enter a number representing a card you would like to move." << endl;
+    cin >> ch;
+    return ch;
 }
 
-int Human::moveTo(int moveFrom) {
-    int i;
-    cout << "Enter a pile you would like to move that card to." << endl;
-    cin >> i;
-    while (i == moveFrom || i < 0 || i > 9) {
-        cout << "That move is invalid." << endl;
-        cout << "Enter a pile you would like to move that card to." << endl;
-        cin >> i;
-    }
-    return i;
+char Human::moveTo() {
+    char ch;
+    cout << "Enter a number representing a pile to which you would like to move that card." << endl;
+    cin >> ch;
+    return ch;
 }
 
 //TEST FUNCTIONS

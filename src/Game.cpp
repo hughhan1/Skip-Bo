@@ -143,10 +143,10 @@ void  Game::generateView(stringstream *lines, int i) {
     lines[4] << "Build Piles:\t-\t-\t-\t-";
 
     for (int a = 0; a < 4; a++) {
-        if (this->getBuildPiles(a)->isEmpty()) {
+        if (this->buildPiles[a]->isEmpty()) {
             lines[5] << "- ";
         } else {
-            lines[5] << this->getBuildPiles(a)->top()->getVal();
+            lines[5] << this->buildPiles[a]->top()->getVal();
         }
     }
 
@@ -182,14 +182,6 @@ void  Game::generateView(stringstream *lines, int i) {
     
 }
 
-DrawPile* Game::getDrawPile() const {
-    return this->drawPile;
-}
-
-BuildPile* Game::getBuildPiles(int i) const {
-    return this->buildPiles[i];
-}
-
 /** Is the move under consideration valid? */
 bool Game::validMove (char moveFrom, char moveTo) const {
 
@@ -204,10 +196,10 @@ bool Game::validMove (char moveFrom, char moveTo) const {
             cout << "That is not a valid pile to move a card to from your stockpile." << endl;
             return false;
         }
-        if (curr->getStockPile()->top()->getVal()==0){
+        if (curr->getStockPile()->top()->getVal() == 0){
             return true;
         }
-        if (!(curr->getStockPile()->top()->getVal()-1==buildPiles[moveTo-'a']->top()->getVal())){
+        if (!(curr->getStockPile()->top()->getVal()-1 == this->buildPiles[moveTo-'a']->top()->getVal())) {
             cout << "You cannot put a "<< curr->getStockPile()->top()->getVal()<<" on that build pile." << endl;
             return false;
         }
@@ -220,7 +212,7 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         if (curr->getHand()->getCard(moveFrom-'1')->getVal()==0){
             return true;
         }
-        if (!(curr->getHand()->getCard(moveFrom-'1')->getVal()-1==buildPiles[moveTo-'a']->top()->getVal())){
+        if (!(curr->getHand()->getCard(moveFrom-'1')->getVal()-1 == this->buildPiles[moveTo-'a']->top()->getVal())){
             cout<<"You cannot put a "<< curr->getHand()->getCard(moveFrom-'1')->getVal() << " on that build pile." << endl;
             return false;
         }

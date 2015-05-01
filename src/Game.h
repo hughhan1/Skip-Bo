@@ -42,10 +42,6 @@ private:
 public:
     Game();
     Game(FILE* file);
-
-    /** Getter methods. */
-    DrawPile* getDrawPile() const;
-    BuildPile* getBuildPiles(int i) const;
  
  	/** Setter methods. */
     void setPlayers();

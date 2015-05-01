@@ -17,8 +17,8 @@
 class Human : public Player {
 public:
 	Human(std::string name = "no name");
-	int moveFrom();
-	int moveTo(int);
+	char moveFrom();
+	char moveTo();
 };
 
 
