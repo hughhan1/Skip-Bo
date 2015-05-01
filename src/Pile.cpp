@@ -31,7 +31,7 @@ Card * Pile::remove() throw (EmptyPileException) {
             return c;
         }
     } catch(EmptyPileException &e) {
-        e.what();
+        std::cout << e.what() << std::endl;
     }
 
     return nullptr;

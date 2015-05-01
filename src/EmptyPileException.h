@@ -6,8 +6,8 @@
 
 class EmptyPileException : public std::exception {
 public:
-	void what() {
-		std::cout << "Empy Pile Exception." << std::endl;
+	const char* what() {
+		return "Empy Pile Exception.";
 	}
 };
 

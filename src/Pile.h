@@ -16,6 +16,7 @@
 #include "EmptyPileException.h"
 #include <deque>
 #include <algorithm>
+#include <iostream>
 
 class Pile {
 protected:
