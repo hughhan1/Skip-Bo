@@ -20,7 +20,7 @@ int Pile::getSize() const {
   return pile.size();
 }
 
-Card * Pile::remove() {
+Card * Pile::remove() throw (EmptyPileException) {
 
     try {
         if (isEmpty()) {
@@ -31,7 +31,7 @@ Card * Pile::remove() {
             return c;
         }
     } catch(EmptyPileException &e) {
-        e.showErrorMessage();
+        e.what();
     }
 
     return nullptr;

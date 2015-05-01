@@ -20,7 +20,7 @@ public:
 	DiscardPile();
 
 	bool add(Card *);
-	Card * top() const;
+	Card * top() const throw (EmptyPileException);
 
 };
 

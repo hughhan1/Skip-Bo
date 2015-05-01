@@ -19,7 +19,7 @@ public:
 	BuildPile();
 	
 	bool add(Card * c);
-	Card * top() const;
+	Card * top() const throw (EmptyPileException);
 	void shuffle();
 };
 

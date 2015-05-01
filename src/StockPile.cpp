@@ -27,7 +27,7 @@ Card * StockPile::top() const {
 			return this->pile.back();
 		}
 	} catch(EmptyPileException &e) {
-     	e.showErrorMessage();
+     	e.what();
     }
     return nullptr;
 }

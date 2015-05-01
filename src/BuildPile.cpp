@@ -19,7 +19,7 @@ bool BuildPile::add(Card * c) {
 	return true;
 }
 
-Card * BuildPile::top() const {
+Card * BuildPile::top() const throw (EmptyPileException) {
 	try {
 		if (this->isEmpty()) {
 			throw new EmptyPileException();
@@ -27,7 +27,7 @@ Card * BuildPile::top() const {
 			return this->pile.back();
 		}
 	} catch (EmptyPileException & e) {
-     	e.showErrorMessage();
+     	e.what();
     }
     return nullptr;
 }

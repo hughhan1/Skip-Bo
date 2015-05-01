@@ -26,7 +26,7 @@ public:
 	bool isEmpty() const;
 	int getSize() const;
 	virtual bool add(Card * cPtr) = 0; 
-	Card* remove();
+	Card* remove() throw (EmptyPileException);
 	void shuffle();
 };
 

@@ -6,9 +6,9 @@
 
 class EmptyPileException : public std::exception {
 public:
-	void showErrorMessage() {
-    	std::cout << "Pile Empty Error" <<std::endl;
-   	};
+	void what() {
+		std::cout << "Empy Pile Exception." << std::endl;
+	}
 };
 
 #endif
