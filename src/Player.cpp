@@ -44,7 +44,7 @@ bool Player::setTurn() {
     return this->isTurn;
 }
 
-Card * Player::removeCardFromHand(int index){
+Card * Player::removeCardFromHand(int index) {
     return this->hand->remove(index);
 }
 

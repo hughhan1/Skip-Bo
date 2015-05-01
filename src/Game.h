@@ -18,6 +18,7 @@
 #include "StockPile.h"
 #include "DiscardPile.h"
 #include "BuildPile.h"
+#include "InvalidMoveException.h"
 #include <vector>
 #include <sstream>
 
@@ -49,6 +50,8 @@ public:
     void setPlayers();
     void dealCards();
     void play();
+
+    void promptMove();
   
     /** 
      * Prints the view of a Player. 

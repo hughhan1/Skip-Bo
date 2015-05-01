@@ -182,6 +182,29 @@ void  Game::generateView(stringstream *lines, int i) {
     
 }
 
+void Game::promptMove() {
+    Player * player = players[this->turn];
+
+    char moveFrom;
+    char moveTo;
+
+    try {
+        moveFrom = player->moveFrom();
+        moveTo = player->moveTo();
+
+        if (!validMove(moveFrom, moveTo)) {
+            throw new InvalidMoveException();
+        } else {
+            moveCard(moveFrom, moveTo);
+        }
+
+    } catch (InvalidMoveException & e) {
+        e.what();
+        promptMove();
+    }
+
+}
+
 /** Is the move under consideration valid? */
 bool Game::validMove (char moveFrom, char moveTo) const {
 
