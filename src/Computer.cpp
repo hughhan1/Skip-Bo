@@ -26,7 +26,7 @@ Computer::Computer(std::string name) {
 char Computer::moveFrom() {
 	char ch;
     cout << "Enter a number representing a card you would like to move." << endl;
-	ch = rand() % NUM_OPTIONS;
+	ch = rand() % (NUM_OPTIONS - 4);
 	cout << ch << endl;
 	return ch;
 }
