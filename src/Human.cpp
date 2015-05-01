@@ -13,6 +13,7 @@
 
 using std::cin;
 using std::cout;
+using std::endl;
 
 Human::Human(std::string name) {
     this->name = name;
@@ -29,7 +30,15 @@ int Human::moveFrom() {
 }
 
 int Human::moveTo(int moveFrom) {
-    
+    int i;
+    cout << "Enter a pile you would like to move that card to." << endl;
+    cin >> i;
+    while (i == moveFrom || i < 0 || i > 9) {
+        cout << "That move is invalid." << endl;
+        cout << "Enter a pile you would like to move that card to." << endl;
+        cin >> i;
+    }
+    return i;
 }
 
 //TEST FUNCTIONS
