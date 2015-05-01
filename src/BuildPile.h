@@ -15,12 +15,13 @@
 #include <algorithm>
 
 class BuildPile : public Pile {
-public:
-	BuildPile();
-	
-	bool add(Card * c);
-	Card * top() const throw (EmptyPileException);
-	void shuffle();
+ public:
+  BuildPile();
+  
+  bool add(Card * c);
+  Card * top() const throw (EmptyPileException);
 };
+
+void BuildPileTest();
 
 #endif

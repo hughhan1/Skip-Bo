@@ -15,11 +15,13 @@
 #include "Pile.h"
 
 class StockPile : public Pile {
-public:
-	StockPile();
-	
-	bool add(Card* c);
-	Card * top() const;
+ public:
+  StockPile();
+  
+  bool add(Card* c);
+  Card * top() const;
 };
+
+void StockPileTest();
 
 #endif

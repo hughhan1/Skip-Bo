@@ -29,13 +29,11 @@ DrawPile::DrawPile() {
     for (int i = 0; i < 162; i++) {
         this->pile.push_back(card[i]);
     }
-    
-    //this->size = 162; unnecessary as deque is a container that can already keep track of its size. So I also deleted the size var from Pile.h
+   
 }
 
 bool DrawPile::add(Card * c) {
 	pile.push_front(c);
-	//this->size++; Also unncessary.
 	return true;
 }
 
@@ -43,6 +41,7 @@ void DrawPileTest() {
   DrawPile test;
   Card* c;
   assert(test.getSize() == 162);
+  assert(!test.isEmpty());
   
   for (int i = 0; i < 18; i++) {
     assert(test.getSize() + i == 162);
@@ -58,15 +57,18 @@ void DrawPileTest() {
     }
   }
 
+  assert(test.isEmpty());
+
   c = new Card(11);
   Card* d = new Card(9);
   assert(test.add(c));
   assert(test.getSize() == 1);
+  assert(!test.isEmpty());
   assert(test.add(d));
   assert(test.getSize() == 2);
   assert(test.remove()->getVal() == 11);
   assert(test.getSize() == 1);
   assert(test.remove()->getVal() == 9);
   assert(test.getSize() == 0);
-
+  assert(test.isEmpty());
 }
