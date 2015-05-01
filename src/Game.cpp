@@ -141,13 +141,18 @@ void  Game::generateView(stringstream *lines, int i) {
     }
     
     lines[3] << "";
-    lines[4] << "Build Piles:\t-\t-\t-\t-";
+    lines[4] << "Build Piles:\t[a]\t[b]\t[c]\t[d]";
 
     for (int a = 0; a < 4; a++) {
         if (this->buildPiles[a]->isEmpty()) {
             lines[5] << "- ";
         } else {
-            lines[5] << this->buildPiles[a]->top()->getVal();
+            if(this->buildPiles[a]->top()->getVal()==0){
+                lines[5] << this->buildPiles[a]->getSize();
+            }
+            else{
+                lines[5] << this->buildPiles[a]->top()->getVal();
+            }
         }
     }
 
@@ -173,8 +178,9 @@ void  Game::generateView(stringstream *lines, int i) {
     
     for (int a = 0; a < 4; a++){
         if (!player->getDiscardPiles()[a]->isEmpty()) {
-	  lines[10] << player->getDiscardPiles()[a]->top()->getVal()<<" ";
-        } else {
+            lines[10] << player->getDiscardPiles()[a]->top()->getVal()<<" ";
+        }
+        else {
             lines[10] << " -  ";
         }
     }
