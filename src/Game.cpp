@@ -199,6 +199,10 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         if (curr->getStockPile()->top()->getVal() == 0){
             return true;
         }
+        if((this->buildPiles[moveTo-'a']->top()->getVal()==0)&&(curr->getStockPile()->top()->getVal()-1!=(this->buildPiles[moveTo-'a']->getSize()))){
+            cout << "You cannot put a "<< curr->getStockPile()->top()->getVal() << " on that build pile.\n";
+            return false;
+        }
         if((curr->getStockPile()->top()->getVal()!=1)&&(this->buildPiles[moveTo-'a']->top()==nullptr)){
             cout << "You cannot put a "<< curr->getStockPile()->top()->getVal() << " on an empty build pile.\n";
             return false;
@@ -220,6 +224,10 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         if (curr->getHand()->getCard(moveFrom-'1')->getVal() == 0){
             return true;
         }
+        if((this->buildPiles[moveTo-'a']->top()->getVal()==0)&&(curr->getCard(moveFrom-'1')->getVal()-1!=(this->buildPiles[moveTo-'a']->getSize()))){
+            cout << "You cannot put a "<< curr->getStockPile()->top()->getVal() << " on that build pile.\n";
+            return false;
+        }
         if((curr->getHand()->getCard(moveFrom-'1')->getVal()!=1)&&(this->buildPiles[moveTo-'a']->top()==nullptr)){
             cout << "You cannot put a "<< curr->getHand()->getCard(moveFrom-'1')->getVal() << " on an empty build pile.\n";
             return false;
@@ -240,6 +248,10 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         }
         if (curr->getDiscardPiles()[moveFrom-'6']->top()->getVal() == 0){
             return true;
+        }
+        if((this->buildPiles[moveTo-'a']->top()->getVal()==0)&&(curr->getDiscardPiles()[moveFrom-'6']->top()->getVal()-1!=(this->buildPiles[moveTo-'a']->getSize()))){
+            cout << "You cannot put a "<< curr->getStockPile()->top()->getVal() << " on that build pile.\n";
+            return false;
         }
         if((curr->getDiscardPiles()[moveFrom-'6']->top()->getVal()!=1)&&(this->buildPiles[moveTo-'a']->top()==nullptr)){
             cout << "You cannot put a " << curr->getDiscardPiles()[moveFrom-'6']->top()->getVal() << " on an empty build pile.\n";
