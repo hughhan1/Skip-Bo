@@ -15,6 +15,8 @@
 #include "Human.h"
 #include "Computer.h"
 #include "DrawPile.h"
+#include "StockPile.h"
+#include "DiscardPile.h"
 #include "BuildPile.h"
 #include <vector>
 #include <sstream>
