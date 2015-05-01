@@ -215,13 +215,14 @@ void Game::promptMove() {
 /** Is the move under consideration valid? */
 bool Game::validMove (char moveFrom, char moveTo) const {
 
+    /* Declaring/Initializing local variables for more legible code. */    
     Player * curr = this->players[turn % players.size()];
     Hand * hand = curr->getHand();
     StockPile * stock = curr->getStockPile();
-
     DiscardPile ** discards = nullptr;
     BuildPile ** builds = nullptr;
 
+    /* Initializing some local variables. */
     for (int i = 0; i < 4; i++) {
         discards[i] = curr->getDiscardPiles()[i];
         builds[i] = this->buildPiles[i];
@@ -341,7 +342,7 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 /** Makes the move - only is called is the move is valid */
 void Game::moveCard( char moveFrom, char moveTo) {
 
-    Player * curr = this->players[turn%players.size()];
+    Player * curr = this->players[turn % players.size()];
 
     if (moveFrom == '0') {
         buildPiles[moveTo-'a']->add(curr->removeFromStockPile());
