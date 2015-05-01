@@ -41,9 +41,9 @@ public:
 
     /** Getter methods. */
     std::string getName() const;
-    const Hand* getHand() const;
+    Hand* getHand() const;
     DiscardPile** getDiscardPiles();
-    const StockPile* getStockPile() const;
+    StockPile* getStockPile() const;
 
     bool addCardToHand(Card * card);
     bool addCardToStockPile(Card * card);

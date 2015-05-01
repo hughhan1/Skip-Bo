@@ -15,7 +15,7 @@ std::string Player::getName() const {
     return this->name;
 }
 
-const Hand* Player::getHand() const {
+Hand* Player::getHand() const {
     return this->hand;
 }
 
@@ -23,7 +23,7 @@ DiscardPile** Player::getDiscardPiles() {
 	return this->discardPiles;
 }
 
-const StockPile* Player::getStockPile() const {
+StockPile* Player::getStockPile() const {
     return this->stockPile;
 }
 
