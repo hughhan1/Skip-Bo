@@ -15,6 +15,9 @@
 #include <iostream>
 
 class Human : public Player {
+
+  friend class TestMain;
+
 public:
 	Human(std::string name = "no name");
 	char moveFrom();
