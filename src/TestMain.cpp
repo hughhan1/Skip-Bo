@@ -226,7 +226,7 @@ public:
     assert(!test.validMove('0', '2'));
     assert(!test.validMove('0', '7'));
 
-    //assert(test.validMove('1', 'a')); // Hand to new build pile
+    assert(test.validMove('1', 'a')); // Hand to new build pile
     test.moveCard('1', 'a');
     assert(test.buildPiles[0]->top()->getVal() == 0);
     assert(test.buildPiles[0]->getSize() == 1);
