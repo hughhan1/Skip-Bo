@@ -26,11 +26,14 @@ using std::endl;
 class TestMain {
 public:
 
+  // Testing Card (testing getVal(), and the overloaded operators)
   static void cardTest() {
     Card c1;
     assert(c1.getVal() == -1);
+    
     Card c2(1);
     assert(c2.getVal() == 1);
+    
     Card c3(1);
     assert(c2 == c3);
     assert(c1 < c2);
@@ -38,45 +41,64 @@ public:
     assert(c1 != c2);
   }
 
+  // Testing Hand
   static void handTest() {
     Hand test;
+
+    // Should be empty at start
     assert(test.isEmpty());
+    
+    // Testing add(), isEmpty()
     Card* c = new Card(1);
     assert(test.add(c));
     assert(!test.isEmpty());
     assert(c == test.getCard(0));
+    
     Card c1(2);
     assert(test.add(&c1));
+    
     Card c2(3);
     assert(test.add(&c2));
+    
     Card c3(4);
     assert(test.add(&c3));
+    
     Card c4(5);
     assert(test.add(&c4));
+    
+    // Can't add a 6th card to the hand
     Card c5(6);
     assert(!test.add(&c5));
+    
     assert(&c4 == test.getCard(4));
+    
+    // Testing remove()
     assert(c == test.remove(0));
     assert(&c1 == test.remove(1));
     assert(&c2 == test.remove(2));
     assert(&c3 == test.remove(3));
     assert(&c4 == test.remove(4));
+    
     assert(test.getCard(0) == nullptr);
   }
 
+  // Testing drawPile
   static void drawPileTest() {
     DrawPile test;
     Card* c;
+    
+    // Testing constructor, getSize(), isEmpty()
     assert(test.getSize() == 162);
     assert(!test.isEmpty());
 
+    // Removing all skip bo cards (testing remove())
     for (int i = 0; i < 18; i++) {
       assert(test.getSize() + i == 162);
       c = test.remove();
       assert (c->getVal() == 0);
     }
 
-
+    // Removing the rest of the cards (testing remove())
     for (int i = 0; i < 12; i++) {
       for (int j = 0; j < 12; j++) {
 	c = test.remove();
@@ -86,6 +108,7 @@ public:
 
     assert(test.isEmpty());
 
+    // Testing add()
     c = new Card(11);
     Card* d = new Card(9);
     assert(test.add(c));
@@ -100,13 +123,16 @@ public:
     assert(test.isEmpty());
   }
 
+  // Testing stockPile
   static void stockPileTest() {
     StockPile test;
     Card* c;
 
+    // Testing constructor, getSize(), isEmpty()
     assert(test.getSize() == 0);
     assert(test.isEmpty());
 
+    // Testing add(...), getSize(), isEmpty(), and top()
     Card c0(1);
     assert(test.add(&c0));
     assert(test.top()->getVal() == c0.getVal());
@@ -125,6 +151,7 @@ public:
     assert(!test.isEmpty());
     assert(test.getSize() == 3);
 
+    // Testing remove(), getSize(), isEmpty(), and top()
     c = test.remove();
     assert(c->getVal() == c2.getVal());
     assert(test.top()->getVal() == c1.getVal());
@@ -143,10 +170,12 @@ public:
     assert(test.getSize() == 0);
   }
 
+  // Testing buildPile (same as stockPile basically)
   static void buildPileTest() {
     BuildPile test;
     Card* c;
 
+    // Testing constructor, getSize(), isEmpty()
     assert(test.getSize() == 0);
     assert(test.isEmpty());
 
@@ -168,6 +197,7 @@ public:
     assert(!test.isEmpty());
     assert(test.getSize() == 3);
 
+    // Testing remove(), getSize(), isEmpty(), and top()
     c = test.remove();
     assert(c->getVal() == c2.getVal());
     assert(test.top()->getVal() == c1.getVal());
