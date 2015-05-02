@@ -236,14 +236,29 @@ public:
     assert(6 == test->removeFromStockPile()->getVal());
   }
 
-  static void gameMoveTest() {
+  // Tests addPlayer(...), which effectively tests setPlayers.
+  // Tests validMove(...) and moveCard(...) which tests the entire making move process.
+  // Tests dealCards(...).
+  // Tests gameOver() at the end.
+  static void gameTest() {
     Game test;
     Human * p1 = new Human("testp1");
     Human * p2 = new Human("testp2");
     
+
+    // Testing addPlayer()
     test.addPlayer(p1);
     test.addPlayer(p2);
+    assert(test.players[0]->getName() == p1->getName());
+    assert(test.players[1]->getName() == p2->getName());
+    
+    // Testing dealCards()
     test.dealCards(3);
+    assert(test.players[0]->getStockPile()->getSize() == 3);
+    assert(test.players[1]->getStockPile()->getSize() == 3);
+    assert(test.drawPile->getSize() == 146);    // 162 - (3+3) - (5+5) = 156
+    
+
     // test.printView(0); // To help understand these tests
 
 
@@ -276,6 +291,10 @@ public:
     assert(test.buildPiles[1]->top()->getVal() == 0);
     assert(test.buildPiles[1]->getSize() == 1);
 
+    // Game not over
+    assert(!test.gameOver());
+
+    // Doesn't switch players for our tests
     assert(test.validMove('5', '8')); // Hand to Discard Pile (turn over)
     test.moveCard('5', '8');
     assert(test.players[0]->getDiscardPiles()[2]->top()->getVal() == 0);
@@ -286,6 +305,9 @@ public:
     test.moveCard('0', 'a');
     assert(test.buildPiles[0]->top()->getVal() == 0);
     assert(test.buildPiles[0]->getSize() == 3);
+
+    // Tests gameOver() because game is over
+    assert(test.gameOver());
   }
 };
 
@@ -304,8 +326,8 @@ int main() {
   cout << "Build Pile Tests passed." << endl;
   TestMain::humanTest();
   cout << "Human Tests passed." << endl;
-  TestMain::gameMoveTest();
-  cout << "Game Move Tests passed." << endl;
+  TestMain::gameTest();
+  cout << "Game Tests passed." << endl;
   
   return 0;
 }
