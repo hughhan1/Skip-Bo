@@ -1,0 +1,30 @@
+Mark Feldman          	mfeldm21
+Hugh Han              	hhan17
+Seung Hwan Lee       	slee385
+Matthew Cowen-Green	mcoweng1
+
+EN.600.120 Intermediate Programming, Spring 2015
+SkipBo
+
+
+To run the tests:
+make test
+
+
+Code Overview:
+The Card class is self-descriptive. It provides the functionality for the Card object that is used throughout the game. It consists of an integer between 0 and 12, inclusive, with 0 being a Skip-Bo card.
+The Hand class contains an array of 5 cards. Most functionality directly affecting a Hand object is implemented here.
+The Pile class is an abstract class that is inherited by all of the different pile types: BuildPile, DiscardPile, DrawPile, and StockPile. It consists of a double-ended queue (deque) of cards. All piles remove from the end only.
+The BuildPile class inherits from the Pile class. A BuildPile is a pile that can be built upon by any player. When a BuildPile becomes full, the cards in it are moved to the draw pile.
+The DiscardPile class inherits from the Pile class. Each player has 4 discard piles onto which they can place one card per turn from their hand (which ends their turn). A player can move a card from his/her discard pile to a build pile.
+The DrawPile is the pile from which players draw cards to fill their hands.
+The StockPile class inherits from the Pile class. Each player has his/her own stockpile. Cards from a stockpile can only be moved onto build piles. If a player's stock pile becomes empty, he/she wins the game.
+The Player class is an abstract class that is inherited by the Human and Computer classes. The player class consists of a Hand, an array of four DiscardPiles, and a StockPile. The Player class contains much of the functionality common to all players, including getting/modifying a player's hand, discard pile(s), and stockpile. The pure virtual functions in the Player class involve getting the information about the move the player wants to make.
+The Human class implements the Player class. The Human class implements the pure virtual functions by asking the player to enter the character corresponding to the pile/hand slot to move a card from and by asking the player to enter the character corresponding to the build pile to move a card to.
+The Computer class implements the Player class. The Computer class implements the pure virtual functions by randomly generating character combinations for moves. The computer is not meant to be a difficult opponent.
+The two exception classes, EmptyPileException and InvalidMoveException, are self-explanatory. The former is the exception thrown for attempting to remove a card from an empty pile, and the latter is the exception thrown for attempting to make an invalid move.
+The CheckMoves class contains no data members. It's only purpose is to check whether a move is legal or not.
+The Game class is where most of the functionality of the game is implemented. It contains a vector of Player pointers (so that they can be either Humans or Computers), a DrawPile, an array of four BuildPiles, and a counter that keeps track of the number of turns. The game is initialized in the Game class, and most move functionality is in the class. The Game class also contains the code that prints out what a player can see
+The GameController class is a controller class for the Game class. It is in this class that game is launched from, and it is here that functions that affect the entire game are implemented.
+
+Currently, the user-playable version of the game is incomplete. It tends to segfault after a few turns, and some functionality is missing.
