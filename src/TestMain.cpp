@@ -213,18 +213,18 @@ public:
 
 
     // Can't move from Build Piles to other Piles
-    //assert(!test.validMove('a', 'b'));
-    //assert(!test.validMove('b', '1'));
-    //assert(!test.validMove('c', '6'));
-    //assert(!test.validMove('d', '0'));
+    assert(!test.validMove('a', 'b'));
+    assert(!test.validMove('b', '1'));
+    assert(!test.validMove('c', '6'));
+    assert(!test.validMove('d', '0'));
 
     // Can't move from Hand or Discard Pile to Stock Pile
-    //assert(!test.validMove('1', '0'));
-    //assert(!test.validMove('6', '0'));
+    assert(!test.validMove('1', '0'));
+    assert(!test.validMove('6', '0'));
 
     // Can't move from Stock Pile to Hand or Discard Piles
-    //assert(!test.validMove('0', '2'));
-    //assert(!test.validMove('0', '7'));
+    assert(!test.validMove('0', '2'));
+    assert(!test.validMove('0', '7'));
 
     //assert(test.validMove('1', 'a')); // Hand to new build pile
     test.moveCard('1', 'a');
