@@ -6,7 +6,7 @@
 
 class InvalidMoveException : public std::exception {
 public:
-	const char* what() {
+  const char* what() const throw(){
 		return "Invalid move.";
 	}
 };
