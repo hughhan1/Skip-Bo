@@ -22,6 +22,4 @@ class BuildPile : public Pile {
   Card * top() const throw (EmptyPileException);
 };
 
-void BuildPileTest();
-
 #endif

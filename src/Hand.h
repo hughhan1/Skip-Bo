@@ -27,6 +27,4 @@ public:
 
 };
 
-void HandTest();
-
 #endif

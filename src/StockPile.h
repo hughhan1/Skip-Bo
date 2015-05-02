@@ -22,6 +22,4 @@ class StockPile : public Pile {
   Card * top() const;
 };
 
-void StockPileTest();
-
 #endif

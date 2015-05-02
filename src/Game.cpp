@@ -32,11 +32,12 @@ Game::Game(FILE* file) {
     // TO DO
 }
 
-void Game::setPlayers() {
+int Game::setPlayers() {
     
     int numPlayers;
     std::string name;
     int input;
+    int num;
 
     cout << "Please enter the number of players: ";
     cin >> numPlayers;
@@ -52,19 +53,20 @@ void Game::setPlayers() {
     else
         addPlayer(new Computer(name));
     }
-}
-
-void Game::dealCards() {
-
-    int numPlayers = players.size();
-    int num;
     
-    /* Shuffles the deck. */
+    /* Shuffle the Draw Pile. */
     drawPile->shuffle();
 
     /* Prompts the user for the stock pile size. */
     cout << "Initial Stock pile size: ";
     cin >> num;
+
+    return num;
+}
+
+void Game::dealCards(int num) {
+
+    int numPlayers = players.size();
         
     /* Deals the cards from the draw pile to each player. */
     for (int i = 0; i < numPlayers; i++) {

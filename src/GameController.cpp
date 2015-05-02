@@ -14,8 +14,8 @@ void GameController::runGame() {
 	srand(time(NULL));
 	welcome();
 	skipBo = new Game();
-	skipBo->setPlayers();
-	skipBo->dealCards();
+	int stockSize = skipBo->setPlayers();
+	skipBo->dealCards(stockSize);
 	skipBo->play();
 }
 

@@ -23,6 +23,9 @@
 #include <sstream>
 
 class Game {
+
+  friend class TestMain;
+
 private:
     std::vector<Player*> players;
     DrawPile* drawPile;
@@ -53,8 +56,8 @@ public:
     Game(FILE* file);
  
  	/** Setter methods. */
-    void setPlayers();
-    void dealCards();
+    int setPlayers();
+    void dealCards(int);
     void play();
 
     void promptMove();

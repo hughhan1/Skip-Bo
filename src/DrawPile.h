@@ -20,6 +20,4 @@ public:
 	bool add(Card * c);
 };
 
-void DrawPileTest();
-
 #endif
