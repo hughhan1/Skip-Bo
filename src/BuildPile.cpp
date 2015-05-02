@@ -27,7 +27,7 @@ Card * BuildPile::top() const throw (EmptyPileException) {
       return this->pile.back();
     }
   } catch (EmptyPileException & e) {
-    std::cout << e.what() << std::endl;
+    //std::cout << e.what() << std::endl;
   }
   return nullptr;
 }
