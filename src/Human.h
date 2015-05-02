@@ -21,10 +21,4 @@ public:
 	char moveTo();
 };
 
-
-
-//TEST FUNCTIONS
-
-void humanTest();
-
 #endif

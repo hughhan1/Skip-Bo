@@ -186,6 +186,21 @@ public:
     assert(test.getSize() == 0);
   }
 
+  /*These need to be written still
+  static void humanTest() {
+    Player * player1 = new Human("human1");
+    assert(player1->getName() == "human1");
+
+    // const Hand * h = player1->getHand();
+    for(int i = 0; i < 5; i++) {
+      //assert(h[i] == nullptr);                                              
+    }
+  }
+
+  static void computerTest() {
+
+  }*/
+
   static void gameMoveTest() {
     Game test;
     Human * p1 = new Human("testp1");
@@ -246,9 +261,10 @@ int main() {
   cout << "Stock Pile Tests passed." << endl;
   TestMain::buildPileTest();
   cout << "Build Pile Tests passed." << endl;
-
-  //humanTest();
-
+  // TestMain::humanTest();
+  // cout << "Human Tests passed." << endl;
+  // TestMain::computerTest();
+  // cout << "Computer Tests passed." << endl;
   TestMain::gameMoveTest();
   cout << "Game Move Tests passed." << endl;
   

@@ -38,19 +38,3 @@ char Human::moveTo() {
     cin >> ch;
     return ch;
 }
-
-//TEST FUNCTIONS
-
-void humanTest(){
-    Player * player1 = new Human("human1");
-    assert(player1->getName() == "human1");
-
-    // const Hand * h = player1->getHand();
-    for(int i = 0; i < 5; i++) {
-        //assert(h[i] == nullptr);
-    }
-  
-  
-}
-
-
