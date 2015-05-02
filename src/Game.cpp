@@ -60,7 +60,7 @@ int Game::setPlayers() {
     /* Prompts the user for the stock pile size. */
     cout << "Initial Stock pile size: ";
     cin >> num;
-
+    cout << endl;
     return num;
 }
 
@@ -200,16 +200,18 @@ void Game::promptMove() {
     try {
         moveFrom = player->moveFrom();
         moveTo = player->moveTo();
-
+	cout<<"move"<<moveFrom<<moveTo<<endl;
         if (!validMove(moveFrom, moveTo)) {
-            throw new InvalidMoveException();
+	  cout<<"hello";
+	  throw InvalidMoveException();
         } else {
             moveCard(moveFrom, moveTo);
         }
 
     } catch (InvalidMoveException & e) {
-        cout << e.what() << endl;
-        promptMove();
+      cout << e.what() << endl;
+      
+      promptMove();
     }
 
 }

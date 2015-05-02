@@ -231,17 +231,17 @@ public:
     assert(test.buildPiles[0]->top()->getVal() == 0);
     assert(test.buildPiles[0]->getSize() == 1);
     
-    //assert(test.validMove('0', 'a')); // Stock Pile to old build pile
+    assert(test.validMove('0', 'a')); // Stock Pile to old build pile
     test.moveCard('0', 'a');
     assert(test.buildPiles[0]->top()->getVal() == 0);
     assert(test.buildPiles[0]->getSize() == 2);
 
-    //assert(test.validMove('0', 'b')); // Stock Pile to new build pile
+    assert(test.validMove('0', 'b')); // Stock Pile to new build pile
     test.moveCard('0','b');
     assert(test.buildPiles[1]->top()->getVal() == 0);
     assert(test.buildPiles[1]->getSize() == 1);
 
-    //assert(test.validMove('5', '8')); // Hand to Discard Pile (turn over)
+    assert(test.validMove('5', '8')); // Hand to Discard Pile (turn over)
     test.moveCard('5', '8');
     assert(test.players[0]->getDiscardPiles()[2]->top()->getVal() == 0);
     assert(test.players[0]->getDiscardPiles()[2]->getSize() == 1);

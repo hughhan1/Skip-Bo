@@ -26,15 +26,17 @@ Human::Human(std::string name) {
 }
 
 char Human::moveFrom() {
-    int ch;
-    cout << "Enter a number representing a card you would like to move." << endl;
+    char ch;
+    cout << "Enter a number representing a card you would like to move: "; 
     cin >> ch;
+    cout << endl;
     return ch;
 }
 
 char Human::moveTo() {
     char ch;
-    cout << "Enter a number representing a pile to which you would like to move that card." << endl;
+    cout << "Enter a number representing a pile to which you would like to move that card: ";
     cin >> ch;
+    cout << endl;
     return ch;
 }
