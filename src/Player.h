@@ -20,6 +20,7 @@
 #define NUM_OPTIONS 14
 
 class Player {
+
 protected:
 
     /** The Player's name. */

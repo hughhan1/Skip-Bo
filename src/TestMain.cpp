@@ -193,8 +193,8 @@ public:
     
     test.addPlayer(p1);
     test.addPlayer(p2);
-    test.dealCards(1);
-    // test.generateView(0); // To help understand these tests
+    test.dealCards(3);
+    // test.printView(0); // To help understand these tests
 
 
     // Can't move from Build Piles to other Piles
@@ -203,14 +203,33 @@ public:
     //assert(!test.validMove('c', '6'));
     //assert(!test.validMove('d', '0'));
 
-    // Can't Move from Hand or Discard Pile to Stock Pile
+    // Can't move from Hand or Discard Pile to Stock Pile
     //assert(!test.validMove('1', '0'));
     //assert(!test.validMove('6', '0'));
 
-    //assert(test.validMove('1', 'a')); // Hand skip bo to new build pile
+    // Can't move from Stock Pile to Hand or Discard Piles
+    //assert(!test.validMove('0', '2'));
+    //assert(!test.validMove('0', '7'));
+
+    //assert(test.validMove('1', 'a')); // Hand to new build pile
     test.moveCard('1', 'a');
     assert(test.buildPiles[0]->top()->getVal() == 0);
+    assert(test.buildPiles[0]->getSize() == 1);
     
+    //assert(test.validMove('0', 'a')); // Stock Pile to old build pile
+    test.moveCard('0', 'a');
+    assert(test.buildPiles[0]->top()->getVal() == 0);
+    assert(test.buildPiles[0]->getSize() == 2);
+
+    //assert(test.validMove('0', 'b')); // Stock Pile to new build pile
+    test.moveCard('0','b');
+    assert(test.buildPiles[1]->top()->getVal() == 0);
+    assert(test.buildPiles[1]->getSize() == 1);
+
+    //assert(test.validMove('5', '8')); // Hand to Discard Pile (turn over)
+    test.moveCard('5', '8');
+    assert(test.players[0]->getDiscardPiles()[2]->top()->getVal() == 0);
+    assert(test.players[0]->getDiscardPiles()[2]->getSize() == 1);
   }
 };
 

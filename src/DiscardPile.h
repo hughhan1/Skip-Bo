@@ -14,7 +14,6 @@
 #include "Pile.h"
 
 class DiscardPile : public Pile {
-
 public:
 	
 	DiscardPile();
