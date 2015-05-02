@@ -198,19 +198,19 @@ void Game::promptMove() {
     char moveTo;
 
     try {
+
         moveFrom = player->moveFrom();
         moveTo = player->moveTo();
 	
-	if (!validMove(moveFrom, moveTo)) {
-	  throw InvalidMoveException();
+    	if (!validMove(moveFrom, moveTo)) {
+            throw InvalidMoveException();
         } else {
-	  moveCard(moveFrom, moveTo);
+            moveCard(moveFrom, moveTo);
         }
 
     } catch (InvalidMoveException & e) {
-      cout << e.what() << endl;
-      
-      promptMove();
+        cout << e.what() << endl;
+        promptMove();
     }
 
 }
@@ -270,13 +270,11 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         int indexFrom = moveFrom - '1';
         int indexTo = moveTo - 'a';
 
-	if(moveTo >= '6' && moveTo <= '9')
-	  return true;
+        if (moveTo >= '6' && moveTo <= '9')
+            return true;
 	
         if (indexFrom >= 5 || indexFrom < 0 || indexTo >= 4 || indexTo < 0)
-            return false;
-
-	
+            return false;	
 	
         Card * cardFrom = hand->getCard(indexFrom);
         Card * cardTo = builds[indexTo]->top();
@@ -288,20 +286,18 @@ bool Game::validMove (char moveFrom, char moveTo) const {
             return false;
 
         if (cardFrom->getVal() == 0)
-	  return true;
+            return true;
 
-	//I added this because cardTo can have nullptr stored and calling getVal while cardTo == nullptr causes segfault
-	if(cardTo==nullptr){
-	  if(cardFrom->getVal() == 0 || cardFrom->getVal() == 1)
-	    return true;
-	  else
-	    return false;
-	}
-	  
+    	/* Calling cardTo->getVal() when cardTo == nullptr causes segmentation fault. */
+    	if (cardTo == nullptr) {
+            if (cardFrom->getVal() == 0 || cardFrom->getVal() == 1)
+                return true;
+            else
+                return false;
+    	}	  
 	
         if (cardTo->getVal() == 0 && cardFrom->getVal()-1 != builds[indexTo]->getSize()) 
-            return false;
-	    
+            return false;	    
 	
         if (cardFrom->getVal() != 1 && cardTo == nullptr) 
             return false;
@@ -335,7 +331,7 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         if (cardTo->getVal() == 0 && cardFrom->getVal()-1 != builds[indexTo]->getSize()) 
             return false;
 	
-	 if (cardFrom->getVal() != 1 && cardTo == nullptr) 
+        if (cardFrom->getVal() != 1 && cardTo == nullptr) 
             return false;
         
         if (cardFrom->getVal()-1 == cardTo->getVal()) 
@@ -361,7 +357,7 @@ void Game::moveCard( char moveFrom, char moveTo) {
             buildPiles[moveTo-'a']->add(curr->removeCardFromHand(moveFrom-'1'));
         }
         if(curr->getHand()->isEmpty()){
-            for(int a=0;a<5;a++){
+            for (int a = 0; a < 5; a++){
                 curr->addCardToHand(this->drawPile->remove());
             }
         }
