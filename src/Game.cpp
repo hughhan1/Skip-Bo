@@ -214,7 +214,6 @@ void Game::promptMove() {
 
 }
 
-/** Is the move under consideration valid? */
 bool Game::validMove (char moveFrom, char moveTo) const {
 
     /* Declaring/Initializing local variables for more legible code. */    
@@ -232,7 +231,6 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 
     /* Moving from an invalid index. */
     if (moveFrom < '0' || moveFrom > '9') {
-      //cout << "That is not a valid pile to move a card from." << endl;
         return false;
     } 
 
@@ -240,38 +238,27 @@ bool Game::validMove (char moveFrom, char moveTo) const {
     else if (moveFrom == '0') {
 
         int indexTo = moveTo - 'a';
-	Card * cardFrom = nullptr;
-	Card * cardTo = nullptr;
 	
-	if( indexTo >= 4 || indexTo < 0)
-	  return false;
-	
-        cardFrom = stock->top();
-        cardTo = builds[indexTo]->top();
-
-     
-	
-        if (moveTo < 'a' || moveTo > 'd') {
-	  //cout << "That is not a valid pile to move a card to from your stockpile." << endl;
+        if (indexTo >= 4 || indexTo < 0)
             return false;
-        }
-        if (cardFrom->getVal() == 0) {
+	
+        Card * cardFrom = stock->top();
+        Card * cardTo = builds[indexTo]->top();
+	
+        if (moveTo < 'a' || moveTo > 'd') 
+            return false;
+        
+        if (cardFrom->getVal() == 0) 
             return true;
-        }
-        if (cardTo->getVal() == 0
-                && cardFrom->getVal()-1 != builds[indexTo]->getSize()) {
-	  //cout << "You cannot put a "<< cardFrom->getVal() << " on that build pile." << endl;
+        
+        if (cardTo->getVal() == 0 && cardFrom->getVal()-1 != builds[indexTo]->getSize()) 
             return false;
-        }
-        if (cardFrom->getVal() != 1 
-                && cardTo == nullptr) {
-	  //cout << "You cannot put a "<< cardFrom->getVal() << " on an empty build pile." << endl;
+        
+        if (cardFrom->getVal() != 1 && cardTo == nullptr) 
             return false;
-        }
-        if (!(cardFrom->getVal()-1 == cardTo->getVal())) {
-	  //cout << "You cannot put a "<< cardFrom->getVal() << " on that build pile." << endl;
+
+        if (!(cardFrom->getVal()-1 == cardTo->getVal())) 
             return false;
-        }
     } 
 
     /* Moving from player's hand. */
@@ -279,41 +266,30 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 
         int indexFrom = moveFrom - '1';
         int indexTo = moveTo - 'a';
-	Card * cardFrom = nullptr;
-	Card * cardTo = nullptr;
 	
-	if (indexFrom >=5 || indexFrom < 0 || indexTo >= 4 || indexTo < 0)
-	  return false;
+        if (indexFrom >= 5 || indexFrom < 0 || indexTo >= 4 || indexTo < 0)
+            return false;
 	
-        cardFrom = hand->getCard(indexFrom);
-        cardTo = builds[indexTo]->top();
+        Card * cardFrom = hand->getCard(indexFrom);
+        Card * cardTo = builds[indexTo]->top();
 	
-        if (cardFrom == nullptr) {
-	  //cout<< "There is no card at the indicated location." << endl;
+        if (cardFrom == nullptr) 
             return false;
-        }
-        if (moveTo < '6' || (moveTo > '9' && moveTo < 'a') || moveTo > 'd') {
-	  //cout << "That is not a valid pile to move a card to from your hand." << endl;
-            return false;
-        }
-        if (cardFrom->getVal() == 0){
-            return true;
-        }
-        if (cardTo->getVal() == 0
-                && cardFrom->getVal()-1 != builds[indexTo]->getSize()) {
-	  //cout << "You cannot put a "<< stock->top()->getVal() << " on that build pile." << endl;
-            return false;
-        }
-        if (cardFrom->getVal() != 1 
-                && cardTo == nullptr) {
-	  //cout << "You cannot put a "<< cardFrom->getVal() << " on an empty build pile." << endl;
-            return false;
-        }
-        if (cardFrom->getVal()-1 != cardTo->getVal()) {
-	  //cout << "You cannot put a "<< cardFrom->getVal() << " on that build pile." << endl;
-            return false;
-	}
 
+        if (moveTo < '6' || (moveTo > '9' && moveTo < 'a') || moveTo > 'd') 
+            return false;
+
+        if (cardFrom->getVal() == 0)
+            return true;
+
+        if (cardTo->getVal() == 0 && cardFrom->getVal()-1 != builds[indexTo]->getSize()) 
+            return false;
+
+        if (cardFrom->getVal() != 1 && cardTo == nullptr) 
+            return false;
+
+        if (cardFrom->getVal()-1 != cardTo->getVal()) 
+            return false;
 	
     } 
 
@@ -322,40 +298,31 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 
         int indexFrom = moveFrom - '6';
         int indexTo = moveTo - 'a';
-	Card * cardFrom = nullptr;
-	Card * cardTo = nullptr;
 	
-	if (indexFrom >=4 || indexFrom < 0 || indexTo >= 4 || indexTo < 0)
-	  return false;
+    	if (indexFrom >=4 || indexFrom < 0 || indexTo >= 4 || indexTo < 0)
+            return false;
 	
-        cardFrom = discards[indexFrom]->top();
-        cardTo = builds[indexTo]->top();
+        Card * cardFrom = discards[indexFrom]->top();
+        Card * cardTo = builds[indexTo]->top();
 
-        if (moveTo < 'a' || moveTo > 'd') {
-	  //cout << "That is not a valid pile to move a card to from your discard piles." << endl;
+        if (moveTo < 'a' || moveTo > 'd') 
             return false;
-        }
-        if (cardFrom == nullptr) {
-	  //cout << "There is no card at the indicated location." << endl;
+        
+        if (cardFrom == nullptr) 
             return false;
-        }
-        if (cardFrom->getVal() == 0) {
+        
+        if (cardFrom->getVal() == 0) 
             return true;
-        }
-        if (cardTo->getVal() == 0
-                && cardFrom->getVal()-1 != builds[indexTo]->getSize()) {
-	  //cout << "You cannot put a " << stock->top()->getVal() << " on that build pile." << endl;
+        
+        if (cardTo->getVal() == 0 && cardFrom->getVal()-1 != builds[indexTo]->getSize()) 
             return false;
-        }
-        if (cardFrom->getVal() != 1
-                && cardTo == nullptr) {
-	  //cout << "You cannot put a " << cardFrom->getVal() << " on an empty build pile." << endl;
+        
+        if (cardFrom->getVal() != 1 && cardTo == nullptr) 
             return false;
-        }
-        if (cardFrom->getVal()-1 == cardTo->getVal()) {
-	  //cout << "You cannot put a " << cardFrom->getVal() << " on that build pile." << endl;
+        
+        if (cardFrom->getVal()-1 == cardTo->getVal()) 
             return false;
-        }
+        
     }
     return true;
 }
