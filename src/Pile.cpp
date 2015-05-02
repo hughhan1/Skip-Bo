@@ -24,7 +24,7 @@ Card * Pile::remove() throw (EmptyPileException) {
 
     try {
         if (isEmpty()) {
-            throw new EmptyPileException();
+            throw EmptyPileException();
         } else {
             Card * c = pile.back();
             pile.pop_back();
