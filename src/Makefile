@@ -7,7 +7,8 @@ SRC = \
 	DrawPile.cpp\
 	DiscardPile.cpp\
 	BuildPile.cpp\
-	StockPile.cpp Game.cpp\
+	StockPile.cpp\
+	Game.cpp\
 	GameController.cpp\
 	Player.cpp\
 	Human.cpp\
