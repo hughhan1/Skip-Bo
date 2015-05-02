@@ -186,20 +186,55 @@ public:
     assert(test.getSize() == 0);
   }
 
-  /*These need to be written still
+  // Tests methods in player/human. Also tests computer because they only
+  // differ in how they make the moves (for computers, it's random)
+  // Friended by Human so can directly access members.
   static void humanTest() {
-    Player * player1 = new Human("human1");
-    assert(player1->getName() == "human1");
 
-    // const Hand * h = player1->getHand();
-    for(int i = 0; i < 5; i++) {
-      //assert(h[i] == nullptr);                                              
-    }
+    Human * test = new Human("test");
+
+    // Getter Functions
+    assert(test->getName() == "test");
+    assert(test->hand == test->getHand());
+    assert(test->discardPiles == test->getDiscardPiles());
+    assert(test->stockPile == test->getStockPile());
+
+    // Set Turn function
+    assert(!test->isTurn);
+    assert(test->setTurn());
+    assert(test->isTurn);
+
+    // Add card to hand
+    Card c0(0);
+    assert(test->addCardToHand(&c0));
+    Card c1(1);
+    assert(test->addCardToHand(&c1));
+    Card c2(2);
+    assert(test->addCardToHand(&c2));
+    Card c3(3);
+    assert(test->addCardToHand(&c3));
+    Card c4(4);
+    assert(test->addCardToHand(&c4));
+    Card c5(5);
+    assert(!test->addCardToHand(&c5));  // Can't add 6th card to hand
+
+    // Remove card from hand
+    assert(0 == test->removeCardFromHand(0)->getVal());
+    assert(1 == test->removeCardFromHand(1)->getVal());
+    assert(2 == test->removeCardFromHand(2)->getVal());
+    assert(3 == test->removeCardFromHand(3)->getVal());
+    assert(4 == test->removeCardFromHand(4)->getVal());
+
+    // Add card to Stock Pile
+    Card c6(6);
+    assert(test->addCardToStockPile(&c6));
+    Card c7(7);
+    assert(test->addCardToStockPile(&c7));
+
+    // Remove card from StockPile
+    assert(7 == test->removeFromStockPile()->getVal());
+    assert(6 == test->removeFromStockPile()->getVal());
   }
-
-  static void computerTest() {
-
-  }*/
 
   static void gameMoveTest() {
     Game test;
@@ -245,6 +280,12 @@ public:
     test.moveCard('5', '8');
     assert(test.players[0]->getDiscardPiles()[2]->top()->getVal() == 0);
     assert(test.players[0]->getDiscardPiles()[2]->getSize() == 1);
+  
+    // Last StockPile card to Build Pile (game over)
+    assert(test.validMove('0', 'a')); 
+    test.moveCard('0', 'a');
+    assert(test.buildPiles[0]->top()->getVal() == 0);
+    assert(test.buildPiles[0]->getSize() == 3);
   }
 };
 
@@ -261,10 +302,8 @@ int main() {
   cout << "Stock Pile Tests passed." << endl;
   TestMain::buildPileTest();
   cout << "Build Pile Tests passed." << endl;
-  // TestMain::humanTest();
-  // cout << "Human Tests passed." << endl;
-  // TestMain::computerTest();
-  // cout << "Computer Tests passed." << endl;
+  TestMain::humanTest();
+  cout << "Human Tests passed." << endl;
   TestMain::gameMoveTest();
   cout << "Game Move Tests passed." << endl;
   
