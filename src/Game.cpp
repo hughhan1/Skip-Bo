@@ -266,6 +266,9 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 
         int indexFrom = moveFrom - '1';
         int indexTo = moveTo - 'a';
+
+	if(moveTo >= '6' && moveTo <= '9')
+	  return true;
 	
         if (indexFrom >= 5 || indexFrom < 0 || indexTo >= 4 || indexTo < 0)
             return false;
