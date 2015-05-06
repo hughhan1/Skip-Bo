@@ -16,10 +16,16 @@ Computer::Computer(std::string name) : Player(name) { }
 
 char Computer::moveFrom() {
 
-	/* Check stock pile for wild card. */
-	if (this->stockPile->top() == 0) {
-		return 0;
-	} 
+	try {
+
+		/* Check stock pile for wild card. */
+		if (this->stockPile->top() == 0) {
+			return 0;
+		} 
+
+	} catch (EmptyPileException & e) {		
+
+	}
 
 	/* Check hand for wild card. */
 	for (int i = 0; i < 5; i++) {
@@ -30,7 +36,7 @@ char Computer::moveFrom() {
 
 	/* Check discard piles for wild card. */
 	for (int i = 0; i < 4; i++) {
-		if (this->discardPiles[i]->isEmpty()) {
+		if (!this->discardPiles[i]->isEmpty()) {
 			if (this->discardPiles[i]->top() == 0) {
 				return i + 6;
 			}
