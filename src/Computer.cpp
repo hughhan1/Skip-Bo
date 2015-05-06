@@ -38,12 +38,12 @@ char Computer::moveFrom() {
 	}
 
 	/* Otherwise, try random cards. */
-	int ch = rand() % (NUM_OPTIONS - 4);
+	int ch = rand() % NUM_OPTIONS;
 	return ch;
 }
 
 char Computer::moveTo() {
-	int ch = rand() % NUM_OPTIONS;
+	int ch = (rand() % NUM_OPTIONS) + 4;
     switch (ch) {
     	case 10: ch = 'a';
     	case 11: ch = 'b';
