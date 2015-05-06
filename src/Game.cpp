@@ -222,6 +222,7 @@ bool Game::validMove (char moveFrom, char moveTo) const {
     DiscardPile * discards[4]; 
     BuildPile * builds[4];
 
+    int indexTo = moveTo - 'a';
     
     /* Initializing some local variables. */
     for (int i = 0; i < 4; i++) {
@@ -236,8 +237,6 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 
     /* Moving fromt a player's stock pile. */
     else if (moveFrom == '0') {
-
-        int indexTo = moveTo - 'a';
 	
         if (indexTo >= 4 || indexTo < 0)
             return false;
@@ -263,7 +262,7 @@ bool Game::validMove (char moveFrom, char moveTo) const {
     
       
         int indexFrom = moveFrom - '1';
-        int indexTo = moveTo - 'a';
+        
 
         if (moveTo >= '6' && moveTo <= '9')
             return true;
@@ -288,8 +287,8 @@ bool Game::validMove (char moveFrom, char moveTo) const {
                 return false;
     	}	  
 	
-        if (cardTo->getVal() == 0 && cardFrom->getVal()-1 != builds[indexTo]->getSize()) 
-            return false;	    
+        if (cardTo->getVal() == 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize()) 
+            return true;	    
 	
         if (cardFrom->getVal() != 1 && cardTo == nullptr) 
             return false;
@@ -303,7 +302,6 @@ bool Game::validMove (char moveFrom, char moveTo) const {
     else if (moveFrom > '5' && moveFrom < ':') {
 
         int indexFrom = moveFrom - '6';
-        int indexTo = moveTo - 'a';
 	
     	if (indexFrom >=4 || indexFrom < 0 || indexTo >= 4 || indexTo < 0)
             return false;
