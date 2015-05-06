@@ -17,31 +17,23 @@ Computer::Computer(std::string name) : Player(name) { }
 char Computer::moveFrom() {
 
 	/* Check stock pile for wild card. */
-	try {
-		if (this->stockPile->top() == 0) {
-			return 0;
-		} 
-	} catch (EmptyPileException & e) {
-		cout << e.what() << std::endl;
-	}
+	if (this->stockPile->top() == 0) {
+		return 0;
+	} 
 
 	/* Check hand for wild card. */
 	for (int i = 0; i < 5; i++) {
-		if (this->hand->getCard(i) != nullptr) {
-			if (this->hand->getCard(i) == 0) {
-				return i + 1;
-			}
+		if (this->hand->getCard(i) == 0) {
+			return i + 1;
 		}
 	}
 
 	/* Check discard piles for wild card. */
 	for (int i = 0; i < 4; i++) {
-		try {
+		if (this->discardPiles[i]->isEmpty()) {
 			if (this->discardPiles[i]->top() == 0) {
 				return i + 6;
 			}
-		} catch (EmptyPileException & e) {
-			cout << e.what() << std::endl;
 		}
 	}
 
