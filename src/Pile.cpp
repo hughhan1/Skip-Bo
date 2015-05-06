@@ -22,12 +22,16 @@ int Pile::getSize() const {
 
 Card * Pile::remove() throw (EmptyPileException) {
 
-    if (isEmpty()) {
-        throw EmptyPileException();
-    } else {
-        Card * c = pile.back();
-        pile.pop_back();
-        return c;
+    try {
+        if (isEmpty()) {
+            throw EmptyPileException();
+        } else {
+            Card * c = pile.back();
+            pile.pop_back();
+            return c;
+        }
+    } catch (EmptyPileException &e) {
+        std::cout << e.what() << std::endl;
     }
 
     return nullptr;
