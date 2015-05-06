@@ -237,8 +237,16 @@ bool Game::validMove (char moveFrom, char moveTo) const {
             return false;
 	
         Card * cardFrom = stock->top();
-        Card * cardTo = builds[indexTo]->top();
-        
+	Card * cardTo;
+	
+	if ((cardFrom->getVal() == 0 || cardFrom->getVal() == 1) && builds[indexTo]->getSize() == 0) 
+	  return true;
+
+	if (builds[indexTo]->getSize() > 0)
+	  cardTo = builds[indexTo]->top();
+	else
+	  return false;
+
         if (cardFrom->getVal() == 0) 
             return true;
         
@@ -261,18 +269,18 @@ bool Game::validMove (char moveFrom, char moveTo) const {
             return false;	
 	
         Card * cardFrom = hand->getCard(indexFrom);
-        Card * cardTo = builds[indexTo]->top();
+	Card * cardTo;
+
+	if ((cardFrom->getVal() == 0 || cardFrom->getVal() == 1) && builds[indexTo]->getSize() == 0) 
+	  return true;
+
+	if (builds[indexTo]->getSize() > 0)
+	  cardTo = builds[indexTo]->top();
+	else
+	  return false;
 	
         if (cardFrom->getVal() == 0)
-            return true;
-
-    	/* Calling cardTo->getVal() when cardTo == nullptr causes segmentation fault. */
-    	if (cardTo == nullptr) {
-            if (cardFrom->getVal() == 0 || cardFrom->getVal() == 1)
-                return true;
-            else
-                return false;
-    	}	  
+            return true;	  
 	
         if (cardTo->getVal() == 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize()) 
             return true;	    
@@ -290,7 +298,16 @@ bool Game::validMove (char moveFrom, char moveTo) const {
             return false;
 	
         Card * cardFrom = discards[indexFrom]->top();
-        Card * cardTo = builds[indexTo]->top();
+        Card * cardTo;
+	
+	
+	if ((cardFrom->getVal() == 0 || cardFrom->getVal() == 1) && builds[indexTo]->getSize() == 0) 
+	  return true;
+
+	if (builds[indexTo]->getSize() > 0)
+	  cardTo = builds[indexTo]->top();
+	else
+	  return false;
         
         if (cardFrom->getVal() == 0) 
             return true;
