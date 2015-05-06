@@ -182,7 +182,7 @@ void  Game::generateView(stringstream *lines, int i) {
 }
 
 void Game::promptMove() {
-    Player * player = players[this->turn];
+  Player * player = players[this->turn % players.size()];
 
     char moveFrom;
     char moveTo;
@@ -244,9 +244,6 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 	
         Card * cardFrom = stock->top();
         Card * cardTo = builds[indexTo]->top();
-	
-        if (moveTo < 'a' || moveTo > 'd') 
-            return false;
         
         if (cardFrom->getVal() == 0) 
             return true;
@@ -278,9 +275,6 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         Card * cardTo = builds[indexTo]->top();
 	
         if (cardFrom == nullptr) 
-            return false;
-
-        if (moveTo < '6' || (moveTo > '9' && moveTo < 'a') || moveTo > 'd') 
             return false;
 
         if (cardFrom->getVal() == 0)
@@ -316,9 +310,6 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 	
         Card * cardFrom = discards[indexFrom]->top();
         Card * cardTo = builds[indexTo]->top();
-
-        if (moveTo < 'a' || moveTo > 'd') 
-            return false;
         
         if (cardFrom == nullptr) 
             return false;
