@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block maincontent %}
+<div id="userbox">
+
+</div>
+<script type="text/javascript" charset="utf-8">
+    var source = new EventSource('/stream');
+    source.onmessage = function(ev) {
+        if (ev.data && ev.data === 'refresh') {
+            $('#userbox').load("/show");
+        }
+    };
+</script>
+{% endblock %}
