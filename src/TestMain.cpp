@@ -229,12 +229,11 @@ public:
         assert(test->discardPiles == test->getDiscardPiles());
         assert(test->stockPile == test->getStockPile());
 
-	/* // Set Turn function
+        // Set Turn function
         assert(!test->isTurn);
         assert(test->setTurn());
         assert(test->isTurn);
-	*/
-	
+
         // Add card to hand
         Card c0(0);
         assert(test->addCardToHand(&c0));
