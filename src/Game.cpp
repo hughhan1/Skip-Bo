@@ -99,6 +99,7 @@ void Game::printView(int i) {
     stringstream lines[11];
     cout << this->players[i]->getName() << "'s turn!" << endl;
     generateView(lines, i);
+    cout << endl;
     for (int a = 0; a < 11; a++) {
         cout << lines[a].str() << endl;        
     }    
@@ -202,7 +203,9 @@ void Game::promptMove() {
     } catch (InvalidMoveException & e) {
 
         cout << e.what() << endl;
-        promptMove();
+        printView(this->turn % players.size());
+	cout << endl;
+	promptMove();
 
     } catch (TurnOverException & e) {
 
