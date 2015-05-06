@@ -19,6 +19,7 @@
 #include "DiscardPile.h"
 #include "BuildPile.h"
 #include "InvalidMoveException.h"
+#include "TurnOverException.h"
 #include <vector>
 #include <sstream>
 
@@ -43,7 +44,7 @@ private:
     
     /** Setter methods. */
     bool validMove(char, char) const;
-    void moveCard(char, char);
+    bool moveCard(char, char);
 
     /**
      * Returns whether the game is over.

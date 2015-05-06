@@ -32,6 +32,11 @@ void GameController::endGame() {
 }
 
 void GameController::welcome() {
+
+	std::cout << std::endl << std::endl;
+	std::cout << "_____________________________________________________"		<< std::endl;
+	std::cout << std::endl << std::endl << std::endl << std::endl << std::endl 	<< std::endl;
+
 	std::cout << "  ___________   .__                __________        " 		<< std::endl;
 	std::cout << " /   _____/  | _|__|_____          \\______   \\ ____  " 		<< std::endl;  
 	std::cout << " \\_____  \\|  |/ /  \\____ \\   ______ |    |  _//  _ \\ " 	<< std::endl;
@@ -41,5 +46,4 @@ void GameController::welcome() {
 
 	std::cout << std::endl << std::endl;
 
-	std::cout << "Enter q at any time to quit the game." << std::endl;
 }

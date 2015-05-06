@@ -11,6 +11,15 @@
 #include <iostream>
 #include "Player.h"
 
+Player::Player(std::string name) {
+	this->name = name;
+	this->hand = new Hand();
+	for (int a = 0; a < 4; a++) {
+		this->discardPiles[a] = new DiscardPile();
+	}
+	this->stockPile = new StockPile();
+}
+
 std::string Player::getName() const {
     return this->name;
 }
@@ -28,7 +37,7 @@ StockPile* Player::getStockPile() const {
 }
 
 bool Player::addCardToHand(Card * card) {
-    if(hand->add(card))
+    if (hand->add(card))
         return true;
     return false;
 }
@@ -37,11 +46,6 @@ bool Player::addCardToStockPile(Card * card){
     if(stockPile->add(card))
         return true;
     return false;
-}
-
-bool Player::setTurn() {
-    this->isTurn = !this->isTurn;
-    return this->isTurn;
 }
 
 Card * Player::removeCardFromHand(int index) {

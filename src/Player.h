@@ -35,10 +35,9 @@ protected:
     /** The stock pile belonging to this Player. */
     StockPile* stockPile;
 
-    /** A boolean denoting whether it's this Player's turn. */
-    bool isTurn;
-
 public:
+
+    Player(std::string = "no name");
 
     /** Getter methods. */
     std::string getName() const;
@@ -52,7 +51,6 @@ public:
     Card * removeFromStockPile();
     
     /** Setter methods. */
-    bool setTurn();
     virtual char moveFrom() = 0;
     virtual char moveTo() = 0;
 };

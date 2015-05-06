@@ -11,30 +11,39 @@
 #include "Computer.h"
 
 using std::cout;
-using std::endl;
 
-Computer::Computer(std::string name) {
-	this->name = name;
-    this->hand = new Hand();
-    for (int a = 0; a < 4; a++) {
-        this->discardPiles[a] = new DiscardPile();
-    }
-    this->stockPile = new StockPile();
-    this->isTurn = false;
-}
+Computer::Computer(std::string name) : Player(name) { }
 
 char Computer::moveFrom() {
-	char ch;
-    cout << "Enter a number representing a card you would like to move." << endl;
-	ch = rand() % (NUM_OPTIONS - 4);
-	cout << ch << endl;
+
+	/* Check stock pile for wild card. */
+	if (this->stockPile->top() == 0) {
+		return 0;
+	} 
+
+	/* Check hand for wild card. */
+	for (int i = 0; i < 5; i++) {
+		if (this->hand->getCard(i) == 0) {
+			return i + 1;
+		}
+	}
+
+	/* Check discard piles for wild card. */
+	for (int i = 0; i < 4; i++) {
+		if (this->discardPiles[i]->isEmpty()) {
+			if (this->discardPiles[i]->top() == 0) {
+				return i + 6;
+			}
+		}
+	}
+
+	/* Otherwise, try random cards. */
+	int ch = rand() % (NUM_OPTIONS - 4);
 	return ch;
 }
 
 char Computer::moveTo() {
-	int ch;
-    cout << "Enter a number representing a pile to which you would like to move that card." << endl;
-    ch = rand() % NUM_OPTIONS;
+	int ch = rand() % NUM_OPTIONS;
     switch (ch) {
     	case 10: ch = 'a';
     	case 11: ch = 'b';
@@ -42,6 +51,5 @@ char Computer::moveTo() {
     	case 13: ch = 'd';
     	default: break;
     }
-    cout << ch << endl;
     return ch;
 }

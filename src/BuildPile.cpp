@@ -11,8 +11,7 @@
 #include "BuildPile.h"
 #include <cassert>
 
-BuildPile::BuildPile() {
-}
+BuildPile::BuildPile() { }
 
 bool BuildPile::add(Card * c) {
   this->pile.push_back(c);
@@ -27,7 +26,7 @@ Card * BuildPile::top() const throw (EmptyPileException) {
       return this->pile.back();
     }
   } catch (EmptyPileException & e) {
-    //std::cout << e.what() << std::endl;
+    std::cout << e.what() << std::endl;
   }
   return nullptr;
 }

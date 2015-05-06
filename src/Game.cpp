@@ -41,12 +41,15 @@ int Game::setPlayers() {
 
     cout << "Please enter the number of players: ";
     cin >> numPlayers;
+    cout << endl;
 
     for (int i = 0; i < numPlayers; i++) {
         cout << "Please enter the name of Player " << i + 1 << ": ";
         cin >> name;
+
         cout << "If this player is a human enter 0. If this player is a computer enter 1." << std::endl;
         cin >> input;
+        cout << endl;
 
     if (input == 0)
         addPlayer(new Human(name));
@@ -61,6 +64,7 @@ int Game::setPlayers() {
     cout << "Initial Stock pile size: ";
     cin >> num;
     cout << endl;
+
     return num;
 }
 
@@ -78,14 +82,6 @@ void Game::dealCards(int num) {
         }
     }   
     
-    /**Testing Purpose
-    for(int i = 0; i < numPlayers; i++){
-      for(int j = 0; j < 5; j++){
-	cout<<"Player "<<i<<" "<<endl;
-	cout<<players[i]->getHand()->getCard(j)->getVal() << endl;
-      }
-    }
-    cout<<endl;**/
 }
 
 void Game::play() {
@@ -95,13 +91,13 @@ void Game::play() {
     while (!gameOver()) {
         printView(this->turn % numPlayers);
         promptMove();
-        turn++;
     }
 
 }
 
 void Game::printView(int i) {
     stringstream lines[11];
+    cout << this->players[i]->getName() << "'s turn!" << endl;
     generateView(lines, i);
     for (int a = 0; a < 11; a++) {
         cout << lines[a].str() << endl;        
@@ -146,16 +142,10 @@ void  Game::generateView(stringstream *lines, int i) {
     lines[4] << "Build Piles:\t[a]\t[b]\t[c]\t[d]";
 
     for (int a = 0; a < 4; a++) {
-        if (this->buildPiles[a]->isEmpty()) {
+        if (this->buildPiles[a]->isEmpty())
             lines[5] << "- ";
-        } else {
-            if(this->buildPiles[a]->top()->getVal()==0){
-                lines[5] << this->buildPiles[a]->getSize();
-            }
-            else{
-                lines[5] << this->buildPiles[a]->top()->getVal();
-            }
-        }
+        else 
+            lines[5] << this->buildPiles[a]->getSize() << " ";
     }
 
     lines[6] << "";
@@ -205,12 +195,20 @@ void Game::promptMove() {
     	if (!validMove(moveFrom, moveTo)) {
             throw InvalidMoveException();
         } else {
-            moveCard(moveFrom, moveTo);
+            if (moveCard(moveFrom, moveTo))
+                throw TurnOverException();
         }
 
     } catch (InvalidMoveException & e) {
+
         cout << e.what() << endl;
         promptMove();
+
+    } catch (TurnOverException & e) {
+
+        cout << player->getName() << ": " << e.what() << endl;
+        this->turn++;
+
     }
 
 }
@@ -341,30 +339,49 @@ bool Game::validMove (char moveFrom, char moveTo) const {
     return true;
 }
 
-/** Makes the move - only is called is the move is valid */
-void Game::moveCard( char moveFrom, char moveTo) {
+/** Makes the move - only is called is the move is valid. */
+bool Game::moveCard(char moveFrom, char moveTo) {
 
-    Player * curr = this->players[turn % players.size()];
+    Player * curr = this->players[this->turn % this->players.size()];
+    Card * card;
 
+    /* Move from stock pile. */
     if (moveFrom == '0') {
-        buildPiles[moveTo-'a']->add(curr->removeFromStockPile());
+        card = curr->removeFromStockPile();
+        buildPiles[moveTo-'a']->add(card);
     }
-    if (moveFrom > '0' && moveFrom < '6') {
-        if (moveTo > '5' &&moveTo < ':') {
-            curr->getDiscardPiles()[moveTo-'6']->add(curr->removeCardFromHand(moveFrom-'1'));
+
+    /* Move from hand. */
+    else if (moveFrom >= '1' && moveFrom <= '5') {
+        if (moveTo >= '6' && moveTo <= '9') {
+            card = curr->removeCardFromHand(moveFrom-'1');
+            curr->getDiscardPiles()[moveTo-'6']->add(card);
         }
         else {
-            buildPiles[moveTo-'a']->add(curr->removeCardFromHand(moveFrom-'1'));
+            card = curr->removeCardFromHand(moveFrom-'1');
+            buildPiles[moveTo-'a']->add(card);
         }
-        if(curr->getHand()->isEmpty()){
-            for (int a = 0; a < 5; a++){
+        if (curr->getHand()->isEmpty()) {
+            for (int a = 0; a < 5; a++) {
                 curr->addCardToHand(this->drawPile->remove());
             }
         }
     }
-    if (moveFrom > '5') {
-        buildPiles[moveTo-'a']->add(curr->getDiscardPiles()[moveFrom-'6']->remove());
+
+    /* Move from discard pile. */
+    else {
+        card = curr->getDiscardPiles()[moveFrom-'6']->remove();
+        buildPiles[moveTo-'a']->add(card);
     }
+
+    cout << curr->getName() << " moved " << card->getVal() << " from pile " << moveFrom << " to " << moveTo << "." << endl;
+
+    /* Card was moved to a discard pile. */
+    if (moveTo >= '6' && moveTo <= '9')
+        return true;
+
+    /* Card was not moved to a discard pile. */
+    return false;
 }
 
 bool Game::gameOver() {

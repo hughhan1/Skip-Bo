@@ -27,7 +27,6 @@ bool Hand::isEmpty() {
     return true;
 }
 
-
 bool Hand::add(Card * c) {
     int index = 0;
     while (hand[index] != nullptr && index < 5) {

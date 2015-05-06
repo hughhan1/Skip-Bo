@@ -15,9 +15,6 @@
 #include <cstdlib>
 
 class Computer : public Player {
-private:
-	bool hasMove;
-
 public:
 	Computer(std::string = "no name");
 	char moveFrom();

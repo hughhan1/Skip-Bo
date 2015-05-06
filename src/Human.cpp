@@ -15,15 +15,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-Human::Human(std::string name) {
-    this->name = name;
-    this->hand = new Hand();
-    for (int a = 0; a < 4; a++) {
-        this->discardPiles[a] = new DiscardPile();
-    }
-    this->stockPile = new StockPile();
-    this->isTurn = false;
-}
+Human::Human(std::string name) : Player(name) { }
 
 char Human::moveFrom() {
     char ch;
