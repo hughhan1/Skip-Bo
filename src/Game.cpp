@@ -230,13 +230,8 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         builds[i] = this->buildPiles[i];
     }
 
-    /* Moving from an invalid index. */
-    if (moveFrom < '0' || moveFrom > '9') {
-        return false;
-    } 
-
     /* Moving fromt a player's stock pile. */
-    else if (moveFrom == '0') {
+    if (moveFrom == '0') {
 	
         if (indexTo >= 4 || indexTo < 0)
             return false;
@@ -247,22 +242,17 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         if (cardFrom->getVal() == 0) 
             return true;
         
-        if (cardTo->getVal() == 0 && cardFrom->getVal()-1 != builds[indexTo]->getSize()) 
-            return false;
-        
-        if (cardFrom->getVal() != 1 && cardTo == nullptr) 
-            return false;
+        if (cardTo->getVal() == 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize()) 
+            return true;
 
-        if (!(cardFrom->getVal()-1 == cardTo->getVal())) 
-            return false;
+	if (cardTo->getVal() != 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize())
+	  return true;
     } 
 
     /* Moving from player's hand. */
     else if (moveFrom > '0' && moveFrom < '6') {
-    
-      
-        int indexFrom = moveFrom - '1';
-        
+          
+        int indexFrom = moveFrom - '1';    
 
         if (moveTo >= '6' && moveTo <= '9')
             return true;
@@ -273,9 +263,6 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         Card * cardFrom = hand->getCard(indexFrom);
         Card * cardTo = builds[indexTo]->top();
 	
-        if (cardFrom == nullptr) 
-            return false;
-
         if (cardFrom->getVal() == 0)
             return true;
 
@@ -289,17 +276,13 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 	
         if (cardTo->getVal() == 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize()) 
             return true;	    
-	
-        if (cardFrom->getVal() != 1 && cardTo == nullptr) 
-            return false;
 
-        if (cardFrom->getVal()-1 != cardTo->getVal()) 
-            return false;
-	
+	if (cardTo->getVal() != 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize())
+	   return true;
     } 
 
     /* Moving from a plyer's discard pile. */
-    else if (moveFrom > '5' && moveFrom < ':') {
+    else if (moveFrom > '5' && moveFrom <= '9') {
 
         int indexFrom = moveFrom - '6';
 	
@@ -309,23 +292,16 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         Card * cardFrom = discards[indexFrom]->top();
         Card * cardTo = builds[indexTo]->top();
         
-        if (cardFrom == nullptr) 
-            return false;
-        
         if (cardFrom->getVal() == 0) 
             return true;
 	  
-        if (cardTo->getVal() == 0 && cardFrom->getVal()-1 != builds[indexTo]->getSize()) 
-            return false;
-	
-        if (cardFrom->getVal() != 1 && cardTo == nullptr) 
-            return false;
-        
-        if (cardFrom->getVal()-1 == cardTo->getVal()) 
-            return false;
-        
+        if (cardTo->getVal() == 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize()) 
+            return true;
+
+	if (cardTo->getVal() != 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize())
+	  return true;   
     }
-    return true;
+    return false;
 }
 
 /** Makes the move - only is called is the move is valid. */
