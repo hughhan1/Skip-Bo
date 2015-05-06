@@ -22,7 +22,7 @@ bool DiscardPile::add(Card * c) {
 Card * DiscardPile::top() const throw (EmptyPileException) {
 	try {
 		if (this->isEmpty()) {
-			throw new EmptyPileException();
+			throw EmptyPileException();
 		} else {
 			return this->pile.back();
 		}
