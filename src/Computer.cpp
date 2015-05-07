@@ -24,9 +24,11 @@ char Computer::moveFrom() {
 
 	/* Check hand for wild card. */
 	for (int i = 0; i < 5; i++) {
-		if (this->hand->getCard(i)->getVal() == 0) {
-			cout << "Returning hand card." << std::endl;
-			return i + 1;
+		if (this->hand->getCard(i) != nullptr) {
+			if (this->hand->getCard(i)->getVal() == 0) {
+				cout << "Returning hand card." << std::endl;
+				return i + 1;
+			}
 		}
 	}
 
@@ -39,12 +41,12 @@ char Computer::moveFrom() {
 	}
 
 	/* Otherwise, try random cards. */
-	int ch = rand() % NUM_MOVE_FROM;
+	char ch = rand() % NUM_MOVE_FROM;
 	return ch;
 }
 
 char Computer::moveTo() {
-	int ch = (rand() % NUM_MOVE_TO) + 2;
+	char ch = (rand() % NUM_MOVE_TO) + 2;
     switch (ch) {
     	case 2: ch = 'a';
     	case 3: ch = 'b';
@@ -52,5 +54,6 @@ char Computer::moveTo() {
     	case 5: ch = 'd';
     	default: break;
     }
+    cout << ch << std::endl;
     return ch;
 }
