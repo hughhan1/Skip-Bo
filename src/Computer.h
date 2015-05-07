@@ -14,6 +14,9 @@
 #include "Player.h"
 #include <cstdlib>
 
+#define NUM_MOVE_FROM 10
+#define NUM_MOVE_TO 8
+
 class Computer : public Player {
 public:
 	Computer(std::string = "no name");

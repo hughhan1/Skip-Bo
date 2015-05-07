@@ -16,9 +16,6 @@
 #include "Hand.h"
 #include <string>
 
-/** This is the number of cards that a player can select from when making a move. */
-#define NUM_OPTIONS 10
-
 class Player {
 
 protected:
