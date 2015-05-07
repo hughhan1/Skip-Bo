@@ -32,13 +32,20 @@ void GameController::runGame() {
 }
 
 void GameController::loadGame() {
-        std::cout << "Enter the name of the file from which you'd like to load the game: ";
+        
+        FILE * inFile;
+  
+	std::cout << "Enter the name of the file from which you'd like to load the game: ";
 	std::string filename;
 	std::cin >> filename;
-
-	FILE * inFile = fopen(filename.c_str(), "r");
-
-	skipBo = new Game(inFile);
+	
+	inFile = fopen(filename.c_str(), "r");
+	
+	if (!inFile) {
+	     std::cerr << "Error opening file: " << filename << std::endl;
+	     exit(1);
+	} else
+	     skipBo = new Game(inFile);
 }
 
 void GameController::welcome() {
