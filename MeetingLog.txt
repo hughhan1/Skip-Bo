@@ -56,3 +56,11 @@ All members present.
 - Worked on testing piles
 - Worked on interpreting moves
 - Worked on debugging printView
+
+Wednesday 5/6 : 7 PM to 10 PM
+All members present.
+
+- SIGNIFICANT bug fixing.
+- Next steps:
+- Fill hand at the end of every end of each turn.
+- When build pile reaches 12, empty build pile and shuffle it, and add each card into the drawPile.
