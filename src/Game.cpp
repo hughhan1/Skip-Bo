@@ -87,38 +87,42 @@ void Game::dealCards(int num) {
 
 void Game::play() {
 
-  int numPlayers = this->players.size();
-  char input = '0';
+    Player * curr = nullptr;
+    int numPlayers = this->players.size();
+    char input = '0';
 
-  while (!gameOver() && input != 'q') {
+    int t = this->turn;
 
-    Player * curr = this->players[this->turn % numPlayers];
+    while (!gameOver() && input != 'q') {
 
-    cout << curr->getName() << "'s turn!" << endl;
+        curr = this->players[this->turn % numPlayers];
 
-    if (dynamic_cast<Human*>(curr)) {
+        cout << curr->getName() << "'s turn!" << endl;
 
-      cout << "Enter any character to start your turn, or q to quit the game: ";
-      cin >> input;
+        if (dynamic_cast<Human*>(curr)) {
+            cout << "Enter any character to start your turn, or q to quit the game: ";
+            cin >> input;
+        }
 
+        if (input != 'q') {
+            while (t == this->turn) {
+                printView(this->turn % numPlayers);
+                promptMove();
+            }
+            t++;
+        } else {
+            cout << endl << "Would you like to save the game (y/n)? ";
+            cin >> input;
+
+            if (input == 'y' || input == 'Y')
+                saveGame();
+
+            cout << endl << "Goodbye!" << endl;
+            input = 'q';
+        }
     }
 
-    if (input != 'q') {
-      printView(this->turn % numPlayers);
-      promptMove();
-    } else {
-      cout << endl << "Would you like to save the game (y/n)? ";
-      cin >> input;
-
-      if (input == 'y' || input == 'Y')
-        saveGame();
-
-      cout << endl << "Goodbye!" << endl;
-      input = 'q';
-    }
-  }
 }
-
   
 void Game::printView(int i) {
     stringstream lines[11];
