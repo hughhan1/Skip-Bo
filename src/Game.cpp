@@ -132,7 +132,7 @@ void  Game::generateView(stringstream *lines, int i) {
                 if (p->getDiscardPiles()[b]->isEmpty()) {
                     lines[2] << "- ";
                 } else {
-                    lines[2] << p->getDiscardPiles()[b]->top()->getVal();
+                    lines[2] << p->getDiscardPiles()[b]->top()->getVal()<<" ";
                 }
             }
             lines[2] << "\t";
@@ -142,11 +142,14 @@ void  Game::generateView(stringstream *lines, int i) {
     lines[3] << "";
     lines[4] << "Build Piles:\t[a]\t[b]\t[c]\t[d]";
 
+    lines[5] << "\t\t";
+    
     for (int a = 0; a < 4; a++) {
         if (this->buildPiles[a]->isEmpty())
             lines[5] << "- ";
         else 
             lines[5] << this->buildPiles[a]->getSize() << " ";
+        lines[5] << "\t";
     }
 
     lines[6] << "";
@@ -167,7 +170,7 @@ void  Game::generateView(stringstream *lines, int i) {
         }
     }
 
-    lines[10] << "    ";
+    lines[10] << "\t";
     
     for (int a = 0; a < 4; a++){
         if (!player->getDiscardPiles()[a]->isEmpty()) {
@@ -204,8 +207,8 @@ void Game::promptMove() {
 
         cout << e.what() << endl;
         printView(this->turn % players.size());
-	cout << endl;
-	promptMove();
+        cout << endl;
+        promptMove();
 
     } catch (TurnOverException & e) {
 
@@ -240,24 +243,24 @@ bool Game::validMove (char moveFrom, char moveTo) const {
             return false;
 	
         Card * cardFrom = stock->top();
-	Card * cardTo;
+        Card * cardTo;
 	
-	if ((cardFrom->getVal() == 0 || cardFrom->getVal() == 1) && builds[indexTo]->getSize() == 0) 
-	  return true;
+        if ((cardFrom->getVal() == 0 || cardFrom->getVal() == 1) && builds[indexTo]->getSize() == 0)
+            return true;
 
-	if (builds[indexTo]->getSize() > 0)
-	  cardTo = builds[indexTo]->top();
-	else
-	  return false;
+        if (builds[indexTo]->getSize() > 0)
+            cardTo = builds[indexTo]->top();
+        else
+            return false;
 
         if (cardFrom->getVal() == 0) 
             return true;
         
         if (cardTo->getVal() == 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize()) 
             return true;
-
-	if (cardTo->getVal() != 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize())
-	  return true;
+    
+        if (cardTo->getVal() != 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize())
+            return true;
     } 
 
     /* Moving from player's hand. */
@@ -265,22 +268,25 @@ bool Game::validMove (char moveFrom, char moveTo) const {
           
         int indexFrom = moveFrom - '1';    
 
+        Card * cardFrom = hand->getCard(indexFrom);
+        if(cardFrom==nullptr)
+            return false;
+        
         if (moveTo >= '6' && moveTo <= '9')
             return true;
 	
         if (indexFrom >= 5 || indexFrom < 0 || indexTo >= 4 || indexTo < 0)
             return false;	
 	
-        Card * cardFrom = hand->getCard(indexFrom);
-	Card * cardTo;
+        Card * cardTo;
 
-	if ((cardFrom->getVal() == 0 || cardFrom->getVal() == 1) && builds[indexTo]->getSize() == 0) 
-	  return true;
+        if ((cardFrom->getVal() == 0 || cardFrom->getVal() == 1) && builds[indexTo]->getSize() == 0)
+            return true;
 
-	if (builds[indexTo]->getSize() > 0)
-	  cardTo = builds[indexTo]->top();
-	else
-	  return false;
+        if (builds[indexTo]->getSize() > 0)
+            cardTo = builds[indexTo]->top();
+        else
+            return false;
 	
         if (cardFrom->getVal() == 0)
             return true;	  
@@ -288,29 +294,32 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         if (cardTo->getVal() == 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize()) 
             return true;	    
 
-	if (cardTo->getVal() != 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize())
-	   return true;
+        if (cardTo->getVal() != 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize())
+            return true;
     } 
 
     /* Moving from a plyer's discard pile. */
     else if (moveFrom > '5' && moveFrom <= '9') {
 
         int indexFrom = moveFrom - '6';
-	
+        
+        Card * cardFrom = discards[indexFrom]->top();
+        if(cardFrom==nullptr)
+            return false;
+        
     	if (indexFrom >=4 || indexFrom < 0 || indexTo >= 4 || indexTo < 0)
             return false;
 	
-        Card * cardFrom = discards[indexFrom]->top();
         Card * cardTo;
 	
 	
-	if ((cardFrom->getVal() == 0 || cardFrom->getVal() == 1) && builds[indexTo]->getSize() == 0) 
-	  return true;
-
-	if (builds[indexTo]->getSize() > 0)
-	  cardTo = builds[indexTo]->top();
-	else
-	  return false;
+        if ((cardFrom->getVal() == 0 || cardFrom->getVal() == 1) && builds[indexTo]->getSize() == 0)
+            return true;
+    
+        if (builds[indexTo]->getSize() > 0)
+            cardTo = builds[indexTo]->top();
+        else
+            return false;
         
         if (cardFrom->getVal() == 0) 
             return true;
@@ -318,8 +327,8 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         if (cardTo->getVal() == 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize()) 
             return true;
 
-	if (cardTo->getVal() != 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize())
-	  return true;   
+        if (cardTo->getVal() != 0 && cardFrom->getVal()-1 == builds[indexTo]->getSize())
+            return true;
     }
     return false;
 }
