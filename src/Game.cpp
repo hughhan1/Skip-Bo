@@ -91,9 +91,17 @@ void Game::play() {
   char input = '0';
 
   while (!gameOver() && input != 'q') {
-    cout << this->players[this->turn % numPlayers]->getName() << "'s turn!" << endl;
-    cout << "Enter any character to start your turn, or q to quit the game: ";
-    cin >> input;
+
+    Player * curr = this->players[this->turn % numPlayers];
+
+    cout << curr->getName() << "'s turn!" << endl;
+
+    if (dynamic_cast<Human*>(curr)) {
+
+      cout << "Enter any character to start your turn, or q to quit the game: ";
+      cin >> input;
+
+    }
 
     if (input != 'q') {
       printView(this->turn % numPlayers);
@@ -103,13 +111,14 @@ void Game::play() {
       cin >> input;
 
       if (input == 'y' || input == 'Y')
-	saveGame();
+        saveGame();
 
       cout << endl << "Goodbye!" << endl;
       input = 'q';
     }
   }
 }
+
   
 void Game::printView(int i) {
     stringstream lines[11];
