@@ -51,6 +51,9 @@ private:
      * @return whether the game is over
      */
     bool gameOver();
+
+    void endMove();
+    void addToDrawPile(int);
     
 public:
     Game();

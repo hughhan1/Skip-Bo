@@ -386,12 +386,31 @@ bool Game::moveCard(char moveFrom, char moveTo) {
 
     cout << curr->getName() << " moved " << card->getVal() << " from pile " << moveFrom << " to " << moveTo << "." << endl;
 
+    endMove();
+
     /* Card was moved to a discard pile. */
     if (moveTo >= '6' && moveTo <= '9')
         return true;
 
     /* Card was not moved to a discard pile. */
     return false;
+}
+
+void Game::endMove() {
+  for (int i = 0; i < 4; i++) {
+    if (this->buildPiles[i]->getSize() == 12) {
+      addToDrawPile(i);
+    }
+  }
+}
+
+void Game::addToDrawPile(int index) {
+
+    BuildPile * b = this->buildPiles[index];
+  b->shuffle();
+  while (!b->isEmpty()) {
+    this->drawPile->add(b->remove());
+  }
 }
 
 bool Game::gameOver() {

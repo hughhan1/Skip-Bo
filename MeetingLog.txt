@@ -62,5 +62,5 @@ All members present.
 
 - SIGNIFICANT bug fixing.
 - Next steps:
-- Fill hand at the end of every end of each turn.
-- When build pile reaches 12, empty build pile and shuffle it, and add each card into the drawPile.
+	- Fill hand at the end of every end of each turn.
+	- When build pile reaches 12, empty build pile and shuffle it, and add each card into the drawPile.
