@@ -13,18 +13,32 @@
 void GameController::runGame() {
 	srand(time(NULL));
 	welcome();
-	skipBo = new Game();
-	int stockSize = skipBo->setPlayers();
-	skipBo->dealCards(stockSize);
+
+	std::cout << "Would you like to load a game from a file or start a new game? (0 for load, 1 for new): ";
+	char input;
+	std::cin >> input;
+
+	std::cout << std::endl;
+
+	if (input == '0')
+	    loadGame();
+	else {
+	    skipBo = new Game();
+	    int stockSize = skipBo->setPlayers();
+	    skipBo->dealCards(stockSize);
+	}
+
 	skipBo->play();
 }
 
 void GameController::loadGame() {
-    // TO DO
-}
+        std::cout << "Enter the name of the file from which you'd like to load the game: ";
+	std::string filename;
+	std::cin >> filename;
 
-void GameController::endGame() {
-    // TO DO
+	FILE * inFile = fopen(filename.c_str(), "r");
+
+	skipBo = new Game(inFile);
 }
 
 void GameController::welcome() {
