@@ -45,9 +45,10 @@ int Game::setPlayers() {
 
     for (int i = 0; i < numPlayers; i++) {
         cout << "Please enter the name of Player " << i + 1 << ": ";
-        cin >> name;
-
-        cout << "If this player is a human enter 0. If this player is a computer enter 1." << std::endl;
+	
+	cin >> name;
+	
+        cout << "Enter 0 if this player is a human, and 1 if this player is a computer: ";
         cin >> input;
         cout << endl;
 
