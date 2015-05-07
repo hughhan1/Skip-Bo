@@ -86,24 +86,39 @@ void Game::dealCards(int num) {
 
 void Game::play() {
 
-    int numPlayers = this->players.size();
+  int numPlayers = this->players.size();
+  char input = '0';
 
-    while (!gameOver()) {
-        printView(this->turn % numPlayers);
-        promptMove();
+  while (!gameOver() && input != 'q') {
+    cout << this->players[this->turn % numPlayers]->getName() << "'s turn!" << endl;
+    cout << "Enter any character to start your turn, or q to quit the game: ";
+    cin >> input;
+
+    if (input != 'q') {
+      printView(this->turn % numPlayers);
+      promptMove();
+    } else {
+      cout << endl << "Would you like to save the game (y/n)? ";
+      cin >> input;
+
+      if (input == 'y' || input == 'Y')
+	saveGame();
+
+      cout << endl << "Goodbye!" << endl;
+      input = 'q';
     }
-
+  }
 }
-
+  
 void Game::printView(int i) {
     stringstream lines[11];
-    cout << this->players[i]->getName() << "'s turn!" << endl;
     generateView(lines, i);
     cout << endl;
     for (int a = 0; a < 11; a++) {
-        cout << lines[a].str() << endl;        
-    }    
-}
+      cout << lines[a].str() << endl;
+    }
+  }
+
 
 /** Private */
 
@@ -384,4 +399,8 @@ bool Game::gameOver() {
             return true;
     }
     return false;
+}
+
+void Game::saveGame() {
+
 }
