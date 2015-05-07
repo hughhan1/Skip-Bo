@@ -1,8 +1,0 @@
-#!/usr/bin/python
-
-import sys
-
-while True:
-    l = sys.stdin.readline()
-    sys.stdout.write(l)
-    sys.stdout.flush()
