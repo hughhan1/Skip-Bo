@@ -16,6 +16,7 @@
 
 #define NUM_MOVE_FROM 10
 #define NUM_MOVE_TO 8
+#define ASCII_SHIFT 48
 
 class Computer : public Player {
 public:
