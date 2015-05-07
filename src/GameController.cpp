@@ -23,10 +23,6 @@ void GameController::loadGame() {
     // TO DO
 }
 
-void GameController::saveGame() {
-    // TO DO
-}
-
 void GameController::endGame() {
     // TO DO
 }

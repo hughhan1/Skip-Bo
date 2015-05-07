@@ -62,6 +62,8 @@ public:
     void play();
 
     void promptMove();
+
+    void saveGame();
   
     /** 
      * Prints the view of a Player. 

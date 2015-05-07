@@ -25,8 +25,7 @@ private:
 
 public:
 	void runGame();
-    void loadGame();
-    void saveGame();
+	void loadGame();
     void endGame();
 	
 };
