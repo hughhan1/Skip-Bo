@@ -18,7 +18,6 @@ char Computer::moveFrom() {
 
 	/* Check stock pile for wild card. */
 	if (this->stockPile->top()->getVal() == 0) {
-		cout << "Returning stockpile card." << std::endl;
 		return '0';
 	} 
 
@@ -26,7 +25,6 @@ char Computer::moveFrom() {
 	for (int i = 0; i < 5; i++) {
 		if (this->hand->getCard(i) != nullptr) {
 			if (this->hand->getCard(i)->getVal() == 0) {
-				cout << "Returning hand card." << std::endl;
 				return i + 1 + ASCII_SHIFT;
 			}
 		}
@@ -36,7 +34,6 @@ char Computer::moveFrom() {
 	for (int i = 0; i < 4; i++) {
 		if (!this->discardPiles[i]->isEmpty()) {
 			if (this->discardPiles[i]->top()->getVal() == 0) {
-				cout << "Returning discardpile card." << std::endl;
 				return i + 6 + ASCII_SHIFT;
 			}
 		}
