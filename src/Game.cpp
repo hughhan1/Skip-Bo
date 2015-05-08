@@ -125,40 +125,61 @@ Game::Game(std::ifstream &inFile) {
 }
 
 int Game::setPlayers() {
-    
-    int numPlayers;
-    std::string name;
-    int input;
-    int num;
 
+  int numPlayers = -1;
+  std::string name;
+  int input;
+  int num = -1;
+  bool go = false;
+
+  while (!(numPlayers >= 2 && numPlayers <= 6)) {
     cout << "Please enter the number of players: ";
     cin >> numPlayers;
     cout << endl;
 
-    for (int i = 0; i < numPlayers; i++) {
-        cout << "Please enter the name of Player " << i + 1 << ": ";
-	
-	cin >> name;
-	
-        cout << "Enter 0 if this player is a human, and 1 if this player is a computer: ";
-        cin >> input;
-        cout << endl;
+    if (numPlayers < 2 || numPlayers > 6)
+      cout << "Skip-bo is played with at least 2 players, and at most 6 players." << endl << endl;
+
+  }
+
+  for (int i = 0; i < numPlayers; i++) {
+    cout << "Please enter the name of Player " << i + 1 << ": ";
+
+    cin >> name;
+
+    cout << "Enter 0 if this player is a human, and 1 if this player is a computer: ";
+    cin >> input;
+    cout << endl;
 
     if (input == 0)
-        addPlayer(new Human(name));
+      addPlayer(new Human(name));
     else
-        addPlayer(new Computer(name));
-    }
-    
-    /* Shuffle the Draw Pile. */
-    drawPile->shuffle();
+      addPlayer(new Computer(name));
+  }
 
-    /* Prompts the user for the stock pile size. */
-    cout << "Initial Stock pile size: ";
+  /* Shuffle the Draw Pile. */
+  drawPile->shuffle();
+
+  /* Prompts the user for the stock pile size. */
+  while(!go) {
+    cout << "Please enter the initial stock pile size: ";
     cin >> num;
     cout << endl;
 
-    return num;
+    if (num < 1) {
+      cout << "You can't play with less than 1 card!" << endl << endl;
+      go = false;
+    } else if (numPlayers < 5 && num > 30) {
+      cout << "The card limit for 2-4 players is 30." << endl << endl;
+      go = false;
+    } else if (numPlayers >= 5 && num > 20 ) {
+      cout << "The card limit for 2-6 players is 20." << endl << endl;
+      go = false;
+    } else
+      go = true;
+
+  }
+  return num;
 }
 
 void Game::dealCards(int num) {
