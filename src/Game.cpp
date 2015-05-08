@@ -385,7 +385,8 @@ bool Game::validMove (char moveFrom, char moveTo) const {
 /** Makes the move - only is called is the move is valid. */
 bool Game::moveCard(char moveFrom, char moveTo) {
 
-    Player * curr = this->players[this->turn % this->players.size()];
+    int numPlayers = this->turn % this->players.size();
+    Player * curr = this->players[numPlayers];
     Card * card;
 
     /* Move from stock pile. */
@@ -399,15 +400,12 @@ bool Game::moveCard(char moveFrom, char moveTo) {
         if (moveTo >= '6' && moveTo <= '9') {
             card = curr->removeCardFromHand(moveFrom-'1');
             curr->getDiscardPiles()[moveTo-'6']->add(card);
-        }
-        else {
+        } else {
             card = curr->removeCardFromHand(moveFrom-'1');
             buildPiles[moveTo-'a']->add(card);
         }
         if (curr->getHand()->isEmpty()) {
-            for (int a = 0; a < 5; a++) {
-                curr->addCardToHand(this->drawPile->remove());
-            }
+            fillHand(numPlayers);
         }
     }
 
@@ -433,6 +431,10 @@ void Game::fillHand(int i) {
     Player * curr = this->players[i];
     Hand * hand = curr->getHand();
     while (!hand->isFull()) {
+        if (this->drawPile->isEmpty()) {
+            this->drawPile = new DrawPile();
+            this->drawPile->shuffle();
+        }
         curr->addCardToHand(this->drawPile->remove());
     }
 }
