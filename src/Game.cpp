@@ -469,14 +469,18 @@ void Game::saveGame() {
   Card * card;
 
   //drawPile data
+  s += to_string(drawPile->getSize());
+  s += " ";
   while(!drawPile->isEmpty()){
     card = drawPile->remove();
     s += to_string(card->getVal());
-    s += " ";
+    s += " ";   
   }
 
   //buildPile data
   for(int i = 0; i < 4; i++){
+    s += to_string(buildPiles[i]->getSize());
+    s += " ";
     while(!buildPiles[i]->isEmpty()){
       card = buildPiles[i]->remove();
       s += to_string(card->getVal());
@@ -488,6 +492,8 @@ void Game::saveGame() {
   s.clear();
 
   //Players data   if card == nullptr, using -1
+  s += to_string((int)players.size());
+  s += " ";
   for(int i = 0; i < (int)players.size(); i++){
     player = players[i];
     s += player->getName();
@@ -508,6 +514,8 @@ void Game::saveGame() {
 
     //discardPile data
     for(int j = 0; j < 4; j++){
+      s += to_string(player->getDiscardPiles()[j]->getSize());
+      s += " ";
       while(!player->getDiscardPiles()[j]->isEmpty()){
 	card = player->getDiscardPiles()[j]->remove();
 	s += card->getVal();
@@ -515,6 +523,9 @@ void Game::saveGame() {
       }
     }
 
+    //stockPile data
+    s += to_string(player->getStockPile()->getSize());
+    s += " ";
     while(!player->getStockPile()->isEmpty()){
       card = player->getStockPile()->remove();
       s += card->getVal();
