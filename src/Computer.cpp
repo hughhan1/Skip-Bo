@@ -50,12 +50,11 @@ char Computer::moveFrom() {
 char Computer::moveTo() {
 	char ch = (rand() % NUM_MOVE_TO) + 2 + ASCII_SHIFT;
     switch (ch) {
-    	case '2': ch = 'a';
-    	case '3': ch = 'b';
-    	case '4': ch = 'c';
-    	case '5': ch = 'd';
+    	case '2': ch = 'a'; break;
+    	case '3': ch = 'b';	break;
+    	case '4': ch = 'c';	break;
+    	case '5': ch = 'd';	break;
     	default: break;
     }
-    cout << ch << std::endl;
     return ch;
 }
