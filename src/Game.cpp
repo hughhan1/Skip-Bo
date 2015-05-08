@@ -147,7 +147,7 @@ void Game::addPlayer(Player* player){
     players.push_back(player);
 }
 
-void  Game::generateView(stringstream *lines, int i){
+void Game::generateView(stringstream *lines, int i){
     Player * player = this->players[i];
     int numPlayers = this->players.size();
     int value;
@@ -155,7 +155,10 @@ void  Game::generateView(stringstream *lines, int i){
     for (int a = 0; a < numPlayers; a++) {
         if (player != this->players[a]) {
             Player* p = this->players[a];
-            
+            for(int i=0;i<50;i++){ //clears the screen (so you can't see anything but your turn)
+                lines[0] << endl;
+            }
+            lines[0] <<"************************************************************" << endl;
             lines[0] << p->getName() << "\t\t\t";
             lines[1] << "(" << p->getStockPile()->getSize() << ")\t  Discard\t\t";
             
@@ -223,9 +226,10 @@ void  Game::generateView(stringstream *lines, int i){
         }
     }
     
-    lines[10] << "\t " << player->getStockPile()->top()->getVal() << "  (" << player->getStockPile()->getSize() << ")";
-    
+    lines[10] << "\t " << player->getStockPile()->top()->getVal() << "  (" << player->getStockPile()->getSize() << ")" << endl << endl;
+    lines[10] << "************************************************************" << endl;
 }
+
 
 void Game::promptMove() {
 
