@@ -8,6 +8,7 @@
  * SkipBo: Game.cpp
  */
 
+#include <cstdio>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -154,7 +155,9 @@ int Game::setPlayers() {
   for (int i = 0; i < numPlayers; i++) {
     cout << "Please enter the name of Player " << i + 1 << ": ";
 
-    cin >> name;
+    getchar();
+    std::getline(cin, name);
+    //cin >> name;
 
     cout << "Enter 0 if this player is a human, and 1 if this player is a computer: ";
     cin >> input;
