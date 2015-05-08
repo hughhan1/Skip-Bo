@@ -107,7 +107,7 @@ void Game::play() {
         if (input != 'q') {
 
             while (t == this->turn) {
-                printView(this->turn % numPlayers);
+            	printView(this->turn % numPlayers);
                 promptMove();
             }
 
@@ -142,7 +142,7 @@ void Game::addPlayer(Player* player){
     players.push_back(player);
 }
 
-void  Game::generateView(stringstream *lines, int i){
+void  Game::generateView(stringstream *lines, int i) {
     Player * player = this->players[i];
     int numPlayers = this->players.size();
     int value;
@@ -150,81 +150,74 @@ void  Game::generateView(stringstream *lines, int i){
     for (int a = 0; a < numPlayers; a++) {
         if (player != this->players[a]) {
             Player* p = this->players[a];
-            
+
             lines[0] << p->getName() << "\t\t\t";
-            lines[1] << "(" << p->getStockPile()->getSize() << ")\t  Discard\t\t";
-            
+            lines[1] << "(" << p->getStockPile()->getSize() << ")\tDiscard\t\t";
+
             value = p->getStockPile()->top()->getVal();
-            if (value < 10)
+            if (value < 10) 
                 lines[2] << " ";
-            lines[2] << p->getStockPile()->top()->getVal() << " \t ";
-            
+            lines[2] << " " << p->getStockPile()->top()->getVal() << " \t";
+
             for (int b = 0; b < 4; b++) {
                 if (p->getDiscardPiles()[b]->isEmpty()) {
-                    lines[2] << "-  ";
+                    lines[2] << "- ";
                 } else {
                     lines[2] << p->getDiscardPiles()[b]->top()->getVal()<<" ";
-                    if(p->getDiscardPiles()[b]->top()->getVal()<10){
-                        lines[2] << " ";
-                    }
                 }
             }
-            lines[2] << "\t\t";
-        }
+            lines[2] << "\t";
+        } 
     }
     
     lines[3] << "";
     lines[4] << "Build Piles:\t[a]\t[b]\t[c]\t[d]";
-    
+
     lines[5] << "\t\t";
+    
     for (int a = 0; a < 4; a++) {
         if (this->buildPiles[a]->isEmpty())
-            lines[5] << " - ";
-        else{
-            if(this->buildPiles[a]->getSize()<10)
-                lines[5] << " ";
+            lines[5] << "- ";
+        else 
             lines[5] << this->buildPiles[a]->getSize() << " ";
-        }
         lines[5] << "\t";
     }
-    
+
     lines[6] << "";
     lines[7] << player->getName();
     lines[8] << "Hand\t\t\tDiscard Piles\t\tStock Pile";
     lines[9] << "[1] [2] [3] [4] [5] \t[6] [7] [8] [9] \t[0]";
-    
+
     for (int i = 0; i < 5; i++) {
         if (player->getHand()->getCard(i) != nullptr) {
             int value = player->getHand()->getCard(i)->getVal();
-            
-            if (value < 10)
+
+            if (value < 10) 
                 lines[10] << " ";
             lines[10] << value << "  ";
         }
         else {
-            lines[10] << " -  ";
+            lines[10] << " - ";
         }
     }
-    
+
     lines[10] << "\t";
+    
     for (int a = 0; a < 4; a++){
         if (!player->getDiscardPiles()[a]->isEmpty()) {
-            if(player->getDiscardPiles()[a]->top()->getVal()<10)
-                lines[10] << " ";
-            lines[10] << player->getDiscardPiles()[a]->top()->getVal() << "  ";
+            lines[10] << player->getDiscardPiles()[a]->top()->getVal()<<" ";
         }
         else {
             lines[10] << " -  ";
         }
     }
-    
+
     lines[10] << "\t " << player->getStockPile()->top()->getVal() << "  (" << player->getStockPile()->getSize() << ")";
     
 }
 
 void Game::promptMove() {
-
-    Player * player = players[this->turn % players.size()];
+  Player * player = players[this->turn % players.size()];
 
     char moveFrom;
     char moveTo;
@@ -233,8 +226,8 @@ void Game::promptMove() {
 
         moveFrom = player->moveFrom();
         moveTo = player->moveTo();
-    
-        if (!validMove(moveFrom, moveTo)) {
+	
+    	if (!validMove(moveFrom, moveTo)) {
             throw InvalidMoveException();
         } else {
             if (moveCard(moveFrom, moveTo))
