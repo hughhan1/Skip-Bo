@@ -7,7 +7,7 @@
 class EmptyPileException : public std::exception {
 public:
   const char* what() const throw(){
-		return "Empy Pile Exception.";
+		return "Empty Pile Exception.";
 	}
 };
 
