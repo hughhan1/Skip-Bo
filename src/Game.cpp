@@ -165,7 +165,7 @@ int Game::setPlayers() {
             if (numPlayers < 2 || numPlayers > 6)
                 throw NumPlayersException();
             break;
-            
+
         } catch (const std::invalid_argument& ia) {
             cerr << "Please enter an integer." << endl;
         } catch (const NumPlayersException & e) {
@@ -359,8 +359,8 @@ void Game::generateView(stringstream *lines, int i) {
     for (int a = 0; a < 4; a++) {
         if (this->buildPiles[a]->isEmpty())
             lines[5] << " - ";
-        else{
-            if(this->buildPiles[a]->getSize()<10)
+        else {
+            if (this->buildPiles[a]->getSize() < 10)
                 lines[5] << " ";
             lines[5] << this->buildPiles[a]->getSize() << " ";
         }
@@ -677,7 +677,7 @@ void Game::saveGame() {
     s.clear();
 
     //Players data   if card == nullptr, using -1
-    s += to_string((int)players.size());
+    s += to_string((int) players.size());
     s += "\n";
     for (int i = 0; i < (int) players.size(); i++) {
         if (dynamic_cast<Human*>(players[i]) == nullptr) {
@@ -696,10 +696,10 @@ void Game::saveGame() {
         for (int j = 0; j < 5; j++) {
             card = player->removeCardFromHand(j);
 
-            if(card == nullptr) {
+            if (card == nullptr) {
                 s += to_string(-1);
                 s += "\n"; 
-            } else{
+            } else {
                 s += to_string(card->getVal());
                 s += "\n";
             }
