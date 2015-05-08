@@ -37,6 +37,12 @@ Game::Game(std::ifstream &inFile) {
   int val = 0;
   int val2 = 0;
 
+  drawPile = new DrawPile();
+
+  for(int i = 0; i < 4; i++){
+    buildPiles[i] = new TopPile();
+  }
+ 
   //drawPile data
   while(!drawPile->isEmpty()){
     drawPile->remove();      
@@ -44,14 +50,14 @@ Game::Game(std::ifstream &inFile) {
 
   getline(inFile, str);
   num = stoi(str);
-
+  
   for(int i = 0; i < num; i++){
     getline(inFile, str);
     val = stoi(str);
     Card * card = new Card(val);
-    drawPile->add(card);
-      
+    drawPile->add(card);      
   }
+   
   //buildPile data
   for(int i = 0; i < 4; i++){
     getline(inFile, str);
