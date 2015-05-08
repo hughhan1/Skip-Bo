@@ -15,9 +15,7 @@
 #include "Human.h"
 #include "Computer.h"
 #include "DrawPile.h"
-#include "StockPile.h"
-#include "DiscardPile.h"
-#include "BuildPile.h"
+#include "TopPile.h"
 #include "InvalidMoveException.h"
 #include "TurnOverException.h"
 #include <vector>
@@ -30,7 +28,7 @@ class Game {
 private:
     std::vector<Player*> players;
     DrawPile* drawPile;
-    BuildPile* buildPiles[4];
+    TopPile* buildPiles[4];
     int turn;
 
     /** Adds a Player to the Game. */

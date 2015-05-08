@@ -15,9 +15,9 @@ Player::Player(std::string name) {
 	this->name = name;
 	this->hand = new Hand();
 	for (int a = 0; a < 4; a++) {
-		this->discardPiles[a] = new DiscardPile();
+		this->discardPiles[a] = new TopPile();
 	}
-	this->stockPile = new StockPile();
+	this->stockPile = new TopPile();
 }
 
 std::string Player::getName() const {
@@ -28,11 +28,11 @@ Hand* Player::getHand() const {
     return this->hand;
 }
 
-DiscardPile** Player::getDiscardPiles() {
+TopPile** Player::getDiscardPiles() {
 	return this->discardPiles;
 }
 
-StockPile* Player::getStockPile() const {
+TopPile* Player::getStockPile() const {
     return this->stockPile;
 }
 

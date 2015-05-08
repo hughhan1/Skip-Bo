@@ -26,7 +26,7 @@ using std::vector;
 Game::Game() { 
     this->drawPile = new DrawPile();
     for (int i = 0; i < 4; i++) {
-        this->buildPiles[i] = new BuildPile();
+        this->buildPiles[i] = new TopPile();
     }
     turn = 0;
 }
@@ -274,9 +274,9 @@ bool Game::validMove (char moveFrom, char moveTo) const {
     /* Declaring/Initializing local variables for more legible code. */    
     Player * curr = this->players[turn % players.size()];
     Hand * hand = curr->getHand();
-    StockPile * stock = curr->getStockPile();
-    DiscardPile * discards[4]; 
-    BuildPile * builds[4];
+    TopPile * stock = curr->getStockPile();
+    TopPile * discards[4]; 
+    TopPile * builds[4];
 
     int indexTo = moveTo - 'a';
     
@@ -447,7 +447,7 @@ void Game::endMove() {
 
 void Game::addToDrawPile(int index) {
 
-    BuildPile * b = this->buildPiles[index];
+    TopPile * b = this->buildPiles[index];
   b->shuffle();
   while (!b->isEmpty()) {
     this->drawPile->add(b->remove());

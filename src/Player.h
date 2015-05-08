@@ -11,8 +11,7 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
-#include "DiscardPile.h"
-#include "StockPile.h"
+#include "TopPile.h"
 #include "Hand.h"
 #include <string>
 
@@ -27,10 +26,10 @@ protected:
     Hand* hand;
 
     /** The four discard piles belonging to this Player. */
-    DiscardPile* discardPiles[4];
+    TopPile* discardPiles[4];
 
     /** The stock pile belonging to this Player. */
-    StockPile* stockPile;
+    TopPile* stockPile;
 
 public:
 
@@ -39,8 +38,8 @@ public:
     /** Getter methods. */
     std::string getName() const;
     Hand* getHand() const;
-    DiscardPile** getDiscardPiles();
-    StockPile* getStockPile() const;
+    TopPile** getDiscardPiles();
+    TopPile* getStockPile() const;
 
     bool addCardToHand(Card * card);
     bool addCardToStockPile(Card * card);

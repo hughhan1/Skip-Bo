@@ -15,7 +15,7 @@ bool CheckMoves::canDraw(Player& player) {
 }
 
 bool CheckMoves::canRemove(Pile& pile) {
-	if (BuildPile* b = dynamic_cast<BuildPile*>(&pile)) {
+	if (TopPile* b = dynamic_cast<TopPile*>(&pile)) {
 		return false;
 	} else if (DrawPile* d = dynamic_cast<DrawPile*>(&pile)) {
 		return false;
@@ -29,7 +29,7 @@ bool CheckMoves::canRemove(Hand& hand) {
 }
 
 bool CheckMoves::canBuild(Card& card, Pile& pile) {
-	if (BuildPile* b = dynamic_cast<BuildPile*>(&pile)) {
+	if (TopPile* b = dynamic_cast<TopPile*>(&pile)) {
 		return card.getVal() == 0
 				|| card.getVal() == b->top().getVal() + 1;
 	} else {

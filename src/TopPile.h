@@ -5,18 +5,18 @@
  * Matthew Cowen-Green
  *
  * EN.600.120 Intermediate Programming, Spring 2015
- * SkipBo: BuildPile.h
+ * SkipBo: TopPile.h
  */
 
-#ifndef _BUILDPILE_H
-#define _BUILDPILE_H
+#ifndef _TOPPILE_H
+#define _TOPPILE_H
 
 #include "Pile.h"
 #include <algorithm>
 
-class BuildPile : public Pile {
+class TopPile : public Pile {
  public:
-  BuildPile();
+  TopPile();
   
   bool add(Card * c);
   Card * top() const throw (EmptyPileException);

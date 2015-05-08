@@ -11,10 +11,8 @@
 #ifndef _CHECKMOVES_H
 #define	_CHECKMOVES_H
 
-#include "BuildPile.h"
 #include "DrawPile.h"
-#include "StockPile.h"
-#include "DiscardPile.h"
+#include "TopPile.h"
 #include "Hand.h"
 #include "Player.h"
 
@@ -41,8 +39,8 @@ class CheckMoves {
 	bool canRemove(Hand& hand);
 
 	/**
-	 * Returns whether a Player can move a card onto a BuildPile.
-	 * @return whether a Card can be moved onto a BuildPile
+	 * Returns whether a Player can move a card onto a TopPile.
+	 * @return whether a Card can be moved onto a TopPile
 	 */
 	bool canBuild(Card& card, Pile& pile);
 

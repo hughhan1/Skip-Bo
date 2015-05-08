@@ -5,30 +5,28 @@
  * Matthew Cowen-Green
  *
  * EN.600.120 Intermediate Programming, Spring 2015
- * SkipBo: StockPile.cpp
+ * SkipBo: TopPile.cpp
  */
 
-#include "StockPile.h"
+#include "TopPile.h"
 #include <cassert>
 
-StockPile::StockPile() {
-}
+TopPile::TopPile() { }
 
-bool StockPile::add(Card * c) {
+bool TopPile::add(Card * c) {
   this->pile.push_back(c);
   return true;
 }
 
-Card * StockPile::top() const {
+Card * TopPile::top() const throw (EmptyPileException) {
   try {
     if (this->isEmpty()) {
       throw EmptyPileException();
     } else {
       return this->pile.back();
     }
-  } catch(EmptyPileException &e) {
+  } catch (EmptyPileException & e) {
     std::cout << e.what() << std::endl;
   }
   return nullptr;
 }
-

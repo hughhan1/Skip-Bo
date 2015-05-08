@@ -14,8 +14,7 @@
 #include "Computer.h"
 #include "Card.h"
 #include "Hand.h"
-#include "StockPile.h"
-#include "BuildPile.h"
+#include "TopPile.h"
 #include "Game.h"
 
 #include <cassert>
@@ -125,7 +124,7 @@ public:
 
     // Testing stockPile
     static void stockPileTest() {
-        StockPile test;
+        TopPile test;
         Card* c;
 
         // Testing constructor, getSize(), isEmpty()
@@ -172,7 +171,7 @@ public:
 
     // Testing buildPile (same as stockPile basically)
     static void buildPileTest() {
-        BuildPile test;
+        TopPile test;
         Card* c;
 
         // Testing constructor, getSize(), isEmpty()
@@ -262,7 +261,7 @@ public:
         Card c7(7);
         assert(test->addCardToStockPile(&c7));
 
-        // Remove card from StockPile
+        // Remove card from TopPile
         assert(7 == test->removeFromStockPile()->getVal());
         assert(6 == test->removeFromStockPile()->getVal());
     }
@@ -328,7 +327,7 @@ public:
         assert(test.players[0]->getDiscardPiles()[2]->top()->getVal() == 0);
         assert(test.players[0]->getDiscardPiles()[2]->getSize() == 1);
 
-        // Last StockPile card to Build Pile (game over)
+        // Last TopPile card to Build Pile (game over)
         assert(test.validMove('0', 'a')); 
         test.moveCard('0', 'a');
         assert(test.buildPiles[0]->top()->getVal() == 0);
