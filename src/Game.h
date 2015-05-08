@@ -83,6 +83,7 @@ private:
 public:
     Game();
     Game(std::ifstream &inFile);
+	~Game();
  
  	/**
      * Initialize the players in the game.
