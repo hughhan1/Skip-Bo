@@ -127,7 +127,10 @@ Game::Game(std::ifstream &inFile) {
       players[i]->getStockPile()->add(card);
     }
   }
-  
+
+  getline(inFile, str);
+  num = stoi(str);
+  turn = num;
 }
 
 int Game::setPlayers() {
@@ -682,6 +685,11 @@ void Game::saveGame() {
     s.clear();
   }
 
+  s += to_string(turn);
+  data.push_back(s);
+
+  s.clear();
+  
   cout<<"Save File name: ";
   cin >> s;
   cout<<endl;
