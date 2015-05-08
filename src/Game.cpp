@@ -109,7 +109,7 @@ void Game::play() {
 
         if (input != 'q') {
 
-            while (t == this->turn) {
+            while (!gameOver() && t == this->turn) {
                 printView(this->turn % numPlayers);
                 promptMove();
             }
@@ -126,8 +126,10 @@ void Game::play() {
             cout << endl << "Goodbye!" << endl;
             input = 'q';
         }
+    }
 
-        cout << "DRAWPILE SIZE: " << this->drawPile->getSize() << endl;
+    if (gameOver()) {
+        cout << "Congratulations! " << curr->getName() << " is the winner!" << endl; 
     }
 }
   
