@@ -151,38 +151,66 @@ Game::Game(std::ifstream &inFile) {
 }
 
 int Game::setPlayers() {
-
+  string str;
   int numPlayers = -1;
   std::string name;
   int input;
   int num = -1;
   bool go = false;
 
-  while (!(numPlayers >= 2 && numPlayers <= 6)) {
-    cout << "Please enter the number of players: ";
-    cin >> numPlayers;
-    cout << endl;
+  while(true){
+    try{
+      cout << "Please enter the number of players: ";
+      cin >> str;
+      cout << endl;
+      getchar();
+      
+      numPlayers = stoi(str);
+      
+      if((numPlayers < 2 || numPlayers > 6))
+	throw -1;
 
-    if (numPlayers < 2 || numPlayers > 6)
+      break;
+    }
+    catch(const std::invalid_argument& ia){
+      cout<<"Invalid input"<<endl;
+      cin.clear();
+    }
+    catch(const int e){
       cout << "Skip-bo is played with at least 2 players, and at most 6 players." << endl << endl;
-
+      cin.clear();
+    }
   }
+  
 
   for (int i = 0; i < numPlayers; i++) {
-    cout << "Please enter the name of Player " << i + 1 << ": ";
+    while(true){
+      try{
+	cout << "Please enter the name of Player " << i + 1 << ": ";
 
-    getchar();
-    std::getline(cin, name);
-    //cin >> name;
+	std::getline(cin, name);
+	
+	for(int j = 0; j < i; j++){
+	  if(players[j]->getName() == name)
+	    throw "error";
+	}
 
-    cout << "Enter 0 if this player is a human, and 1 if this player is a computer: ";
-    cin >> input;
-    cout << endl;
+	cout << "Enter 0 if this player is a human, and 1 if this player is a computer: ";
+	cin >> input;
+	cout << endl;
+	getchar();
+	
+	if (input == 0)
+	  addPlayer(new Human(name));
+	else
+	  addPlayer(new Computer(name));
 
-    if (input == 0)
-      addPlayer(new Human(name));
-    else
-      addPlayer(new Computer(name));
+	break;
+      }
+      catch(const char * e){
+	cout<<"Same name error"<<endl;
+      }
+    }
   }
 
   /* Shuffle the Draw Pile. */
