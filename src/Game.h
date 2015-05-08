@@ -16,6 +16,9 @@
 #include "Computer.h"
 #include "DrawPile.h"
 #include "TopPile.h"
+#include "ExistingPlayerException.h"
+#include "NumPlayersException.h"
+#include "InvalidInputException.h"
 #include "InvalidMoveException.h"
 #include "TurnOverException.h"
  

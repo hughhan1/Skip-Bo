@@ -1,5 +1,5 @@
-#ifndef __INVALID_MOVE_EXCEPTION_H__
-#define __INVALID_MOVE_EXCEPTION_H__
+#ifndef _INVALID_MOVE_EXCEPTION_H
+#define _INVALID_MOVE_EXCEPTION_H
 
 #include <iostream>
 #include <exception>

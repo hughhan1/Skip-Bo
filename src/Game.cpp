@@ -156,7 +156,8 @@ int Game::setPlayers() {
     bool go = false;
 
     while (true) {
-        try{
+        try {
+
             cout << "Please enter the number of players: ";
             cin >> str;
             cout << endl;
@@ -164,17 +165,17 @@ int Game::setPlayers() {
 
             numPlayers = stoi(str);
 
-            if((numPlayers < 2 || numPlayers > 6))
-                throw -1;
-
+            if (numPlayers < 2 || numPlayers > 6)
+                throw NumPlayersException();
             break;
-        } catch(const std::invalid_argument& ia){
-            cout<<"Invalid input"<<endl;
-            cin.clear();
-        } catch(const int e){
-            cout << "Skip-bo is played with at least 2 players, and at most 6 players." << endl << endl;
-            cin.clear();
+
+        } catch (const std::invalid_argument& ia) {
+            cout << "Please enter an integer." << endl;
+        } catch (const NumPlayersException & e) {
+            cout << e.what() << endl << endl;
         }
+
+        cin.clear();
     }
 
 
@@ -187,49 +188,51 @@ int Game::setPlayers() {
 
                 for (int j = 0; j < i; j++) {
                     if (players[j]->getName() == name)
-                        throw "error";
+                        throw ExistingPlayerException();
                 }
 
-                cout << "Enter 0 if this player is a human, and 1 if this player is a computer: ";
+                cout << "Enter 0 if human | Enter 1 if computer: ";
                 cin >> input;
                 cout << endl;
                 getchar();
 
                 if (input == 0)
                     addPlayer(new Human(name));
-                else
+                else if (input == 1)
                     addPlayer(new Computer(name));
-
+                else 
+                    throw InvalidInputException();
                 break;
-            } catch (const char * e) {
-                cout<<"Same name error"<<endl;
+
+            } catch (const exception & e) {
+                cout << e.what() << endl;
             }
         }
     }
 
-  /* Shuffle the Draw Pile. */
-  drawPile->shuffle();
+    /* Shuffle the Draw Pile. */
+    drawPile->shuffle();
 
-  /* Prompts the user for the stock pile size. */
-  while(!go) {
+    /* Prompts the user for the stock pile size. */
+    while(!go) {
     cout << "Please enter the initial stock pile size: ";
     cin >> num;
     cout << endl;
 
     if (num < 1) {
-      cout << "You can't play with less than 1 card!" << endl << endl;
-      go = false;
+        cout << "You can't play with less than 1 card!" << endl << endl;
+        go = false;
     } else if (numPlayers < 5 && num > 30) {
-      cout << "The card limit for 2-4 players is 30." << endl << endl;
-      go = false;
+        cout << "The card limit for 2-4 players is 30." << endl << endl;
+        go = false;
     } else if (numPlayers >= 5 && num > 20 ) {
-      cout << "The card limit for 2-6 players is 20." << endl << endl;
-      go = false;
+        cout << "The card limit for 2-6 players is 20." << endl << endl;
+        go = false;
     } else
-      go = true;
+        go = true;
+    }
 
-  }
-  return num;
+    return num;
 }
 
 void Game::dealCards(int num) {
@@ -619,20 +622,18 @@ void Game::fillHand(int i) {
 }
 
 void Game::endMove() {
-  for (int i = 0; i < 4; i++) {
-    if (this->buildPiles[i]->getSize() == 12) {
-      addToDrawPile(i);
+    for (int i = 0; i < 4; i++) {
+        if (this->buildPiles[i]->getSize() == 12)
+            addToDrawPile(i);
     }
-  }
 }
 
 void Game::addToDrawPile(int index) {
-
     TopPile * b = this->buildPiles[index];
-  b->shuffle();
-  while (!b->isEmpty()) {
-    this->drawPile->add(b->remove());
-  }
+    b->shuffle();
+    while (!b->isEmpty()) {
+        this->drawPile->add(b->remove());
+    }
 }
 
 bool Game::gameOver() {
@@ -644,104 +645,103 @@ bool Game::gameOver() {
 }
 
 void Game::saveGame() {
-  vector<string> data;
-  Player * player;
-  string s;
-  Card * card;
 
-  //drawPile data
-  s += to_string(drawPile->getSize());
-  s += "\n";
-  while(!drawPile->isEmpty()){
-    card = drawPile->remove();
-    s += to_string(card->getVal());
-    s += "\n";   
-  }
+    vector<string> data;
+    Player * player;
+    string s;
+    Card * card;
 
-  //buildPile data
-  for(int i = 0; i < 4; i++){
-    s += to_string(buildPiles[i]->getSize());
+    //drawPile data
+    s += to_string(drawPile->getSize());
     s += "\n";
-    while(!buildPiles[i]->isEmpty()){
-      card = buildPiles[i]->remove();
-      s += to_string(card->getVal());
-      s += "\n";
+    while (!drawPile->isEmpty()) {
+        card = drawPile->remove();
+        s += to_string(card->getVal());
+        s += "\n";   
     }
-  }
 
-  data.push_back(s);
-  s.clear();
-
-  //Players data   if card == nullptr, using -1
-  s += to_string((int)players.size());
-  s += "\n";
-  for (int i = 0; i < (int)players.size(); i++) {
-    if (dynamic_cast<Human*>(players[i]) == nullptr) {
-      s += "0";
-      s += "\n";
-    }
-    else{
-      s += "1";
-      s += "\n";
-    }
-    
-    player = players[i];
-    s += player->getName();
-    s += "\n";
-
-    //hand data
-    for(int j = 0; j < 5; j++){
-      card = player->removeCardFromHand(j);
-
-      if(card == nullptr){
-	s += to_string(-1);
-        s += "\n"; 
-      }
-      else{
-	s += to_string(card->getVal());
+    //buildPile data
+    for (int i = 0; i < 4; i++) {
+        s += to_string(buildPiles[i]->getSize());
         s += "\n";
-      }
-    }
-
-    //discardPile data
-    for(int j = 0; j < 4; j++){
-      s += to_string(player->getDiscardPiles()[j]->getSize());
-      s += "\n";
-      while(!player->getDiscardPiles()[j]->isEmpty()){
-	card = player->getDiscardPiles()[j]->remove();
-	s += to_string(card->getVal());
-	s += "\n";
-      }
-    }
-
-    //stockPile data
-    s += to_string(player->getStockPile()->getSize());
-    s += "\n";
-    while(!player->getStockPile()->isEmpty()){
-      card = player->getStockPile()->remove();
-      s += to_string(card->getVal());
-      s += "\n";
+        while (!buildPiles[i]->isEmpty()) {
+            card = buildPiles[i]->remove();
+            s += to_string(card->getVal());
+            s += "\n";
+        }
     }
 
     data.push_back(s);
     s.clear();
-  }
 
-  s += to_string(turn);
-  data.push_back(s);
+    //Players data   if card == nullptr, using -1
+    s += to_string((int)players.size());
+    s += "\n";
+    for (int i = 0; i < (int) players.size(); i++) {
+        if (dynamic_cast<Human*>(players[i]) == nullptr) {
+            s += "0";
+            s += "\n";
+        } else {
+            s += "1";
+            s += "\n";
+        }
 
-  s.clear();
-  
-  cout << "Save File name: ";
-  cin >> s;
-  cout << endl;
+        player = players[i];
+        s += player->getName();
+        s += "\n";
 
-  std::ofstream output(s, std::ios::out);
+        //hand data
+        for (int j = 0; j < 5; j++) {
+            card = player->removeCardFromHand(j);
 
-  for (auto it = data.begin(); it != data.end(); it++) {
-    output<<*it;
-  }
+            if(card == nullptr) {
+                s += to_string(-1);
+                s += "\n"; 
+            } else{
+                s += to_string(card->getVal());
+                s += "\n";
+            }
+        }
 
-  output.close();
-  cout<<"Game saved"<<endl;
+        //discardPile data
+        for (int j = 0; j < 4; j++) {
+            s += to_string(player->getDiscardPiles()[j]->getSize());
+            s += "\n";
+            while(!player->getDiscardPiles()[j]->isEmpty()){
+                card = player->getDiscardPiles()[j]->remove();
+                s += to_string(card->getVal());
+                s += "\n";
+            }
+        }
+
+        //stockPile data
+        s += to_string(player->getStockPile()->getSize());
+        s += "\n";
+        while(!player->getStockPile()->isEmpty()){
+            card = player->getStockPile()->remove();
+            s += to_string(card->getVal());
+            s += "\n";
+        }
+
+        data.push_back(s);
+        s.clear();
+    }
+
+    s += to_string(turn);
+    data.push_back(s);
+
+    s.clear();
+
+    cout << "Save File name: ";
+    cin >> s;
+    cout << endl;
+
+    std::ofstream output(s, std::ios::out);
+
+    for (auto it = data.begin(); it != data.end(); it++) {
+        output << *it;
+    }
+
+    output.close();
+    cout<< "Game saved." <<endl;
 }
