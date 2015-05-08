@@ -18,6 +18,12 @@ Hand::Hand() {
     }
 }
 
+Hand::~Hand() {
+    for (int i = 0; i < 5; i++) {
+        delete this->hand[i];
+    }
+}
+
 bool Hand::isEmpty() {
     for (int a = 0; a < 5; a++) {
         if (hand[a] != nullptr) {

@@ -63,6 +63,11 @@ Game::~Game(){
             delete card;
         }
     }
+
+    int numPlayers = this->players.size();
+    for (int i = 0; i < numPlayers; i++) {
+        delete this->players[i];
+    }
 }
 
 

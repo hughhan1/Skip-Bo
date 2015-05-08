@@ -19,6 +19,7 @@ protected:
 
 public:
     Hand();
+    ~Hand();
     bool isEmpty();
     bool isFull();
     bool add(Card * c);

@@ -32,7 +32,11 @@ DrawPile::DrawPile() {
    
 }
 
-DrawPile::~DrawPile() { }
+DrawPile::~DrawPile() { 
+    while (!this->isEmpty()) {
+        delete this->remove();
+    }
+}
 
 bool DrawPile::add(Card * c) {
 	pile.push_front(c);

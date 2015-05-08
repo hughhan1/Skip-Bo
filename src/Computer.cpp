@@ -12,6 +12,10 @@
 
 Computer::Computer(std::string name) : Player(name) { }
 
+Computer::~Computer() {
+	delete this->getHand();
+}
+
 void Computer::importChoices(TopPile** buildPiles) {
 	for (int i = 0; i < 4; i++) {
 		this->buildChoices[i] = buildPiles[i];

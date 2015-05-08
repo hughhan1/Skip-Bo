@@ -34,6 +34,7 @@ protected:
 public:
 
     Player(std::string = "no name");
+    virtual ~Player();
 
     /** Getter methods. */
     std::string getName() const;

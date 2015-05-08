@@ -17,6 +17,10 @@ using std::endl;
 
 Human::Human(std::string name) : Player(name) { }
 
+Human::~Human() {
+    delete this->getHand();
+}
+
 char Human::moveFrom() {
     char ch;
     cout << "Enter a number representing a card you would like to move: "; 

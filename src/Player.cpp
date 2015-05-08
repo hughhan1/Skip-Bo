@@ -20,6 +20,8 @@ Player::Player(std::string name) {
 	this->stockPile = new TopPile();
 }
 
+Player::~Player() { }
+
 std::string Player::getName() const {
     return this->name;
 }

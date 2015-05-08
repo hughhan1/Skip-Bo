@@ -25,6 +25,7 @@ private:
 
 public:
 	Computer(std::string = "no name");
+	virtual ~Computer();
 	void importChoices(TopPile**);
 	char moveFrom();
 	char moveTo();

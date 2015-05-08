@@ -12,7 +12,12 @@
 #include <cassert>
 
 TopPile::TopPile() { }
-TopPile::~TopPile() { }
+
+TopPile::~TopPile() { 
+    while (!this->isEmpty()) {
+        delete this->remove();
+    }
+}
 
 bool TopPile::add(Card * c) {
   this->pile.push_back(c);

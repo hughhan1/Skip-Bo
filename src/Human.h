@@ -20,6 +20,7 @@ class Human : public Player {
 
 public:
 	Human(std::string name = "no name");
+	virtual ~Human();
 	char moveFrom();
 	char moveTo();
 };
