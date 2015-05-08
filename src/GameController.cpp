@@ -11,6 +11,7 @@
 #include "GameController.h"
 
 void GameController::runGame() {
+
 	srand(time(NULL));
 	welcome();
 
@@ -29,25 +30,26 @@ void GameController::runGame() {
 	}
 
 	skipBo->play();
+	delete skipBo;
 }
 
 void GameController::loadGame() {
 
-        char in = '0';
+    char in = '0';
         
 	while (in == '0') {
-	  std::cout << "Enter the name of the file from which you'd like to load the game: ";
-	  std::string filename;
-	  std::cin >> filename;
+		std::cout << "Enter the name of the file from which you'd like to load the game: ";
+		std::string filename;
+		std::cin >> filename;
 
-	  std::ifstream inFile(filename, std::ios::in);
+		std::ifstream inFile(filename, std::ios::in);
 
-	  if (!inFile)
-	    std::cerr << "Error opening file: " << filename << std::endl << std::endl;
-	  else {
-	    in = '1';
-	    skipBo = new Game(inFile);
-	  }
+		if (!inFile)
+			std::cerr << "Error opening file: " << filename << std::endl << std::endl;
+		else {
+		    in = '1';
+		    skipBo = new Game(inFile);
+		}
 	}
 }
 
