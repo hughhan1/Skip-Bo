@@ -33,20 +33,95 @@ Game::Game() {
 
 Game::Game(std::ifstream &inFile) {
   string str;
-  int num;
+  int num = 0;
+  int val = 0;
+  int val2 = 0;
 
+  //drawPile data
   while(!drawPile->isEmpty()){
-    drawPile->remove();
-      
+    drawPile->remove();      
   }
 
-  inFile >> str;
+  getline(inFile, str);
   num = stoi(str);
 
   for(int i = 0; i < num; i++){
-    inFile >> str;
-    num = stoi(str);   
-  } 
+    getline(inFile, str);
+    val = stoi(str);
+    Card * card = new Card(val);
+    drawPile->add(card);
+      
+  }
+  //buildPile data
+  for(int i = 0; i < 4; i++){
+    getline(inFile, str);
+    num = stoi(str);
+
+    for(int j = 0; j < num; j++){
+      getline(inFile, str);
+      val = stoi(str);
+      Card * card = new Card(val);
+      buildPiles[i]->add(card);
+    }
+  }
+
+  //players data
+  getline(inFile, str);
+  num = stoi(str);
+
+  for(int i = 0; i < num; i++){
+    getline(inFile, str);
+    val = stoi(str);
+
+    if(val == 0){
+      getline(inFile, str);
+      addPlayer(new Computer(str));
+          
+    }
+    else{
+      getline(inFile, str);
+      addPlayer(new Human(str));
+          
+    }
+    //hand data
+    for(int j = 0; j < 5; j++){
+      getline(inFile, str);
+      val = stoi(str);
+
+      if(val == -1){
+	players[i]->addCardToHand(nullptr);
+	      
+      }
+      else{
+	Card * card = new Card(val);
+	players[i]->addCardToHand(card);	      
+      }
+    }
+
+    //discardPile data
+    for(int j = 0; j < 4; j++){
+      getline(inFile, str);
+      val = stoi(str);
+
+      for(int k = 0; k < val; k++){
+	getline(inFile, str);
+	val2 = stoi(str);
+	Card * card = new Card(val2);
+	players[i]->getDiscardPiles()[j]->add(card);	      
+      }
+    }
+
+    getline(inFile, str);
+    val = stoi(str);
+
+    for(int j = 0; j < val; j++){
+      getline(inFile, str);
+      val2 = stoi(str);
+      Card * card = new Card(val2);
+      players[i]->getStockPile()->add(card);
+    }
+  }
+  
 }
 
 int Game::setPlayers() {
@@ -529,6 +604,15 @@ void Game::saveGame() {
   s += to_string((int)players.size());
   s += "\n";
   for(int i = 0; i < (int)players.size(); i++){
+    if(dynamic_cast<Human*>(player) == nullptr){
+      s += "0";
+      s += "/n";
+    }
+    else{
+      s += "1";
+      s += "/n";
+    }
+    
     player = players[i];
     s += player->getName();
     s += "\n";
