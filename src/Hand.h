@@ -1,5 +1,4 @@
 /**
- * SegFaults
  * Marc Feldman
  * Hugh Han
  * SeungHwan Lee
@@ -21,6 +20,7 @@ protected:
 public:
     Hand();
     bool isEmpty();
+    bool isFull();
     bool add(Card * c);
     Card* remove(int index);
     Card* getCard(int i) const;

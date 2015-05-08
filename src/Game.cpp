@@ -242,6 +242,7 @@ void Game::promptMove() {
     } catch (TurnOverException & e) {
 
         cout << player->getName() << ": " << e.what() << endl;
+        fillHand(this->turn % players.size());
         this->turn++;
 
     }
@@ -333,15 +334,14 @@ bool Game::validMove (char moveFrom, char moveTo) const {
         int indexFrom = moveFrom - '6';
         
         Card * cardFrom = discards[indexFrom]->top();
-        if(cardFrom==nullptr)
+        if(cardFrom == nullptr)
             return false;
         
-    	if (indexFrom >=4 || indexFrom < 0 || indexTo >= 4 || indexTo < 0)
+    	if (indexFrom >= 4 || indexFrom < 0 || indexTo >= 4 || indexTo < 0)
             return false;
 	
         Card * cardTo;
-	
-	
+		
         if ((cardFrom->getVal() == 0 || cardFrom->getVal() == 1) && builds[indexTo]->getSize() == 0)
             return true;
     
@@ -407,6 +407,14 @@ bool Game::moveCard(char moveFrom, char moveTo) {
 
     /* Card was not moved to a discard pile. */
     return false;
+}
+
+void Game::fillHand(int i) {
+    Player * curr = this->players[i];
+    Hand * hand = curr->getHand();
+    while (!hand->isFull()) {
+        curr->addCardToHand(this->drawPile->remove());
+    }
 }
 
 void Game::endMove() {

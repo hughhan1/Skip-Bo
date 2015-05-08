@@ -52,6 +52,9 @@ private:
      */
     bool gameOver();
 
+    /** Fills a player's hand. */
+    void fillHand(int);
+
     void endMove();
     void addToDrawPile(int);
     
