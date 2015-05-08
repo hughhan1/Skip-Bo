@@ -310,7 +310,7 @@ void Game::addPlayer(Player* player){
     players.push_back(player);
 }
 
-void Game::generateView(stringstream *lines, int i){
+void Game::generateView(stringstream *lines, int i) {
     Player * player = this->players[i];
     int numPlayers = this->players.size();
     int value;
@@ -611,6 +611,7 @@ void Game::fillHand(int i) {
     Hand * hand = curr->getHand();
     while (!hand->isFull()) {
         if (this->drawPile->isEmpty()) {
+            delete this->drawPile;
             this->drawPile = new DrawPile();
             this->drawPile->shuffle();
         }
