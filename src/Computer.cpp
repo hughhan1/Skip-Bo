@@ -28,32 +28,32 @@ char Computer::moveFrom() {
 		return '0';
 	} 
 
+/* EXTRA CREDIT ATTEMPT
 	for (int i = 0; i < 4; i++) {
-		if (!this->buildChoices[i]->isEmpty()) {
-			buildTop = this->buildChoices[i]->top();
-			if (buildTop != nullptr) {
-				if (stockTop->getVal() == buildTop->getVal() + 1) {
-					return '0';
-				}
-			}
+		if (!this->buildChoices[i]->isEmpty()
+				&& this->buildChoices[i]->top() != nullptr
+				&& this->buildChoices[i]->top()->getVal() + 1 == stockTop->getVal()) {
+			this->moveCard = stockTop;
+			return '0';
 		}
 	}
+*/
 
 	/* Check hand for wild card. */
 	for (int i = 0; i < 5; i++) {
-		if (this->hand->getCard(i) != nullptr) {
-			if (this->hand->getCard(i)->getVal() == 0) {
-				return i + 1 + ASCII_SHIFT;
-			}
+		if (this->hand->getCard(i) != nullptr
+				&& this->hand->getCard(i)->getVal() == 0) {
+			this->moveCard = this->hand->getCard(i);
+			return i + 1 + ASCII_SHIFT;
 		}
 	}
 
 	/* Check discard piles for wild card. */
 	for (int i = 0; i < 4; i++) {
-		if (!this->discardPiles[i]->isEmpty()) {
-			if (this->discardPiles[i]->top()->getVal() == 0) {
-				return i + 6 + ASCII_SHIFT;
-			}
+		if (!this->discardPiles[i]->isEmpty()
+				&& this->discardPiles[i]->top()->getVal() == 0) {
+			this->moveCard = this->discardPiles[i]->top();
+			return i + 6 + ASCII_SHIFT;
 		}
 	}
 
@@ -63,6 +63,19 @@ char Computer::moveFrom() {
 }
 
 char Computer::moveTo() {
+
+/* EXTRA CREDIT ATTEMPT
+	for (int i = 0; i < 4; i++) {
+		if (this->moveCard != nullptr 
+				&& !this->buildChoices[i]->isEmpty()
+				&& this->buildChoices[i]->top() != nullptr) {
+			if (this->moveCard->getVal() == buildChoices[i]->top()->getVal()) {
+				return i + 'a';
+			}
+		}
+	}
+*/
+
 	char ch = (rand() % NUM_MOVE_TO) + 2 + ASCII_SHIFT;
     switch (ch) {
     	case '2': ch = 'a'; break;

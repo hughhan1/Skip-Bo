@@ -21,6 +21,7 @@
 class Computer : public Player {
 private:
 	TopPile* buildChoices[4];
+	Card * moveCard;
 
 public:
 	Computer(std::string = "no name");
