@@ -153,23 +153,19 @@ void Game::generateView(stringstream *lines, int i){
     Player * player = this->players[i];
     int numPlayers = this->players.size();
     int value;
+
+    for (int i = 0; i < numPlayers; i++) {
+        lines[0] << "***********************";
+    }
+
+    lines[0] << endl;
     
     for (int a = 0; a < numPlayers; a++) {
         if (player != this->players[a]) {
             Player* p = this->players[a];
 
-            for (int i = 0; i < 10; i++) { //clears the screen (so you can't see anything but your turn)
-                lines[0] << endl;
-            }
-
-            for (int i = 0; i < numPlayers; i++) {
-                lines[0] << "******************************";
-            }
-
-            lines[0] << endl;
-
             lines[0] << p->getName() << "\t\t\t";
-            
+
             lines[1] << "(" << p->getStockPile()->getSize() << ")\t  Discard\t\t";
             
             value = p->getStockPile()->top()->getVal();
@@ -239,7 +235,7 @@ void Game::generateView(stringstream *lines, int i){
     lines[10] << "\t " << player->getStockPile()->top()->getVal() << "  (" << player->getStockPile()->getSize() << ")" << endl << endl;
     
     for (int i = 0; i < numPlayers; i++) {
-        lines[10] << "******************************";
+        lines[10] << "-----------------------";
     }
 
     lines[10] << endl;

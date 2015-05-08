@@ -10,8 +10,6 @@
 
 #include "Computer.h"
 
-using std::cout;
-
 Computer::Computer(std::string name) : Player(name) { }
 
 char Computer::moveFrom() {
