@@ -627,11 +627,11 @@ void Game::saveGame() {
   for(int i = 0; i < (int)players.size(); i++){
     if(dynamic_cast<Human*>(players[i]) == nullptr){
       s += "0";
-      s += "/n";
+      s += "\n";
     }
     else{
       s += "1";
-      s += "/n";
+      s += "\n";
     }
     
     player = players[i];
