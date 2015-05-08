@@ -24,9 +24,11 @@
 
 class Game {
 
-  friend class TestMain;
+/* For testing purposes. */
+friend class TestMain;
 
 private:
+    /** Instance variables. */
     std::vector<Player*> players;
     DrawPile* drawPile;
     TopPile* buildPiles[4];
@@ -41,8 +43,20 @@ private:
      */
     void generateView(std::stringstream*, int);
     
-    /** Setter methods. */
+    /**
+     * Returns if a move is valid.
+     * @param char character representing where the card was moved from
+     * @param char character representing where the card was moved to
+     * @return if the move is valid
+     */
     bool validMove(char, char) const;
+
+    /**
+     * Moves a card from one card structure to another.
+     * @param char character representing where the card was moved from
+     * @param char character representing where the card was moved to
+     * @return if the turn is ended
+     */
     bool moveCard(char, char);
 
     /**
@@ -51,23 +65,44 @@ private:
      */
     bool gameOver();
 
-    /** Fills a player's hand. */
+    /** 
+     * Fills a player's hand.
+     * @param int the index of the player whose hand is to be filled
+     */
     void fillHand(int);
 
+    /** Processes what to do at the end of a move. */
     void endMove();
+
+    /**
+     * Shuffles and adds a completed build pile to the draw pile.
+     * @param int the index of the build pile to be shuffled and added
+     */
     void addToDrawPile(int);
     
 public:
     Game();
     Game(std::ifstream &inFile);
  
- 	/** Setter methods. */
+ 	/**
+     * Initialize the players in the game.
+     * @return the number of players
+     */
     int setPlayers();
+
+    /**
+     * Deals cards to all of the players in the game.
+     * @param int the number of players in the game
+     */
     void dealCards(int);
+
+    /** Plays the game. */
     void play();
 
+    /** Prompts a player for a move. */
     void promptMove();
 
+    /** Saves the game. */
     void saveGame();
   
     /** 
