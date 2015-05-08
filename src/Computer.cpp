@@ -21,7 +21,10 @@ void Computer::importChoices(TopPile** buildPiles) {
 char Computer::moveFrom() {
 
 	Card * stockTop = this->stockPile->top();
+
+/* EXTRA CREDIT ATTEMPT
 	Card * buildTop = nullptr;
+*/
 
 	/* Check stock pile for wild card. */
 	if (stockTop->getVal() == 0) {
