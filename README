@@ -13,13 +13,13 @@ SkipBo
 COMPILING AND RUNNING:
 
 To compile and run the program:
-> make
+$ make
 
 To compile and run the tests:
-> make test
+$ make test
 
 To remove executable files:
-> make clean
+$ make clean
 
 ------------------------------------------------------------
 

@@ -18,9 +18,16 @@
 #include "TopPile.h"
 #include "InvalidMoveException.h"
 #include "TurnOverException.h"
+ 
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <cstdio>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <stdexcept>
+#include <exception>
 
 class Game {
 
