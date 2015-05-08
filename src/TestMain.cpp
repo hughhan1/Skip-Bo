@@ -122,8 +122,8 @@ public:
         assert(test.isEmpty());
     }
 
-    // Testing stockPile
-    static void stockPileTest() {
+    // Testing TopPile
+    static void topPileTest() {
         TopPile test;
         Card* c;
 
@@ -132,52 +132,6 @@ public:
         assert(test.isEmpty());
 
         // Testing add(...), getSize(), isEmpty(), and top()
-        Card c0(1);
-        assert(test.add(&c0));
-        assert(test.top()->getVal() == c0.getVal());
-        assert(!test.isEmpty());
-        assert(test.getSize() == 1);
-
-        Card c1(2);
-        assert(test.add(&c1));
-        assert(test.top()->getVal() == c1.getVal());
-        assert(!test.isEmpty());
-        assert(test.getSize() == 2);
-
-        Card c2(10);
-        assert(test.add(&c2));
-        assert(test.top()->getVal() == c2.getVal());
-        assert(!test.isEmpty());
-        assert(test.getSize() == 3);
-
-        // Testing remove(), getSize(), isEmpty(), and top()
-        c = test.remove();
-        assert(c->getVal() == c2.getVal());
-        assert(test.top()->getVal() == c1.getVal());
-        assert(!test.isEmpty());
-        assert(test.getSize() == 2);
-
-        c = test.remove();
-        assert(c->getVal() == c1.getVal());
-        assert(test.top()->getVal() == c0.getVal());
-        assert(!test.isEmpty());
-        assert(test.getSize() == 1);
-
-        c = test.remove();
-        assert(c->getVal() == c0.getVal());
-        assert(test.isEmpty());
-        assert(test.getSize() == 0);
-    }
-
-    // Testing buildPile (same as stockPile basically)
-    static void buildPileTest() {
-        TopPile test;
-        Card* c;
-
-        // Testing constructor, getSize(), isEmpty()
-        assert(test.getSize() == 0);
-        assert(test.isEmpty());
-
         Card c0(1);
         assert(test.add(&c0));
         assert(test.top()->getVal() == c0.getVal());
@@ -347,10 +301,8 @@ int main() {
     cout << "Hand Tests passed." << endl;
     TestMain::drawPileTest();
     cout << "Draw Pile Tests passed." << endl;
-    TestMain::stockPileTest();
-    cout << "Stock Pile Tests passed." << endl;
-    TestMain::buildPileTest();
-    cout << "Build Pile Tests passed." << endl;
+    TestMain::topPileTest();
+    cout << "Top Pile Tests passed." << endl;
     TestMain::humanTest();
     cout << "Human Tests passed." << endl;
     TestMain::gameTest();
