@@ -13,7 +13,11 @@
 Computer::Computer(std::string name) : Player(name) { }
 
 Computer::~Computer() {
-	delete this->getHand();
+	delete this->hand;
+	delete this->stockPile;
+	for (int i = 0; i < 4; i++) {
+		delete this->discardPiles[i];
+	}
 }
 
 void Computer::importChoices(TopPile** buildPiles) {

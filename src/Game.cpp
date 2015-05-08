@@ -33,8 +33,19 @@ Game::Game() {
 }
 
 Game::~Game(){
-    Card * card;
 
+    delete drawPile;
+
+    for (int i = 0; i < 4; i++) {
+        delete buildPiles[i];
+    }
+
+    int numPlayers = this->players.size();
+    for (int i = 0; i < numPlayers; i++) {
+        delete this->players[i];
+    }
+
+/*
     while(!drawPile->isEmpty()){
         card = drawPile->remove();
         delete card;      
@@ -68,6 +79,7 @@ Game::~Game(){
     for (int i = 0; i < numPlayers; i++) {
         delete this->players[i];
     }
+*/
 }
 
 

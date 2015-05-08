@@ -18,7 +18,11 @@ using std::endl;
 Human::Human(std::string name) : Player(name) { }
 
 Human::~Human() {
-    delete this->getHand();
+    delete this->hand;
+    delete this->stockPile;
+    for (int i = 0; i < 4; i++) {
+        delete this->discardPiles[i];
+    }
 }
 
 char Human::moveFrom() {
