@@ -5,9 +5,9 @@
 This is the final project in Intermediate Programming (600.120) at Johns Hopkins University.
 The collaborators are:
 	
-* Hugh Han 		(hhan17@jhu.edu)
-* SeungHwan Lee 	(slee385@jhu.edu)
-* Marc Feldman		(mfeldm21@jhu.edu)
+* Hugh Han 				(hhan17@jhu.edu)
+* SeungHwan Lee 		(slee385@jhu.edu)
+* Marc Feldman			(mfeldm21@jhu.edu)
 * Matthew Cowen-Green	(mcoweng1@jhu.edu)
 
 This project creates a game of Skip-Bo.
@@ -31,5 +31,3 @@ To remove executable files:
 ### Questions? ###
 
 * Feel free to contact any team member using the emails above. 
-
-Last edited 12/15/14 7:50 PM
