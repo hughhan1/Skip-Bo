@@ -389,7 +389,7 @@ void Game::promptMove() {
     } catch (TurnOverException & e) {
 
         /* Fill player's hand and increment turn counter at the end of each turn. */
-        cout << player->getName() << ": " << e.what() << endl;
+      cout << player->getName() << ": " << e.what() << endl << endl;
         fillHand(this->turn % players.size());
         this->turn++;
 
