@@ -32,6 +32,40 @@ Game::Game() {
     turn = 0;
 }
 
+Game::~Game(){
+  Card * card;
+
+  while(!drawPile->isEmpty()){
+    card = drawPile->remove();
+    delete card;      
+  }
+
+  delete drawPile;
+
+  for(int i = 0; i < 4; i++){
+    while(!buildPiles[i]->isEmpty()){
+      card = buildPiles[i]->remove();
+      delete card;
+    }
+    delete buildPiles[i];
+  }
+
+  for(int i = 0; i < (int)players.size(); i++){
+    for(int j = 0; j < 4; j++){
+      while(!players[i]->getDiscardPiles()[j]->isEmpty()){
+	card = players[i]->getDiscardPiles()[j]->remove();
+	delete card;
+      }
+    }
+
+    while(!players[i]->getStockPile()->isEmpty()){
+      card = players[i]->getStockPile()->remove();
+      delete card;
+    }
+  }
+}
+
+
 Game::Game(std::ifstream &inFile) {
   string str;
   int num = 0;
