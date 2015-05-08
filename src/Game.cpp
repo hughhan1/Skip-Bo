@@ -30,7 +30,7 @@ Game::Game() {
     turn = 0;
 }
 
-Game::~Game(){
+Game::~Game() {
 
     delete drawPile;
 
@@ -47,105 +47,102 @@ Game::~Game(){
 
 
 Game::Game(std::ifstream &inFile) {
-  string str;
-  int num = 0;
-  int val = 0;
-  int val2 = 0;
+    string str;
+    int num = 0;
+    int val = 0;
+    int val2 = 0;
 
-  drawPile = new DrawPile();
+    drawPile = new DrawPile();
 
-  for(int i = 0; i < 4; i++){
-    buildPiles[i] = new TopPile();
-  }
- 
-  //drawPile data
-  while(!drawPile->isEmpty()){
-    drawPile->remove();      
-  }
+    for(int i = 0; i < 4; i++) {
+        buildPiles[i] = new TopPile();
+    }
 
-  getline(inFile, str);
-  num = stoi(str);
-  
-  for(int i = 0; i < num; i++){
-    getline(inFile, str);
-    val = stoi(str);
-    Card * card = new Card(val);
-    drawPile->add(card);      
-  }
-   
-  //buildPile data
-  for(int i = 0; i < 4; i++){
+    //drawPile data
+    while(!drawPile->isEmpty()) {
+        drawPile->remove();      
+    }
+
     getline(inFile, str);
     num = stoi(str);
 
-    for(int j = 0; j < num; j++){
-      getline(inFile, str);
-      val = stoi(str);
-      Card * card = new Card(val);
-      buildPiles[i]->add(card);
+    for (int i = 0; i < num; i++) {
+        getline(inFile, str);
+        val = stoi(str);
+        Card * card = new Card(val);
+        drawPile->add(card);      
     }
-  }
 
-  //players data
-  getline(inFile, str);
-  num = stoi(str);
+    //buildPile data
+    for (int i = 0; i < 4; i++) {
+        getline(inFile, str);
+        num = stoi(str);
 
-  for(int i = 0; i < num; i++){
+        for (int j = 0; j < num; j++) {
+            getline(inFile, str);
+            val = stoi(str);
+            Card * card = new Card(val);
+            buildPiles[i]->add(card); 
+        }
+    }
+
+    //players data
     getline(inFile, str);
-    val = stoi(str);
+    num = stoi(str);
 
-    if(val == 0){
-      getline(inFile, str);
-      addPlayer(new Computer(str));
+    for (int i = 0; i < num; i++) {
+        getline(inFile, str);
+        val = stoi(str);
+
+        if (val == 0) {
+            getline(inFile, str);
+            addPlayer(new Computer(str));
           
-    }
-    else{
-      getline(inFile, str);
-      addPlayer(new Human(str));
-          
-    }
-    //hand data
-    for(int j = 0; j < 5; j++){
-      getline(inFile, str);
-      val = stoi(str);
+        } else {
+            getline(inFile, str);
+            addPlayer(new Human(str));
+        }
 
-      if(val == -1){
-	players[i]->addCardToHand(nullptr);
-	      
-      }
-      else{
-	Card * card = new Card(val);
-	players[i]->addCardToHand(card);	      
-      }
-    }
+        //hand data
+        for (int j = 0; j < 5; j++){
+            getline(inFile, str);
+            val = stoi(str);
 
-    //discardPile data
-    for(int j = 0; j < 4; j++){
-      getline(inFile, str);
-      val = stoi(str);
+            if (val == -1) {
+                players[i]->addCardToHand(nullptr);             
+            } else{
+                Card * card = new Card(val);
+                players[i]->addCardToHand(card);    
+            }
+        }
 
-      for(int k = 0; k < val; k++){
-	getline(inFile, str);
-	val2 = stoi(str);
-	Card * card = new Card(val2);
-	players[i]->getDiscardPiles()[j]->add(card);	      
-      }
+        //discardPile data
+        for (int j = 0; j < 4; j++) {
+            getline(inFile, str);
+            val = stoi(str);
+
+            for (int k = 0; k < val; k++) {
+                getline(inFile, str);
+                val2 = stoi(str);
+                Card * card = new Card(val2);
+                players[i]->getDiscardPiles()[j]->add(card);	      
+            }
+        }
+
+        getline(inFile, str);
+        val = stoi(str);
+
+        for(int j = 0; j < val; j++) {
+            getline(inFile, str);
+            val2 = stoi(str);
+            Card * card = new Card(val2);
+            players[i]->getStockPile()->add(card);
+        }
     }
 
     getline(inFile, str);
-    val = stoi(str);
-
-    for(int j = 0; j < val; j++){
-      getline(inFile, str);
-      val2 = stoi(str);
-      Card * card = new Card(val2);
-      players[i]->getStockPile()->add(card);
-    }
-  }
-
-  getline(inFile, str);
-  num = stoi(str);
-  turn = num;
+    num = stoi(str);
+    turn = num;
 }
 
 int Game::setPlayers() {
@@ -158,7 +155,6 @@ int Game::setPlayers() {
 
     while (true) {
         try {
-
             cout << "Please enter the number of players: ";
             cin >> str;
             cout << endl;
@@ -169,7 +165,7 @@ int Game::setPlayers() {
             if (numPlayers < 2 || numPlayers > 6)
                 throw NumPlayersException();
             break;
-
+            
         } catch (const std::invalid_argument& ia) {
             cerr << "Please enter an integer." << endl;
         } catch (const NumPlayersException & e) {
@@ -723,7 +719,7 @@ void Game::saveGame() {
         //stockPile data
         s += to_string(player->getStockPile()->getSize());
         s += "\n";
-        while(!player->getStockPile()->isEmpty()){
+        while (!player->getStockPile()->isEmpty()) {
             card = player->getStockPile()->remove();
             s += to_string(card->getVal());
             s += "\n";
@@ -749,5 +745,5 @@ void Game::saveGame() {
     }
 
     output.close();
-    cout<< "Game saved." <<endl;
+    cout << "Game saved." << endl;
 }

@@ -28,13 +28,13 @@ void GameController::runGame() {
 	    check = loadGame();
 	
 	if (!check) {
-	    skipBo = new Game();
+	    this->skipBo = new Game();
 	    int stockSize = skipBo->setPlayers();
-	    skipBo->dealCards(stockSize);
+	    this->skipBo->dealCards(stockSize);
 	}
 
-	skipBo->play();
-	delete skipBo;
+	this->skipBo->play();
+	delete this->skipBo;
 }
 
 bool GameController::loadGame() {
@@ -58,7 +58,7 @@ bool GameController::loadGame() {
 			return false;
 
 		} else {
-			skipBo = new Game(inFile);
+			this->skipBo = new Game(inFile);
 			return true;
 		}
 	}
