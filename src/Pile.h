@@ -23,6 +23,7 @@ protected:
 	int size;
   
 public:
+	virtual ~Pile();
 	bool isEmpty() const;
 	int getSize() const;
 	virtual bool add(Card * cPtr) = 0; 

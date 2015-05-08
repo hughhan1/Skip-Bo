@@ -17,6 +17,7 @@
 class DrawPile : public Pile {
 public:	
 	DrawPile();
+	virtual ~DrawPile();
 	bool add(Card * c);
 };
 

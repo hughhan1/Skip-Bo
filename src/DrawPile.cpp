@@ -32,6 +32,8 @@ DrawPile::DrawPile() {
    
 }
 
+DrawPile::~DrawPile() { }
+
 bool DrawPile::add(Card * c) {
 	pile.push_front(c);
 	return true;

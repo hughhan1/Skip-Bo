@@ -12,6 +12,8 @@
 #include "EmptyPileException.h"
 #include "Pile.h"
 
+Pile::~Pile() { }
+
 bool Pile::isEmpty() const {
   return pile.size() == 0;
 }

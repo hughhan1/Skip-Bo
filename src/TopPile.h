@@ -15,11 +15,12 @@
 #include <algorithm>
 
 class TopPile : public Pile {
- public:
-  TopPile();
-  
-  bool add(Card * c);
-  Card * top() const throw (EmptyPileException);
+public:
+	TopPile();
+	virtual ~TopPile();
+
+	bool add(Card * c);
+	Card * top() const throw (EmptyPileException);
 };
 
 #endif
