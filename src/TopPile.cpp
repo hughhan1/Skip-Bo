@@ -20,19 +20,18 @@ TopPile::~TopPile() {
 }
 
 bool TopPile::add(Card * c) {
-  this->pile.push_back(c);
-  return true;
+    this->pile.push_back(c);
+    return true;
 }
 
 Card * TopPile::top() const throw (EmptyPileException) {
-  try {
-    if (this->isEmpty()) {
-      throw EmptyPileException();
-    } else {
-      return this->pile.back();
+    try {
+        if (this->isEmpty()) {
+          throw EmptyPileException();
+        } else {
+          return this->pile.back();
+        }
+    } catch (EmptyPileException & e) {
+        return nullptr;
     }
-  } catch (EmptyPileException & e) {
-    std::cout << e.what() << std::endl;
-  }
-  return nullptr;
 }

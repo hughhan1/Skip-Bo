@@ -16,12 +16,26 @@
 
 class Human : public Player {
 
-  friend class TestMain;
+	/** For testing purposes. */
+ 	friend class TestMain;
 
 public:
+	/** Constructor. */
 	Human(std::string name = "no name");
+
+	/** Destructor. */
 	virtual ~Human();
+
+	/**
+	 * Returns where the card should be moved from.
+	 * @return where the card should be moved from
+	 */
 	char moveFrom();
+
+	/**
+	 * Returns where the card should be moved to.
+	 * @return where the card should be moved to
+	 */
 	char moveTo();
 };
 

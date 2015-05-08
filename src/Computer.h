@@ -20,14 +20,30 @@
 
 class Computer : public Player {
 private:
+	/** FOR EXTRA CREDIT. */
 	TopPile* buildChoices[4];
 	Card * moveCard;
 
 public:
+	/** Constructor. */
 	Computer(std::string = "no name");
+
+	/** Destructor. */
 	virtual ~Computer();
+
+	/** FOR EXTRA CREDIT. */
 	void importChoices(TopPile**);
+
+	/**
+	 * Returns where the card should be moved from.
+	 * @return where the card should be moved from
+	 */
 	char moveFrom();
+
+	/**
+	 * Returns where the card should be moved to.
+	 * @return where the card should be moved to
+	 */
 	char moveTo();
 };
 

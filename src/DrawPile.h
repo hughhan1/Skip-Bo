@@ -16,8 +16,17 @@
 
 class DrawPile : public Pile {
 public:	
+	/** Constructor. */
 	DrawPile();
+
+	/** Destructor. */
 	virtual ~DrawPile();
+
+	/**
+	 * Adds a card to the draw pile.
+	 * @param c a card to be added
+	 * @return if a card was added
+	 */
 	bool add(Card * c);
 };
 

@@ -16,6 +16,7 @@ using std::stringstream;
 using std::exception;
 using std::cin;
 using std::cout;
+using std::cerr;
 using std::endl;
 using std::vector;
 
@@ -170,9 +171,9 @@ int Game::setPlayers() {
             break;
 
         } catch (const std::invalid_argument& ia) {
-            cout << "Please enter an integer." << endl;
+            cerr << "Please enter an integer." << endl;
         } catch (const NumPlayersException & e) {
-            cout << e.what() << endl << endl;
+            cerr << e.what() << endl << endl;
         }
 
         cin.clear();
@@ -205,7 +206,7 @@ int Game::setPlayers() {
                 break;
 
             } catch (const exception & e) {
-                cout << e.what() << endl;
+                cerr << e.what() << endl;
             }
         }
     }
@@ -226,7 +227,7 @@ int Game::setPlayers() {
         cout << "The card limit for 2-4 players is 30." << endl << endl;
         go = false;
     } else if (numPlayers >= 5 && num > 20 ) {
-        cout << "The card limit for 2-6 players is 20." << endl << endl;
+        cout << "The card limit for 5-6 players is 20." << endl << endl;
         go = false;
     } else
         go = true;
@@ -265,6 +266,7 @@ void Game::play() {
 
         cout << curr->getName() << "'s turn!" << endl << endl;
 
+        /* Prints prompt for human players. */
         if (dynamic_cast<Human*>(curr)) {
             cout << "Enter any character to start your turn, or q to quit the game: ";
             cin >> input;
@@ -275,6 +277,10 @@ void Game::play() {
             while (!gameOver() && t == this->turn) {
                 printView(this->turn % numPlayers);
                 promptMove();
+
+                /* Pauses terminal for half a second between every computer's move. */
+                if (dynamic_cast<Computer*>(curr))
+                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
             }
 
             t++;
@@ -321,7 +327,7 @@ void Game::generateView(stringstream *lines, int i) {
         lines[0] << "***********************";
     }
 
-    lines[0] << endl;
+    lines[0] << endl << endl;
     
     for (int a = 0; a < numPlayers; a++) {
         if (player != this->players[a]) {
@@ -433,16 +439,16 @@ void Game::promptMove() {
 
         /* Only print error message if the player is a human. */
         if (dynamic_cast<Human*>(player)) {
-            cout << e.what() << endl;
+            cerr << e.what() << endl;
             printView(this->turn % players.size());
-            cout << endl;
+            cerr << endl;
         }
         promptMove();
 
     } catch (TurnOverException & e) {
 
         /* Fill player's hand and increment turn counter at the end of each turn. */
-      cout << player->getName() << ": " << e.what() << endl << endl;
+        cerr << player->getName() << ": " << e.what() << endl << endl;
         fillHand(this->turn % players.size());
         this->turn++;
 

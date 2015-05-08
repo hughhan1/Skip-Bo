@@ -23,7 +23,7 @@ DrawPile::DrawPile() {
     }
 
     while (idx < 162){
-      card[idx++] = new Card(0);
+        card[idx++] = new Card(0);
     }
 
     for (int i = 0; i < 162; i++) {

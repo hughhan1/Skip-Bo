@@ -31,6 +31,8 @@
 #include <sstream>
 #include <stdexcept>
 #include <exception>
+#include <thread>
+#include <chrono>
 
 class Game {
 
@@ -91,8 +93,11 @@ private:
     void addToDrawPile(int);
     
 public:
+    /** Constructors. */
     Game();
     Game(std::ifstream &inFile);
+
+    /** Destructor. */
 	~Game();
  
  	/**

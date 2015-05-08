@@ -15,15 +15,14 @@
 Pile::~Pile() { }
 
 bool Pile::isEmpty() const {
-  return pile.size() == 0;
+    return pile.size() == 0;
 }
 
 int Pile::getSize() const {
-  return pile.size();
+    return pile.size();
 }
 
 Card * Pile::remove() throw (EmptyPileException) {
-
     try {
         if (isEmpty()) {
             throw EmptyPileException();
@@ -33,13 +32,10 @@ Card * Pile::remove() throw (EmptyPileException) {
             return c;
         }
     } catch (EmptyPileException &e) {
-        std::cout << e.what() << std::endl;
+        return nullptr;
     }
-
-    return nullptr;
-
 }
 
 void Pile::shuffle() {
-  std::random_shuffle(this->pile.begin(), this->pile.end());
+    std::random_shuffle(this->pile.begin(), this->pile.end());
 }

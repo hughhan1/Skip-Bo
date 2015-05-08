@@ -32,8 +32,10 @@ protected:
     TopPile* stockPile;
 
 public:
-
+    /** Constructor. */
     Player(std::string = "no name");
+
+    /** Destructor. */
     virtual ~Player();
 
     /** Getter methods. */
@@ -42,12 +44,13 @@ public:
     TopPile** getDiscardPiles();
     TopPile* getStockPile() const;
 
+    /** Setter methods. */
     bool addCardToHand(Card * card);
     bool addCardToStockPile(Card * card);
     Card * removeCardFromHand(int);
     Card * removeFromStockPile();
     
-    /** Setter methods. */
+    /** Virtual methods. */
     virtual char moveFrom() = 0;
     virtual char moveTo() = 0;
 };

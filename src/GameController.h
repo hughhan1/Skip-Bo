@@ -18,16 +18,21 @@
 
 class GameController {
 private:
+	/** The game. */
 	Game* skipBo;
 
 	/** Prints a welcome message to the screen. */
 	void welcome();
 
 public:
+	/** Runs the game. */
 	void runGame();
-	bool loadGame();
-	void endGame();
-	
+
+	/**
+	 * Loads the game.
+	 * @return if a game was loaded
+	 */
+	bool loadGame();	
 };
 
 #endif

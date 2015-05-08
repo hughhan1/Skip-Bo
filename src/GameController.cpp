@@ -15,11 +15,11 @@ void GameController::runGame() {
 	srand(time(NULL));
 	welcome();
 
-	std::cout << "Would you like to load a game from a file or start a new game? (0 for new, 1 for load): ";
+	std::cout << "Would you like to load a game from a file or start a new game?" << std::endl;
+	std::cout << "Enter 0 for new game | Enter 1 to load game: ";
+
 	char input;
-
 	std::cin >> input;
-
 	std::cout << std::endl;
 
 	bool check = false;
@@ -39,28 +39,28 @@ void GameController::runGame() {
 
 bool GameController::loadGame() {
 
-        char load = '0';
+	char load = '0';
 	
 	while (!(load == 'y' || load == 'Y')) {
-	  std::cout << "Enter the name of the file from which you'd like to load the game: ";
-	  std::string filename;
-	  std::cin >> filename;
+		std::cout << "Enter the name of the file from which you'd like to load the game: ";
+		std::string filename;
+		std::cin >> filename;
 
-	  std::ifstream inFile(filename, std::ios::in);
+		std::ifstream inFile(filename, std::ios::in);
 
-	  if (!inFile) {  
-	    std::cerr << "Error opening file: " << filename << std::endl << std::endl;
-	    std::cout << "Would you like to start a new game? (y/n): ";
-	    std::cin >> load;
-	    std::cout << std::endl;
-	    
-	    if (load == 'y' || load == 'Y')
-	      return false;
+		if (!inFile) {  
+			std::cerr << "Error opening file: " << filename << std::endl << std::endl;
+			std::cout << "Would you like to start a new game? (y/n): ";
+			std::cin >> load;
+			std::cout << std::endl;
 
-	  } else {
-	    skipBo = new Game(inFile);
-	    return true;
-	  }
+		if (load == 'y' || load == 'Y')
+			return false;
+
+		} else {
+			skipBo = new Game(inFile);
+			return true;
+		}
 	}
 	return false; 
 }
