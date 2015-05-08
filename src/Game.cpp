@@ -13,10 +13,12 @@
 #include "Game.h"
 
 using std::string;
+using std::to_string;
 using std::stringstream;
 using std::cin;
 using std::cout;
 using std::endl;
+using std::vector;
 
 /** Public */
 
@@ -118,7 +120,7 @@ void Game::play() {
             cin >> input;
 
             if (input == 'y' || input == 'Y')
-                saveGame();
+                saveData();
 
             cout << endl << "Goodbye!" << endl;
             input = 'q';
@@ -453,6 +455,60 @@ bool Game::gameOver() {
     return false;
 }
 
-void Game::saveGame() {
+vector<string> Game::saveData() {
+  vector<string> data;
+  Player * player;
+  string s;
+  Card * card;
 
+  //drawPile data
+  while(!drawPile->isEmpty()){
+    card = drawPile->remove();
+    s += to_string(card->getVal());
+  }
+
+  //buildPile data
+  for(int i = 0; i < 4; i++){
+    while(!buildPiles[i]->isEmpty()){
+      card = buildPiles[i]->remove();
+      s += to_string(card->getVal());
+    }
+  }
+
+  data.push_back(s);
+  s.clear();
+
+  //Players data   if card == nullptr, using -1
+  for(int i = 0; i < (int)players.size(); i++){
+    player = players[i];
+    s += player->getName();
+
+    //hand data
+    for(int j = 0; j < 5; j++){
+      card = player->removeCardFromHand(j);
+
+      if(card == nullptr)
+	s += to_string(-1);
+      else
+	s += to_string(card->getVal());   
+    }
+
+    //discardPile data
+    for(int j = 0; j < 4; j++){
+      while(!player->getDiscardPiles()[j]->isEmpty()){
+	card = player->getDiscardPiles()[j]->remove();
+	s += card->getVal();	      
+      }
+    }
+
+    while(!player->getStockPile()->isEmpty()){
+      card = player->getStockPile()->remove();
+      s += card->getVal();
+    }
+
+    data.push_back(s);
+    s.clear();
+  }
+
+  return data;
 }
