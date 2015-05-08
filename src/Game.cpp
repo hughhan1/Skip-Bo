@@ -102,8 +102,8 @@ void Game::play() {
         cout << curr->getName() << "'s turn!" << endl << endl;
 
         if (dynamic_cast<Human*>(curr)) {
-          cout << "Enter any character to start your turn, or q to quit the game: ";
-          cin >> input;
+            cout << "Enter any character to start your turn, or q to quit the game: ";
+            cin >> input;
         }
 
         if (input != 'q') {
@@ -125,6 +125,8 @@ void Game::play() {
             cout << endl << "Goodbye!" << endl;
             input = 'q';
         }
+
+        cout << "DRAWPILE SIZE: " << this->drawPile->getSize() << endl;
     }
 }
   
@@ -133,9 +135,9 @@ void Game::printView(int i) {
     generateView(lines, i);
     cout << endl;
     for (int a = 0; a < 11; a++) {
-      cout << lines[a].str() << endl;
+        cout << lines[a].str() << endl;
     }
-  }
+}
 
 
 /** Private */
