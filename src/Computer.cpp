@@ -12,12 +12,32 @@
 
 Computer::Computer(std::string name) : Player(name) { }
 
+void Computer::importChoices(TopPile** buildPiles) {
+	for (int i = 0; i < 4; i++) {
+		this->buildChoices[i] = buildPiles[i];
+	}
+}
+
 char Computer::moveFrom() {
 
+	Card * stockTop = this->stockPile->top();
+	Card * buildTop = nullptr;
+
 	/* Check stock pile for wild card. */
-	if (this->stockPile->top()->getVal() == 0) {
+	if (stockTop->getVal() == 0) {
 		return '0';
 	} 
+
+	for (int i = 0; i < 4; i++) {
+		if (!this->buildChoices[i]->isEmpty()) {
+			buildTop = this->buildChoices[i]->top();
+			if (buildTop != nullptr) {
+				if (stockTop->getVal() == buildTop->getVal() + 1) {
+					return '0';
+				}
+			}
+		}
+	}
 
 	/* Check hand for wild card. */
 	for (int i = 0; i < 5; i++) {

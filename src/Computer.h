@@ -19,8 +19,12 @@
 #define ASCII_SHIFT 48
 
 class Computer : public Player {
+private:
+	TopPile* buildChoices[4];
+
 public:
 	Computer(std::string = "no name");
+	void importChoices(TopPile**);
 	char moveFrom();
 	char moveTo();
 };

@@ -265,6 +265,9 @@ void Game::promptMove() {
 
     try {
 
+        if (Computer* computer = dynamic_cast<Computer*>(player))
+            computer->importChoices(this->buildPiles);
+
         moveFrom = player->moveFrom();
         moveTo = player->moveTo();
     
