@@ -64,3 +64,13 @@ All members present.
 - Next steps:
 	- Fill hand at the end of every end of each turn.
 	- When build pile reaches 12, empty build pile and shuffle it, and add each card into the drawPile.
+
+Thursday 5/8 : 8 PM to 2:30 AM
+All members present (Matt left at 10 PM).
+
+- FINISHED PROJECT
+- Deleted StockPile/DiscardPile/BuildPile and replaced with TopPile
+- Added load and save functions
+- Fixed a lot of formatting stuff
+- Valgrind stuff
+- Lots of input checking
