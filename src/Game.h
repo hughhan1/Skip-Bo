@@ -69,7 +69,7 @@ public:
 
     void promptMove();
 
-    void saveGame();
+    std::vector<std::string> saveData();
   
     /** 
      * Prints the view of a Player. 
