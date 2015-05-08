@@ -31,8 +31,22 @@ Game::Game() {
     turn = 0;
 }
 
-Game::Game(FILE* file) {
-    // TO DO
+Game::Game(std::ifstream &inFile) {
+  string str;
+  int num;
+
+  while(!drawPile->isEmpty()){
+    drawPile->remove();
+      
+  }
+
+  inFile >> str;
+  num = stoi(str);
+
+  for(int i = 0; i < num; i++){
+    inFile >> str;
+    num = stoi(str);   
+  } 
 }
 
 int Game::setPlayers() {

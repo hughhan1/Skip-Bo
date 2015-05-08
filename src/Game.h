@@ -18,6 +18,7 @@
 #include "TopPile.h"
 #include "InvalidMoveException.h"
 #include "TurnOverException.h"
+#include <fstream>
 #include <vector>
 #include <sstream>
 
@@ -58,7 +59,7 @@ private:
     
 public:
     Game();
-    Game(FILE* file);
+    Game(std::ifstream &inFile);
  
  	/** Setter methods. */
     int setPlayers();
