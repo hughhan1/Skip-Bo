@@ -246,7 +246,7 @@ void Game::play() {
                 saveGame();
 
             cout << endl << "Goodbye!" << endl;
-            input = 'q';
+            return;
         }
     }
 

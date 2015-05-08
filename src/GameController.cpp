@@ -14,13 +14,13 @@ void GameController::runGame() {
 	srand(time(NULL));
 	welcome();
 
-	std::cout << "Would you like to load a game from a file or start a new game? (0 for load, 1 for new): ";
+	std::cout << "Would you like to load a game from a file or start a new game? (0 for new, 1 for load): ";
 	char input;
 	std::cin >> input;
 
 	std::cout << std::endl;
 
-	if (input == '0')
+	if (input == '1')
 	    loadGame();
 	else {
 	    skipBo = new Game();
@@ -32,19 +32,23 @@ void GameController::runGame() {
 }
 
 void GameController::loadGame() {
-        
-         
-	std::cout << "Enter the name of the file from which you'd like to load the game: ";
-	std::string filename;
-	std::cin >> filename;
 
-	std::ifstream inFile(filename, std::ios::in);
-	/*
-	if (!inFile) {
-	     std::cerr << "Error opening file: " << filename << std::endl;
-	     exit(1);
-	} else
-	*/   skipBo = new Game(inFile);
+        char in = '0';
+        
+	while (in == '0') {
+	  std::cout << "Enter the name of the file from which you'd like to load the game: ";
+	  std::string filename;
+	  std::cin >> filename;
+
+	  std::ifstream inFile(filename, std::ios::in);
+
+	  if (!inFile)
+	    std::cerr << "Error opening file: " << filename << std::endl << std::endl;
+	  else {
+	    in = '1';
+	    skipBo = new Game(inFile);
+	  }
+	}
 }
 
 void GameController::welcome() {
