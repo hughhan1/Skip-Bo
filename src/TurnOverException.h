@@ -1,5 +1,5 @@
-#ifndef __TURN_OVER_EXCEPTION_H__
-#define __TURN_OVER_EXCEPTION_H__
+#ifndef _TURN_OVER_EXCEPTION_H
+#define _TURN_OVER_EXCEPTION_H
 
 #include <iostream>
 #include <exception>

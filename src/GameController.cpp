@@ -17,13 +17,17 @@ void GameController::runGame() {
 
 	std::cout << "Would you like to load a game from a file or start a new game? (0 for new, 1 for load): ";
 	char input;
+
 	std::cin >> input;
 
 	std::cout << std::endl;
 
+	bool check = false;
+
 	if (input == '1')
-	    loadGame();
-	else {
+	    check = loadGame();
+	
+	if (!check) {
 	    skipBo = new Game();
 	    int stockSize = skipBo->setPlayers();
 	    skipBo->dealCards(stockSize);
@@ -33,24 +37,32 @@ void GameController::runGame() {
 	delete skipBo;
 }
 
-void GameController::loadGame() {
+bool GameController::loadGame() {
 
-    char in = '0';
-        
-	while (in == '0') {
-		std::cout << "Enter the name of the file from which you'd like to load the game: ";
-		std::string filename;
-		std::cin >> filename;
+        char load = '0';
+	
+	while (!(load == 'y' || load == 'Y')) {
+	  std::cout << "Enter the name of the file from which you'd like to load the game: ";
+	  std::string filename;
+	  std::cin >> filename;
 
-		std::ifstream inFile(filename, std::ios::in);
+	  std::ifstream inFile(filename, std::ios::in);
 
-		if (!inFile)
-			std::cerr << "Error opening file: " << filename << std::endl << std::endl;
-		else {
-		    in = '1';
-		    skipBo = new Game(inFile);
-		}
+	  if (!inFile) {  
+	    std::cerr << "Error opening file: " << filename << std::endl << std::endl;
+	    std::cout << "Would you like to start a new game? (y/n): ";
+	    std::cin >> load;
+	    std::cout << std::endl;
+	    
+	    if (load == 'y' || load == 'Y')
+	      return false;
+
+	  } else {
+	    skipBo = new Game(inFile);
+	    return true;
+	  }
 	}
+	return false; 
 }
 
 void GameController::welcome() {

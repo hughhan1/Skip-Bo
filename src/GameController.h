@@ -25,8 +25,8 @@ private:
 
 public:
 	void runGame();
-	void loadGame();
-    void endGame();
+	bool loadGame();
+	void endGame();
 	
 };
 
