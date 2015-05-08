@@ -8,6 +8,7 @@
  * SkipBo: Game.cpp
  */
 
+#include <fstream>
 #include <iostream>
 #include <sstream>
 #include "Game.h"
@@ -120,7 +121,7 @@ void Game::play() {
             cin >> input;
 
             if (input == 'y' || input == 'Y')
-                saveData();
+                saveGame();
 
             cout << endl << "Goodbye!" << endl;
             input = 'q';
@@ -457,7 +458,7 @@ bool Game::gameOver() {
     return false;
 }
 
-vector<string> Game::saveData() {
+void Game::saveGame() {
   vector<string> data;
   Player * player;
   string s;
@@ -512,5 +513,16 @@ vector<string> Game::saveData() {
     s.clear();
   }
 
-  return data;
+  cout<<"Save File name: ";
+  cin >> s;
+  cout<<endl;
+
+  std::ofstream output(s, std::ios::out);
+
+  for(auto it = data.begin(); it != data.end(); it++){
+    output<<*it;
+  }
+
+  output.close();
+  cout<<"Game saved"<<endl;
 }
