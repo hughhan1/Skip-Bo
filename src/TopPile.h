@@ -8,8 +8,8 @@
  * SkipBo: TopPile.h
  */
 
-#ifndef _TOPPILE_H
-#define _TOPPILE_H
+#ifndef _TOP_PILE_H
+#define _TOP_PILE_H
 
 #include "Pile.h"
 #include <algorithm>

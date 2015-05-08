@@ -11,6 +11,7 @@
 #include "GameController.h"
 
 void GameController::runGame() {
+
 	srand(time(NULL));
 	welcome();
 
@@ -33,14 +34,14 @@ void GameController::runGame() {
 	}
 
 	skipBo->play();
+	delete skipBo;
 }
 
 bool GameController::loadGame() {
 
-        char in = '0';
         char load = '0';
 	
-	while (in == '0' && (load != 'y' && load != 'Y')) {
+	while (!(load == 'y' || load == 'Y')) {
 	  std::cout << "Enter the name of the file from which you'd like to load the game: ";
 	  std::string filename;
 	  std::cin >> filename;
