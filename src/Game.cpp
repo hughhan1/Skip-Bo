@@ -265,12 +265,14 @@ void Game::promptMove() {
 
     try {
 
+        /* To make the computer smarter, we let it see the build piles. */
         if (Computer* computer = dynamic_cast<Computer*>(player))
             computer->importChoices(this->buildPiles);
 
         moveFrom = player->moveFrom();
         moveTo = player->moveTo();
     
+        /* Check if the move is valid. */
         if (!validMove(moveFrom, moveTo)) {
             throw InvalidMoveException();
         } else {
@@ -280,6 +282,7 @@ void Game::promptMove() {
 
     } catch (InvalidMoveException & e) {
 
+        /* Only print error message if the player is a human. */
         if (dynamic_cast<Human*>(player)) {
             cout << e.what() << endl;
             printView(this->turn % players.size());
@@ -289,6 +292,7 @@ void Game::promptMove() {
 
     } catch (TurnOverException & e) {
 
+        /* Fill player's hand and increment turn counter at the end of each turn. */
         cout << player->getName() << ": " << e.what() << endl;
         fillHand(this->turn % players.size());
         this->turn++;
