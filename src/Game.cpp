@@ -498,6 +498,7 @@ void Game::saveGame() {
     player = players[i];
     s += player->getName();
     s += " ";
+
     //hand data
     for(int j = 0; j < 5; j++){
       card = player->removeCardFromHand(j);
@@ -518,7 +519,7 @@ void Game::saveGame() {
       s += " ";
       while(!player->getDiscardPiles()[j]->isEmpty()){
 	card = player->getDiscardPiles()[j]->remove();
-	s += card->getVal();
+	s += to_string(card->getVal());
 	s += " ";
       }
     }
@@ -528,7 +529,7 @@ void Game::saveGame() {
     s += " ";
     while(!player->getStockPile()->isEmpty()){
       card = player->getStockPile()->remove();
-      s += card->getVal();
+      s += to_string(card->getVal());
       s += " ";
     }
 
