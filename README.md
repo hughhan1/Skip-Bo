@@ -28,15 +28,15 @@ To remove executable files:
 ### Samples ###
 
 ###### Starting the Game ######
-![Alt text](/img/Starting\ the\ Game.png "Starting the Game")
+![Alt text](/img/start.png "Starting the Game")
 
 
 ###### Playing the Game ######
-![Alt text](/img/Playing\ the\ Game.png "Playing the Game")
+![Alt text](/img/play.png "Playing the Game")
 
 
 ###### Saving the Game ######
-![Alt text](/img/Saving\ the\ Game.png "Saving the Game")
+![Alt text](/img/save.png "Saving the Game")
 
 ### Questions? ###
 
