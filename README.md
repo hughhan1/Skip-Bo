@@ -25,6 +25,19 @@ To compile and run the tests:
 To remove executable files:
 ```$ make clean```
 
+### Samples ###
+
+###### Starting the Game ######
+![Alt text](/img/Starting\ the\ Game.png "Starting the Game")
+
+
+###### Playing the Game ######
+![Alt text](/img/Playing\ the\ Game.png "Playing the Game")
+
+
+###### Saving the Game ######
+![Alt text](/img/Saving\ the\ Game.png "Saving the Game")
+
 ### Questions? ###
 
 * Feel free to contact any team member using the emails above. 
