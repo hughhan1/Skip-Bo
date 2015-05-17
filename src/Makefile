@@ -17,28 +17,28 @@ bin: SkipBo
 	@./SkipBo
 
 test: sampTest
-	@./sampTest
+	./sampTest
 
 SkipBo:	$(SRC) SkipBo.cpp
 	@$(CC) $(CXXFLAGS) $(SRC) SkipBo.cpp -o SkipBo
 
 sampTest: $(SRC) TestMain.cpp 
-	@$(CC) $(CXXFLAGS) $(SRC) TestMain.cpp -o sampTest
+	$(CC) $(CXXFLAGS) $(SRC) TestMain.cpp -o sampTest
 
 Card.o: Card.cpp Card.h
-	@$(CC) $(CXXFLAGS) -c -o Card.cpp
+	$(CC) $(CXXFLAGS) -c -o Card.cpp
 
 Pile.o: Pile.cpp Card.h Pile.h
-	@$(CC) $(CXXFLAGS) -c Pile.cpp
+	$(CC) $(CXXFLAGS) -c Pile.cpp
 
 DrawPile.o: DrawPile.cpp Card.h Pile.h DrawPile.h 
-	@$(CC) $(CXXFLAGS) -c -o DrawPile.cpp
+	$(CC) $(CXXFLAGS) -c -o DrawPile.cpp
 
 TopPile.o: TopPile.cpp Card.h Pile.h TopPile.h 
-	@$(CC) $(CXXFLAGS) -c -o TopPile.cpp
+	$(CC) $(CXXFLAGS) -c -o TopPile.cpp
 
 TestMain.o: TestMain.cpp Card.h Pile.h DrawPile.h TopPile.h
-	@$(CC) $(CXXFLAGS) -c TestMain.cpp
+	$(CC) $(CXXFLAGS) -c TestMain.cpp
 
 clean:
-	@rm -rf *~ *.o libTest sampTest skipBo *.dSYM
+	rm -rf *~ *.o libTest sampTest SkipBo *.dSYM
